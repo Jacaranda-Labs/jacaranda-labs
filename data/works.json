@@ -1,0 +1,453 @@
+[
+ {
+  "id": "emotional-engineering",
+  "title": "Emotional Engineering for AI-Oriented Infrastructure Operators",
+  "subtitle": "Trust, agency and ethical adoption in systems that act",
+  "kind": "book",
+  "series": null,
+  "edition": "private author-review 2026",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": null,
+  "blurb": "The book expands the commissioned emotions document into a broader guide for AI-infrastructure operators. It treats AFGR as an operator heuristic, not a validated universal psychological sequence. Research, proposed practices, illustrative examples and STPI operating observations are distinguished. No invented author biography, endorsements, customer outcomes or interviews are claimed.",
+  "facts": [
+   "36,910 words (36,156 outside front matter)",
+   "24 chapters, 12 worksheets, 12 annotated script transformations",
+   "159 pages"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "tight-bucket",
+  "title": "The Tight Bucket",
+  "subtitle": "Designing constraint-native digital businesses",
+  "kind": "book",
+  "series": null,
+  "edition": "private author-review 2026",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "TightBucket was commissioned by the same owner who commissions the work of Jacaranda Labs Think Tank. It is a bounded case, not an independent evaluation.",
+  "blurb": "The book uses TightBucket, a website \"revenue-leak\" auditing service built in three days in October 2026 by its owner working with AI coding agents, as a running case. TightBucket had not launched commercially at the time of writing: it had taken no payments, so the book reports design, governance and measured operating data, not commercial results. TightBucket was commissioned by the same owner who commissions the work of Jacaranda Labs Think Tank; it is a bounded case, not an independent evaluation. Research findings, measured facts about the case, and proposed frameworks are labelled separately.",
+  "facts": [
+   "36,906 words",
+   "Five parts, 24 discussion chapters",
+   "160 pages"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "constraint-native-business-models",
+  "title": "Constraint-Native Business Model Design",
+  "subtitle": "Quota-bounded autonomy, proof-first acquisition and verification debt in a zero-cash, AI-built venture",
+  "kind": "paper",
+  "series": "Jacaranda Labs Think Tank Working Paper 2026-01",
+  "edition": "private author-review 2026 (working paper)",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "TightBucket was commissioned by the same owner who commissions the work of Jacaranda Labs Think Tank. The case is not an independent evaluation.",
+  "blurb": "The paper offers constraint-native business model design as a design mode, quota-bounded autonomy as a governance mechanism, a coded log of 43 review defects, and seven testable propositions. Evidence is the venture's code, documents, commit history and three days of usage telemetry checked against the cloud provider's own analytics. It is a single pre-revenue case, so its propositions are offered for testing, not as established findings.",
+  "facts": [
+   "12,841 words of body text · 63 references",
+   "32 pages, A4"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "proof-of-mechanism",
+  "title": "Proof of Mechanism",
+  "subtitle": "How leaders who build with AI agents tell a working product from a convincing demo",
+  "kind": "book",
+  "series": null,
+  "edition": "private author-review 2026",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "AttestOS belongs to the same owner who commissions the work of Jacaranda Labs Think Tank. The audit and rebuild were carried out by the owner working with AI coding agents. It is a bounded case, not an independent evaluation.",
+  "blurb": "The book uses AttestOS, a bot-verification service, as a candid running case. Its first version (26 October 2026) presented every conventional sign of completeness while lacking most mechanisms. An audit the next day logged 65 findings, 18 of them critical. The service was rebuilt that evening and checked again on 28 October. The book does not state how the first version was produced. It treats generation by AI as one hypothesis the evidence is consistent with. AttestOS had no customers and had taken no payments at the time of writing. The audit and rebuild were carried out by the owner working with AI coding agents: a bounded case, not an independent evaluation.",
+  "facts": [
+   "42,249 words",
+   "Five parts, 24 chapters · 70 references",
+   "177 pages"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "simulated-completeness",
+  "title": "Simulated Completeness",
+  "subtitle": "Claim–mechanism gaps, mechanism audits and the rebuild decision in an AI-era trust product",
+  "kind": "paper",
+  "series": "Jacaranda Labs Think Tank Working Paper 2026-02",
+  "edition": "private author-review 2026 (working paper)",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "AttestOS belongs to the same owner who commissions the work of Jacaranda Labs Think Tank. The audit and rebuild were carried out by the owner working with AI coding agents. The case is not an independent evaluation.",
+  "blurb": "The paper defines *simulated completeness* and distinguishes it from prototypes, minimum viable products, technical debt and fraud. It codes the 65 audit findings into a taxonomy of eight claim–mechanism gap types plus hygiene: 47 (72%) were gaps, including every critical and high finding. It also proposes six mechanism probes, a rebuild decision rule, an evidence contract for agent-built work and seven testable propositions. Evidence is the public commit history, the itemised audit, the production database and the service's own usage meter. It is a single pre-revenue case, so its propositions are offered for testing, not as established findings.",
+  "facts": [
+   "11,969 words of body text · 72 references",
+   "31 pages, A4"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "nobody-was-watching",
+  "title": "Nobody Was Watching",
+  "subtitle": "How founders run autonomous growth systems without harming strangers, their brand or themselves",
+  "kind": "book",
+  "series": null,
+  "edition": "private author-review 2026",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "Tapstall belongs to the same owner who commissions the work of Jacaranda Labs Think Tank. The audit and rebuild were carried out by the owner working with AI coding agents. It is a bounded case, not an independent evaluation.",
+  "blurb": "The book's case is Tapstall, a shop-link service for informal merchants. On the day of its audit, its test suite passed in full while its growth pipeline was emailing non-prospects, posting into another venture's social account and running duplicate copies of itself. Each chapter sets out a question, the theory, the case, a framework, the limits of the evidence, points of debate, discussion questions and an exercise. The frameworks include the witness map, the Identity Ledger, the Clock Register, the Recipient Gate, the Stoppability Standard, armed distribution and a ninety-day programme. It is the companion to Working Paper 2026-03. The case is a single pre-revenue venture, and its frameworks are offered for testing.",
+  "facts": [
+   "39,421 words",
+   "24 discussion chapters plus framework compendium",
+   "158 pages"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "unwitnessed-autonomy",
+  "title": "Unwitnessed Autonomy",
+  "subtitle": "Externalities, borrowed identities and duplicate clocks in an autonomous growth pipeline",
+  "kind": "paper",
+  "series": "Jacaranda Labs Think Tank Working Paper 2026-03",
+  "edition": "private author-review 2026 (working paper)",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "Tapstall belongs to the same owner who commissions the work of Jacaranda Labs Think Tank. The audit and rebuild were carried out by the owner working with AI coding agents. The case is not an independent evaluation.",
+  "blurb": "The paper defines *unwitnessed autonomy*: an automated system that takes consequential actions on parties outside its boundary when no party is placed to observe those effects and report them to the operator. The case is Tapstall, a shop-link service for informal and social-commerce merchants. Its test suite passed in full while the live pipeline was mailing non-prospects, sending from another venture's support mailbox, posting into another venture's social account and running duplicate copies of itself. The paper codes 24 defects (11 from the audit, 13 found during the rebuild) into nine classes. Sixteen (67%) are witness gaps, and none of the 24 was found by a test. It proposes a five-point witness map (identity, clock, effect, recipient, stop), four \"one-of\" rules and seven testable propositions. It is a single pre-revenue case, so its propositions are offered for testing, not as established findings.",
+  "facts": [
+   "11,696 words of body text · 48 references",
+   "27 pages, A4"
+  ],
+  "toc": [],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "sovereign-micro-enterprise",
+  "title": "The Sovereign Micro-Enterprise",
+  "subtitle": "A Governance-First Architecture for Zero-Capital Agentic Businesses",
+  "kind": "report",
+  "series": "Founding field report of the Distributed Cognitive Autonomous Infrastructure programme",
+  "edition": "working manuscript, September 2026 (expanded October 2026)",
+  "funded_by": "Jacaranda Labs AI Think Tank",
+  "case_disclosure": "The case, Hunta, was the author's own business. It was retired in October 2026; the paper's operating claims describe it as it ran in September and October 2026 and are not independent validation of later systems.",
+  "blurb": "The founding field report of the Distributed Cognitive Autonomous Infrastructure programme. It documents Hunta, a one-person, zero-capital sales and content business run by agents, and formalises four governance mechanisms: Guarded-Capability Governance, the Ledgered-Agent Pattern, the Zero-Capital Ladder and Effectuation-in-the-Loop. Merged on 29 October 2026 from the archived Research-Papers repository. Hunta was retired in October 2026.",
+  "facts": [
+   "about 8,600 words · 7 figures"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-The-Sovereign-Micro-Enterprise.pdf",
+   "HTML": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-The-Sovereign-Micro-Enterprise.html",
+   "MD": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-The-Sovereign-Micro-Enterprise.md"
+  },
+  "availability": "available",
+  "licence": "All rights reserved",
+  "merged_note": "An earlier edition of this report was catalogued in the legacy press catalogue; this page points at that published edition."
+ },
+ {
+  "id": "flower-and-bees",
+  "title": "Flower and Bees",
+  "subtitle": "The Jacaranda voice guide: how every page, product and message should feel",
+  "kind": "book",
+  "series": null,
+  "edition": "first edition, version 1.0, November 2026",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": "Jacaranda Labs owns the six ventures the book uses as its worked examples (TightBucket, AttestOS, DeskOS, STPi, Tapstall and Open Practice). Every example of copy in the book is constructed; none quotes a customer or reports a result. It is an insider's manual, not an independent evaluation.",
+  "blurb": "The flower does not chase the bee. It opens, it is honest about what it holds, and it is easy to find. This manual applies that idea to the words a business publishes. It separates hype, which is invented feeling, from emotion, which is real feeling named accurately. It sets out five parts every page needs (recognition, the cost, the after, the proof and the small door) and nine rules of truth, warmth and the door. Then it works through the surfaces where words are actually made: the landing page, the product card, the first-touch email, follow-up and the sales call. Part Six applies the method to each of the six Jacaranda Labs ventures, and Part Eight is the toolkit. Every example of copy in the book is constructed; none quotes a customer or reports a result.",
+  "facts": [
+   "about 30,350 words",
+   "Eight parts, 39 chapters, plus toolkit",
+   "161 pages, 6 × 9 in"
+  ],
+  "toc": [
+   "1 · The mistake in version one",
+   "2 · Hype is invented feeling. Emotion is real feeling, named accurately.",
+   "3 · Where the metaphor holds, and where it breaks",
+   "4 · Recognition: does this person understand my day?",
+   "5 · The cost: why does this matter now?",
+   "6 · The after: what would it feel like?",
+   "7 · The proof: is this real?",
+   "8 · The small door: what do I do now, and what if it does not work?",
+   "9 · Order, and the four ways to break it",
+   "10 · Rules of truth",
+   "11 · Rules of warmth",
+   "12 · Rules of the door",
+   "13 · The landing page",
+   "14 · The product card",
+   "15 · The first-touch email",
+   "16 · Follow-up, replies, and knowing when to stop",
+   "17 · The sales call",
+   "18 · A page from nothing",
+   "19 · Collecting the buyer’s words without inventing them",
+   "20 · One feeling per page, and the four you cut",
+   "21 · The tired-stranger test",
+   "22 · The reader who is wrong for you",
+   "23 · TightBucket: relief, because the leak has a name",
+   "24 · AttestOS: quiet confidence, because nobody gets annoyed",
+   "25 · DeskOS: calm control, because everything open is on one desk",
+   "26 · STPi: being seen, because the applications go out while you rest",
+   "27 · Tapstall: pride and order, because the numbers are clear and the customers pay",
+   "28 · Open Practice: capability, because you did the real thing today",
+   "29 · When three people and a system all write",
+   "30 · The Mechanism Audit, turned on your own words",
+   "31 · The banned lexicon, and what to write instead",
+   "32 · The nine rules, on one card",
+   "33 · The 30-second check",
+   "34 · The seven templates",
+   "35 · The promise Codex",
+   "36 · The collection sheet",
+   "37 · The message audit worksheet",
+   "38 · The venture map",
+   "39 · The blank page"
+  ],
+  "formats": {},
+  "availability": "private"
+ },
+ {
+  "id": "ledger",
+  "title": "The Ledger and the Shopkeeper",
+  "subtitle": "Building commerce for the markets the platforms forgot",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs Press · Harare",
+  "case_disclosure": null,
+  "blurb": "A trade book on building a merchant rail for shops the platforms skipped — written from the release log rather than the pitch deck. Part one is the gap: the forty-tab panic, and why the obvious answer is wrong. Part two is the machine: a shop in one link, a statement that can be recomputed, quotas as a design material, the first hundred prospects, and the number that could not be dialled. Part three is the rules: never hold the money, never lie in the copy, never post to your customers. Part four is the craft — what broke, in five failure classes, and the uncomfortable arithmetic that follows.",
+  "facts": [
+   "14,595 words",
+   "77 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-The-Ledger-and-the-Shopkeeper.pdf",
+   "EPUB": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-The-Ledger-and-the-Shopkeeper.epub",
+   "HTML": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-The-Ledger-and-the-Shopkeeper.html",
+   "MD": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-The-Ledger-and-the-Shopkeeper.md"
+  },
+  "licence": "CC BY 4.0",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "intelligence",
+  "title": "Intelligence, Data and Judgement",
+  "subtitle": "An applied introduction to artificial intelligence, with a production case",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs Press · Harare",
+  "case_disclosure": null,
+  "blurb": "A textbook written to be taught from. Twenty-two chapters in five parts — foundations, the material, the machine, the case, and judgement — each with learning outcomes, a worked example, graded exercises and further reading. The disciplinary spine is three widely used curricula: COMCEC's introduction to AI and its fundamental concepts, Microsoft's Fundamentals of AI Module 1, and NITI Aayog's Let's Learn AI Base Module, each attributed and mapped chapter by chapter in the appendix. Tapstall runs through the middle of the book as the worked case, including its failures.",
+  "facts": [
+   "31,930 words",
+   "159 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Intelligence-Data-and-Judgement.pdf",
+   "EPUB": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-Intelligence-Data-and-Judgement.epub",
+   "HTML": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-Intelligence-Data-and-Judgement.html",
+   "MD": "https://github.com/king-kunta-cpu/tapstall/raw/main/book/Garikai-2026-Intelligence-Data-and-Judgement.md"
+  },
+  "licence": "CC BY 4.0",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "custody",
+  "title": "Order Without Custody",
+  "subtitle": "Governance-first design for merchant commerce rails in low-infrastructure economies",
+  "kind": "research",
+  "series": null,
+  "edition": "Working paper; not peer reviewed",
+  "funded_by": "DCAI working paper 3",
+  "case_disclosure": null,
+  "blurb": "Small merchants already sell at scale — through chat threads, pages and a phone number painted on a wall — but they sell without a record. This paper argues that the binding constraint at that tier is not payment capability but reconciliation, and that reconcilability is an architectural property rather than a feature. Five mechanisms are formalised against artefacts a reader can inspect: the No-Custody Rail, Admission-Gated Discovery, Reserve-Ladder Scheduling, Surface-Disjoint Multi-Tenancy and the Constrained Persuasion Doctrine. The empirical section is forensic: five classes of governance failure, each stated as a signature, a detector and a design response.",
+  "facts": [
+   "11,628 words",
+   "30 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Order-Without-Custody-DCAI-Working-Paper-3.pdf",
+   "EPUB": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-Order-Without-Custody-DCAI-Working-Paper-3.epub",
+   "HTML": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-Order-Without-Custody-DCAI-Working-Paper-3.html",
+   "MD": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-Order-Without-Custody-DCAI-Working-Paper-3.md"
+  },
+  "licence": "CC BY 4.0",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "cadence",
+  "title": "Grounded Cadence",
+  "subtitle": "Fact-bound content operations as a governance architecture",
+  "kind": "research",
+  "series": null,
+  "edition": "Working paper",
+  "funded_by": "DCAI working paper",
+  "case_disclosure": null,
+  "blurb": "Anyone can now emit a week of social copy. Almost no one can emit it on a schedule, from a company's own facts, without inventing customers or numbers, without spending the operator's quota on a stranger, and without a silent failure looking like a green run. This paper reports a live zero-capital writing service and formalises four mechanisms with production incidents attached: fact-bound generation, value–promo cadence, capability isolation, and fail-loud operations.",
+  "facts": [
+   "17 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Grounded-Cadence.pdf",
+   "HTML": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-Grounded-Cadence.html",
+   "MD": "https://github.com/king-kunta-cpu/tapstall/raw/main/papers/Garikai-2026-Grounded-Cadence.md"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "governable",
+  "title": "The Governable Enterprise",
+  "subtitle": "A practical guide to evidence, authority and AI operations — lessons from DeskOS",
+  "kind": "book",
+  "series": null,
+  "edition": "Complete first edition",
+  "funded_by": "Jacaranda Labs Think Tank",
+  "case_disclosure": null,
+  "blurb": "A practitioner guide to designing AI operations that can explain their evidence, limit their authority, account for resources and recover from uncertainty. DeskOS is examined as a candid, bounded case rather than a product-success claim, and the ten operating tools are given as methods a reader can adopt rather than results a reader should assume. Prepared in PDF, editable Word, EPUB, HTML and Markdown; full text is not distributed publicly.",
+  "facts": [
+   "221 pages"
+  ],
+  "toc": [],
+  "formats": {},
+  "licence": "No open-content licence granted",
+  "year": "2026",
+  "availability": "catalogued"
+ },
+ {
+  "id": "autonomy",
+  "title": "From Spreadsheet Interface to Governable Autonomy",
+  "subtitle": "DeskOS as a critical design-science case of evidence, agency and resource-constrained AI infrastructure",
+  "kind": "research",
+  "series": null,
+  "edition": "Working paper; not peer reviewed",
+  "funded_by": "DCAI working paper",
+  "case_disclosure": null,
+  "blurb": "A bounded implementation study separating generated artefacts from verified intelligence — the distinction that decides whether an operator is being informed or flattered. It proposes an Evidence–Authority–Resource Contract and a prospective evaluation protocol, and reports no customer-outcome experiment, because none was run.",
+  "facts": [],
+  "toc": [],
+  "formats": {},
+  "licence": "No open-content licence granted",
+  "year": "2026",
+  "availability": "catalogued"
+ },
+ {
+  "id": "musk-mirror",
+  "title": "The Musk Mirror",
+  "subtitle": "How one billionaire exposed the cracks in China's innovation dream",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Courage Garikai, Harare",
+  "case_disclosure": null,
+  "blurb": "A gallery of expert predictions, set against what was actually built. The book reads as a mirror rather than a weapon: on the rocket sceptics, the communications 'experts', the business-model critics and the CEO chorus, and on what their confidence cost. Its argument is about expertise without humility, and about the difference between a claim that sounds authoritative and a number that can be checked.",
+  "facts": [
+   "286 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-The-Musk-Mirror.pdf"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "traffic",
+  "title": "Traffic Is the New Oil",
+  "subtitle": "The African digital wealth formula",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs",
+  "case_disclosure": null,
+  "blurb": "Six chapters on the only formula that has ever run the internet — traffic, ads, money — argued for a continent that supplies the eyeballs and keeps too little of the revenue. From the awakening, through the traffic layer and the ad market, to what actually enters an account while the power is out, and a zero-capital route from nothing to a first four-figure month.",
+  "facts": [
+   "256 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Traffic-Is-the-New-Oil.pdf"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "pinterest",
+  "title": "Pinterest Goldmine",
+  "subtitle": "The traffic source nobody told you about",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs",
+  "case_disclosure": null,
+  "blurb": "A complete operating manual for one under-used traffic channel: the psychology of the scroll-stop, a pin factory run from Canva on a phone, the search optimisation playbook, a scheduling system that survives real-life disruption, and the money layer that turns attention into a payout.",
+  "facts": [
+   "242 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Pinterest-Goldmine.pdf"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "rocket-man",
+  "title": "The Rocket Man Reckoning",
+  "subtitle": "How China mocked Elon Musk — and why they are now panicking",
+  "kind": "essay",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs",
+  "case_disclosure": null,
+  "blurb": "The arrogance of a rising superpower, the collapse of its myths, and what one company's success reveals about the future of innovation. A short book about a decade of ridicule from established voices — academic, industrial and editorial — and what happened when the engineering arrived anyway.",
+  "facts": [
+   "29 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-The-Rocket-Man-Reckoning.pdf"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ },
+ {
+  "id": "unchained",
+  "title": "Unchained Blueprint",
+  "subtitle": "What to build when every payment door is closed",
+  "kind": "essay",
+  "series": null,
+  "edition": "Version 1 — working document",
+  "funded_by": "Jacaranda Labs",
+  "case_disclosure": null,
+  "blurb": "Every single door was closed: the processor that does not support your country, the payouts that are unavailable in your region, the account that has been limited. This blueprint starts from the observation that these are decisions rather than accidents, and works out what a builder in that position can still put in place.",
+  "facts": [
+   "13 pages"
+  ],
+  "toc": [],
+  "formats": {
+   "PDF": "https://github.com/king-kunta-cpu/tapstall/releases/download/publications-2026-10/Garikai-2026-Unchained-Blueprint-v1.pdf"
+  },
+  "licence": "All rights reserved",
+  "year": "2026",
+  "availability": "available"
+ }
+]

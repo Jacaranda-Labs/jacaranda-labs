@@ -1,0 +1,16 @@
+[
+ {
+  "title": "The Governable Enterprise",
+  "subtitle": "A Practical Guide to Evidence, Authority and AI Operations: Lessons from DeskOS",
+  "kind": "Book",
+  "year": "2026",
+  "summary": "A practitioner guide to designing AI operations that can explain their evidence, limit their authority, account for resources and recover from uncertainty, using DeskOS as a bounded case."
+ },
+ {
+  "title": "From Spreadsheet Interface to Governable Autonomy",
+  "subtitle": "DeskOS as a Critical Design-Science Case of Evidence, Agency and Resource-Constrained AI Infrastructure",
+  "kind": "Working paper",
+  "year": "2026",
+  "summary": "A bounded implementation study that separates generated artifacts from verified intelligence and proposes an Evidence–Authority–Resource Contract with a prospective evaluation protocol. It reports no customer-outcome experiment."
+ }
+]

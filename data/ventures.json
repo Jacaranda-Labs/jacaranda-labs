@@ -1,0 +1,78 @@
+[
+ {
+  "id": "attestos",
+  "name": "AttestOS",
+  "url": "https://attestos-edge.attestos.workers.dev",
+  "line": "Bot checks your visitors never see.",
+  "what": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles.",
+  "for": "Website owners and developers",
+  "research": [
+   "proof-of-mechanism",
+   "simulated-completeness",
+   "flower-and-bees"
+  ]
+ },
+ {
+  "id": "tightbucket",
+  "name": "TightBucket",
+  "url": "https://0x.tightbucket.workers.dev",
+  "line": "Website leak audits.",
+  "what": "Twenty-second audits that show where a website loses revenue, with the evidence and the fix, for stores, SaaS, sales teams and agencies.",
+  "for": "Online stores, SaaS and agencies",
+  "research": [
+   "tight-bucket",
+   "constraint-native-business-models",
+   "flower-and-bees"
+  ]
+ },
+ {
+  "id": "deskos",
+  "name": "DeskOS",
+  "url": "https://deskos.deskos.workers.dev",
+  "line": "Working desks for customs, safari and tender firms.",
+  "what": "Web desks with working calculators for customs and freight, safari and DMC, and tender and donor ESG firms, with daily open notices for tender firms from 13 public sources (World Bank, UN agencies, EU TED and national portals), by region.",
+  "for": "Trade, travel and consulting firms",
+  "research": [
+   "flower-and-bees"
+  ]
+ },
+ {
+  "id": "stpi",
+  "name": "STPi",
+  "url": "https://getstpi.pages.dev",
+  "line": "Strategic Talent Placement Infrastructure.",
+  "what": "Hunts public job ads across African markets, drafts a cover letter and tailored CV for each, and waits for a person to approve before anything is sent.",
+  "for": "Job seekers, coaches and placement firms",
+  "research": [
+   "emotional-engineering",
+   "flower-and-bees"
+  ]
+ },
+ {
+  "id": "tapstall",
+  "name": "Tapstall",
+  "url": "https://tapstall.zlnew.workers.dev",
+  "line": "A shop link for the markets the big platforms skip.",
+  "what": "A storefront link for informal and social-commerce shops that understands EcoCash, InnBucks and PayShap and matches exact payment amounts.",
+  "for": "Small shops in Zimbabwe and South Africa",
+  "research": [
+   "nobody-was-watching",
+   "unwitnessed-autonomy",
+   "the-ledger-and-the-shopkeeper",
+   "order-without-custody",
+   "intelligence-data-and-judgement",
+   "flower-and-bees"
+  ]
+ },
+ {
+  "id": "open-practice",
+  "name": "Open Practice",
+  "url": "https://open-practice.zlnew.workers.dev",
+  "line": "Practical AI, learned by doing.",
+  "what": "A learning platform where people practise with AI tools on real tasks, using their own free API keys, and keep what they make.",
+  "for": "Anyone learning to work with AI",
+  "research": [
+   "flower-and-bees"
+  ]
+ }
+]
