@@ -54,6 +54,13 @@ book. That is why the catalogue reads 20 works, not 22.
 `--check` fails if a work page does not say which of these it is. Change the state in `data/works.json`;
 the copy, tags and badges follow.
 
+## postcheck — the two owner rules
+
+`tools/postcheck.py` audits the estate's live social feeds against the two rules: every post carries an
+image, and value posts outnumber promo at least 2:1. It reads Bluesky, Mastodon and Nostr back off the
+platforms themselves. `.github/workflows/postcheck.yml` runs it daily and fails the run when a rail
+breaks either rule. See `social-audit-2026-11-08.md` for the first run's findings.
+
 ## House rules the build keeps
 
 * **No JavaScript.** The CSP is `default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:` and
@@ -65,7 +72,11 @@ the copy, tags and badges follow.
 
 ## Deploying
 
-Not deployed yet — `deploy.sh` is written and dry-runs locally. When you have the account details:
+**Live:** https://jacaranda-labs.pages.dev (Cloudflare Pages) · https://jacaranda-labs.github.io/jacaranda-labs/
+(static mirror) · source: https://github.com/Jacaranda-Labs/jacaranda-labs
+
+A push to `main` builds, checks and deploys both. `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID` are repo secrets. Locally:
 
 ```
 export CLOUDFLARE_API_TOKEN=...  CLOUDFLARE_ACCOUNT_ID=...  PROJECT=jacaranda-labs
