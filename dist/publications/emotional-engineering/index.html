@@ -6,160 +6,645 @@
 <meta property="og:description" content="The book expands the commissioned emotions document into a broader guide for AI-infrastructure operators. It treats AFGR as an operator heuristic, not a validated universal psychol"><meta property="og:url" content="https://jacaranda-labs.pages.dev/publications/emotional-engineering/">
 <meta property="og:site_name" content="Jacaranda Labs"><meta property="og:image" content="https://jacaranda-labs.pages.dev/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Jacaranda Labs — seven businesses, one operator, and a written record of both">
-<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#6b2d5c">
-<style>
-:root{--a:#6b2d5c;--soft:#faf1f6;--deep:#2c1c28;--ink:#1e1a24;--mute:#5d5768;--line:#e6e0ec;--paper:#fdfcfe;--gold:#c8a24a}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--paper);color:var(--ink);
-font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-a{color:var(--a);text-underline-offset:.18em}a:hover{color:var(--deep)}
-a:focus-visible{outline:3px solid var(--a);outline-offset:2px;border-radius:3px}
-.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem 1rem;z-index:9}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4,.serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
-font-weight:600;letter-spacing:-.012em;line-height:1.18;margin:0}
-h1{font-size:clamp(2.2rem,5vw,3.7rem);margin:.15em 0 .35em}h2{font-size:clamp(1.6rem,2.9vw,2.2rem);margin:0 0 .45em}
-h3{font-size:1.32rem;margin:0 0 .25em}h4{font-size:1.02rem;margin:0 0 .3em}
-p{margin:0 0 1em}.lede{font-size:1.22rem;line-height:1.55;color:var(--mute);max-width:44em}
-.kicker{font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--a)}
-.meta{font-size:.9rem;color:var(--mute)}
-/* header */
-header.top{position:sticky;top:0;z-index:5;background:rgba(253,252,254,.94);border-bottom:1px solid var(--line);
-backdrop-filter:saturate(140%) blur(6px)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}
-.brand .mark{width:30px;height:30px;color:var(--a)}
-.brand small{display:block;font:600 .66rem/1.2 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-nav.main{display:flex;gap:.35rem;flex-wrap:wrap;font-size:.95rem}
-nav.main a{color:var(--mute);text-decoration:none;padding:.4rem .7rem;border-radius:999px}
-nav.main a:hover{color:var(--ink);background:var(--soft)}
-nav.main a[aria-current=page]{color:#fff;background:var(--a)}
-/* hero */
-.hero{position:relative;overflow:hidden;background:linear-gradient(175deg,var(--soft) 0%,var(--paper) 78%);padding:76px 0 60px;border-bottom:1px solid var(--line)}
-.hero .wm{position:absolute;right:-90px;top:-70px;width:420px;height:420px;color:var(--a);opacity:.07;pointer-events:none}
-.hero .mark{width:58px;height:58px;color:var(--a);display:block;margin-bottom:18px}
-.hero.tight{padding:56px 0 44px}
-/* sections */
-section{padding:56px 0;border-top:1px solid var(--line)}section.hero{border-top:0;padding:76px 0 60px}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:26px}
-.sec-head h2{margin:0}
-/* the three doors */
-.doors{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.door{display:flex;flex-direction:column;gap:.5rem;background:#fff;border:1px solid var(--line);border-radius:16px;
-padding:24px 24px 20px;text-decoration:none;color:inherit;transition:transform .12s ease,border-color .12s ease}
-.door:hover{transform:translateY(-2px);border-color:var(--a)}
-.door .n{font:700 .74rem/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--a)}
-.door h3{font-size:1.42rem}.door p{color:var(--mute);font-size:.96rem;margin:0}
-.door .go{color:var(--a);font-weight:650;font-size:.93rem;margin-top:.3rem}
-/* cards + grids */
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:.4rem}
-.card h3{font-size:1.24rem}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{color:var(--a)}
-.card p{color:var(--mute);font-size:.96rem;margin:0}
-.card .go{margin-top:auto;padding-top:.8rem;font-weight:650;font-size:.93rem}
-.card .no{font:700 .72rem/1 system-ui,sans-serif;letter-spacing:.16em;color:var(--a);opacity:.75}
-.tag{display:inline-block;font:700 .71rem/1.5 system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;
-color:var(--a);background:var(--soft);border-radius:999px;padding:.18rem .62rem;margin:0 .3rem .45rem 0;white-space:nowrap}
-.tag.dim{color:var(--mute);background:#f2eff5}.tag.gold{color:#7a5c12;background:#fbf3dd}
-.btn{display:inline-block;background:var(--a);color:#fff;text-decoration:none;font-weight:650;border-radius:10px;
-padding:.62rem 1.05rem;margin:.3rem .45rem .3rem 0}.btn:hover{background:var(--deep);color:#fff}
-.btn.ghost{background:transparent;color:var(--a);border:1.5px solid var(--a)}.btn.ghost:hover{background:var(--soft);color:var(--deep)}
-/* work list */
-.list{list-style:none;padding:0;margin:0}
-.list>li{padding:22px 0;border-bottom:1px solid var(--line)}
-.list>li:last-child{border-bottom:0}
-.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:start}
-.list h3 a{color:var(--ink);text-decoration:none}.list h3 a:hover{color:var(--a)}
-.sub{color:var(--mute);margin:.15rem 0 .5rem;font-size:1.04rem;max-width:52em}
-.meta-row{display:flex;gap:1rem;flex-wrap:wrap;font-size:.86rem;color:var(--mute);margin-top:.4rem}
-/* facts */
-dl.facts{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.5rem 1.3rem;margin:0 0 1.6rem;font-size:.96rem}
-dl.facts dt{font-weight:650}dl.facts dd{margin:0;color:var(--mute);overflow-wrap:anywhere}
-.note{overflow-wrap:anywhere}
-/* notes */
-.note{background:var(--soft);border-left:4px solid var(--a);border-radius:10px;padding:16px 18px;margin:1.3rem 0;font-size:.96rem}
-.note p:last-child{margin:0}
-.note.plain{background:#f6f5f8;border-left-color:#bab3c4}
-.note.gold{background:#fdf8ea;border-left-color:var(--gold)}
-.cols{display:grid;gap:44px;grid-template-columns:minmax(0,1fr) 300px}.cols.rev{grid-template-columns:300px minmax(0,1fr)}
-/* work page */
-.work-head{display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px;align-items:start}
-.work-head.has-cover{grid-template-columns:300px minmax(0,1fr)}
-.plate{width:150px;aspect-ratio:2/3;border-radius:6px;background:linear-gradient(160deg,var(--soft),#e7dcf1);
-display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(45,25,65,.16);color:var(--a)}
-.plate .mark{width:56px;height:56px}
-.plate.real{background:none;box-shadow:none;display:block;width:100%;aspect-ratio:auto}
-.cover-lg{width:100%;height:auto;border-radius:6px;box-shadow:0 10px 30px rgba(45,25,65,.22);display:block}
-.thumb{width:84px;height:126px;object-fit:cover;border-radius:4px;box-shadow:0 3px 10px rgba(45,25,65,.16);flex:0 0 auto}
-.card-cover{width:150px;height:225px;object-fit:cover;border-radius:5px;box-shadow:0 6px 18px rgba(45,25,65,.18);margin-bottom:.5rem}
-.card.with-cover{display:grid;grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;gap:.25rem .9rem;align-items:start}
-.card.with-cover .card-cover{grid-row:1 / span 4;grid-column:1;margin:0}
-.card.with-cover .no,.card.with-cover h3,.card.with-cover p,.card.with-cover .go{grid-column:2}
-@media (max-width:560px){.card.with-cover{grid-template-columns:1fr}.card.with-cover .card-cover{grid-row:auto;grid-column:1;width:110px;height:165px}
-.card.with-cover .no,.card.with-cover h3,.card.with-cover p,.card.with-cover .go{grid-column:1}}
-.with-thumb{display:flex;gap:18px;align-items:flex-start}
-.with-thumb>div{min-width:0}
-ol.toc{padding-left:1.3rem;color:var(--mute);columns:2 260px;column-gap:2.2rem;font-size:.95rem}
-ol.toc li{break-inside:avoid;margin:0 0 .35rem}
-/* footer */
-footer{background:var(--deep);color:#e9e3f1;padding:50px 0 34px;margin-top:26px;font-size:.93rem}
-footer a{color:#fff}footer h4{font:700 .74rem/1.4 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#c9b9e0;margin-bottom:.7rem}
-footer ul{list-style:none;padding:0;margin:0}footer li{margin:.28rem 0}
-.fgrid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.small{font-size:.85rem;line-height:1.6;color:#cabfdb;margin-top:28px;border-top:1px solid rgba(255,255,255,.16);padding-top:18px}
-/* print */
-@media (max-width:820px){.cols,.cols.rev,.work-head{grid-template-columns:1fr}.plate{width:104px}}
-@media print{header.top,footer,nav,.doors{display:none}body{font-size:11pt}a{color:#000;text-decoration:none}}
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0a0710">
+<style>/* ===========================================================================
+   Jacaranda — design system, 2026
+   Dark editorial base, violet-magenta light, video heroes, motion on scroll.
+   No frameworks, no CDN: the CSS and JS are inlined by build.py.
+   =========================================================================== */
+
+:root{
+  --ink:#0a0710; --ink-2:#120c1a; --plum:#1b1024; --plum-2:#251531;
+  --violet:#8b5cf6; --violet-2:#a78bfa; --electric:#c4a0ff; --magenta:#e8467c; --gold:#e9b872;
+  --paper:#fbf7f2; --paper-2:#f3ece6; --mute:#a99cb8; --mute-2:#7d6f8d;
+  --line:rgba(255,255,255,.10); --line-dark:rgba(20,10,25,.12);
+  --accent:#e8467c;
+  --r-lg:28px; --r-md:18px; --r-sm:12px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --maxw:1180px;
+  --font: ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:#efe9f6;font:16.5px/1.62 var(--font);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,video,svg{display:block;max-width:100%}
+a{color:var(--electric);text-decoration:none}
+a:hover{color:#fff}
+::selection{background:var(--magenta);color:#fff}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;letter-spacing:-.018em;line-height:1.06;margin:0}
+h1{font-size:clamp(2.6rem,6.2vw,5.1rem)}
+h2{font-size:clamp(1.9rem,3.6vw,3rem)}
+h3{font-size:1.42rem;line-height:1.16}
+p{margin:0 0 1em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.wide{max-width:1440px;margin:0 auto;padding:0 28px}
+.kicker{font:700 .72rem/1 var(--font);letter-spacing:.22em;text-transform:uppercase;color:var(--violet-2)}
+.lede{font-size:clamp(1.06rem,1.5vw,1.3rem);color:var(--mute);max-width:52ch}
+.small{font-size:.86rem;color:var(--mute-2)}
+
+/* ---------- film grain + ambient light ---------- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+.cursor-glow{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(139,92,246,.16),transparent 62%);
+  transition:background .18s linear;
+}
+
+/* ---------- progress + nav ---------- */
+.progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--violet),var(--magenta),var(--gold));box-shadow:0 0 14px rgba(232,70,124,.7)}
+header.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s var(--ease),backdrop-filter .3s,border-color .3s;
+  border-bottom:1px solid transparent}
+header.nav.stuck{background:rgba(10,7,16,.72);backdrop-filter:blur(18px) saturate(160%);border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:76px;max-width:1440px;margin:0 auto;padding:0 28px}
+.brand{display:flex;align-items:center;gap:.7rem;color:#fff;font-weight:640;letter-spacing:-.01em}
+.brand .mark{width:30px;height:30px;color:var(--violet-2);transition:transform .5s var(--ease)}
+.brand:hover .mark{transform:rotate(72deg) scale(1.08)}
+.brand small{display:block;font:700 .6rem/1.2 var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--mute-2)}
+nav.links{display:flex;align-items:center;gap:.15rem}
+nav.links a{color:#cfc3dc;font-size:.93rem;padding:.55rem .95rem;border-radius:999px;transition:color .2s,background .2s}
+nav.links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+nav.links a[aria-current=page]{color:#fff;background:rgba(139,92,246,.22);box-shadow:inset 0 0 0 1px rgba(167,139,250,.45)}
+.kbtn{display:inline-flex;align-items:center;gap:.45rem;margin-left:.5rem;padding:.5rem .8rem;border-radius:999px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);color:#d9cfe6;font:600 .82rem var(--font);cursor:pointer}
+.kbtn:hover{border-color:rgba(167,139,250,.6);color:#fff}
+.kbtn kbd{font:600 .7rem var(--font);opacity:.7}
+
+/* ---------- hero with video ---------- */
+.hero{position:relative;min-height:min(100svh,900px);display:grid;grid-template-columns:minmax(0,1fr);
+  align-items:end;overflow:hidden;isolation:isolate}
+.hero>.wrap{width:100%}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
+.hero-media::after{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(90% 70% at 15% 90%,rgba(10,7,16,.94),transparent 60%),
+    linear-gradient(180deg,rgba(10,7,16,.55) 0%,rgba(10,7,16,.25) 40%,rgba(10,7,16,.92) 100%)}
+.hero-inner{padding:140px 0 76px}
+.hero h1{max-width:16ch;text-wrap:balance}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--electric),var(--magenta) 55%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{margin-top:1.2rem;color:#cbbfd9;font-size:clamp(1.05rem,1.5vw,1.35rem);max-width:46ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.hero-meta{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:3.2rem;padding-top:1.4rem;border-top:1px solid var(--line);
+  font:600 .8rem/1.4 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-2)}
+.hero-meta b{display:block;font:640 1.5rem/1 var(--display);letter-spacing:-.01em;color:#fff;text-transform:none;margin-bottom:.35rem}
+.scroll-hint{position:absolute;right:28px;bottom:26px;display:flex;align-items:center;gap:.55rem;color:var(--mute-2);
+  font:600 .72rem/1 var(--font);letter-spacing:.18em;text-transform:uppercase}
+.scroll-hint span{display:block;width:34px;height:1px;background:linear-gradient(90deg,var(--mute-2),transparent);
+  animation:slide 1.8s var(--ease) infinite}
+@keyframes slide{0%,100%{transform:translateX(0);opacity:.4}50%{transform:translateX(6px);opacity:1}}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.35rem;border-radius:999px;
+  font:640 .95rem var(--font);color:#fff;background:linear-gradient(105deg,var(--violet),#7c3aed 60%,var(--magenta));
+  box-shadow:0 10px 30px -10px rgba(139,92,246,.9);transition:transform .25s var(--ease),box-shadow .25s}
+.btn:hover{color:#fff;transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(232,70,124,.75)}
+.btn.ghost{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line);color:#efe9f6}
+.btn.ghost:hover{background:rgba(255,255,255,.10);box-shadow:inset 0 0 0 1px rgba(167,139,250,.55)}
+.btn.light{background:var(--paper);color:#1b1024;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
+.btn.light:hover{color:#1b1024;background:#fff}
+.light .btn{color:#fff}
+.light .btn:hover{color:#fff}
+.light .btn.ghost{color:#1b1024;background:rgba(27,16,36,.05);box-shadow:inset 0 0 0 1px rgba(27,16,36,.16)}
+.light .btn.ghost:hover{color:#1b1024;background:rgba(27,16,36,.09)}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.02);padding:18px 0;position:relative;z-index:2}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:scroll 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{display:inline-flex;align-items:center;gap:1rem;font-family:var(--display);font-size:1.35rem;color:#8b7c9d;white-space:nowrap}
+.marquee span i{width:6px;height:6px;border-radius:50%;background:var(--magenta);display:inline-block}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:2}
+.sec{padding:clamp(64px,8vw,124px) 0}
+.workhero + .sec{padding-top:clamp(36px,5vw,64px)}
+.workhero{padding-bottom:clamp(24px,4vw,48px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,54px)}
+.sec-head h2{max-width:22ch}
+.sec-head .lede{margin-top:.8rem}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+/* ---------- ventures ---------- */
+/* the last card takes the leftover width */
+.vcard.wide{grid-column:span 2}
+@media (max-width:960px){.vcard.wide{grid-column:auto}}
+.vgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.vcard{
+  position:relative;display:flex;flex-direction:column;gap:.75rem;padding:26px 26px 22px;border-radius:var(--r-lg);
+  background:linear-gradient(165deg,rgba(255,255,255,.075),rgba(255,255,255,.022));
+  border:1px solid var(--line);overflow:hidden;cursor:pointer;text-align:left;color:inherit;font:inherit;
+  transition:transform .4s var(--ease),border-color .4s,background .4s;
+  transform-style:preserve-3d;will-change:transform;
+}
+.vcard::after{ /* light sweep on hover */
+  content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0 70%,rgba(196,160,255,.18) 85%,transparent 100%);
+  opacity:0;transition:opacity .5s;pointer-events:none}
+.vcard:hover{border-color:rgba(167,139,250,.5)}
+.vcard:hover::after{opacity:1}
+.vcard:focus-visible{outline:2px solid var(--electric);outline-offset:3px}
+.vtop{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.vnum{font:700 .72rem/1 var(--font);letter-spacing:.18em;color:var(--mute-2)}
+.vdot{width:9px;height:9px;border-radius:50%;background:#5ad18a;box-shadow:0 0 0 4px rgba(90,209,138,.16);animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.86)}}
+.vcard h3{font-size:1.5rem;letter-spacing:-.02em}
+.vtag{font-size:.88rem;color:var(--electric);font-weight:600;margin:0}
+.vcard p{color:var(--mute);font-size:.95rem;margin:0}
+.vcard .vfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.9rem;font:600 .86rem var(--font);color:#cfc3dc}
+.vcard .arrow{transition:transform .3s var(--ease)}
+.vcard:hover .arrow{transform:translateX(4px)}
+
+/* ---------- publications showcase ---------- */
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.chip{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);
+  color:#cfc3dc;font:600 .85rem var(--font);cursor:pointer;transition:.2s}
+.chip:hover{border-color:rgba(167,139,250,.5);color:#fff}
+.chip[aria-pressed=true]{background:linear-gradient(105deg,var(--violet),var(--magenta));color:#fff;border-color:transparent}
+.searchbox{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-radius:999px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);max-width:420px;width:100%}
+.searchbox input{flex:1;background:none;border:0;color:#fff;font:500 .95rem var(--font);outline:none}
+.searchbox input::placeholder{color:var(--mute-2)}
+.wgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.wgrid.trip{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.wgrid.trip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.wgrid.trip{grid-template-columns:1fr}}
+.wcard{position:relative;display:grid;grid-template-columns:74px minmax(0,1fr);gap:16px;padding:16px;
+  border-radius:var(--r-md);border:1px solid var(--line);background:rgba(255,255,255,.028);
+  transition:transform .35s var(--ease),background .3s,border-color .3s;color:inherit;align-items:start}
+.wcard:hover{transform:translateY(-3px);background:rgba(255,255,255,.06);border-color:rgba(167,139,250,.4)}
+.wcard img{width:74px;height:111px;object-fit:cover;border-radius:8px;box-shadow:0 10px 24px -12px #000;flex:0 0 auto}
+.wcard .wbody{min-width:0;display:flex;flex-direction:column;gap:.35rem;align-self:stretch;height:100%}
+.wcard .wmeta{margin-top:auto}
+.wcard .wkind{font:700 .64rem/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2)}
+.wcard h4{margin-top:.15rem}
+.light .wcard .wkind{color:#8b7fa0}
+.wcard h4{font-family:var(--display);font-size:1.04rem;line-height:1.18;letter-spacing:-.01em;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.wcard .wsub{font-size:.8rem;color:var(--mute-2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wcard .wmeta{margin-top:auto;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font:600 .7rem var(--font);letter-spacing:.06em;text-transform:uppercase}
+.wcard:not(:has(img)) .wbody{grid-column:2}
+.pill{padding:.25rem .55rem;border-radius:999px;background:rgba(139,92,246,.18);color:var(--electric)}
+.pill.gold{background:rgba(233,184,114,.16);color:var(--gold)}
+.pill.dim{background:rgba(255,255,255,.06);color:var(--mute)}
+.empty{padding:2rem;text-align:center;color:var(--mute-2);border:1px dashed var(--line);border-radius:var(--r-md)}
+
+/* ---------- portfolio band ---------- */
+.band{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:center}
+.band .art{border-radius:var(--r-lg);overflow:hidden;position:relative;box-shadow:0 40px 80px -40px #000}
+.band .art img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem;border-radius:var(--r-md);overflow:hidden;background:var(--line)}
+.stat{background:rgba(10,7,16,.6);padding:18px 16px}
+.stat b{display:block;font:640 clamp(1.6rem,3vw,2.4rem)/1 var(--display);color:#fff}
+.stat span{font:600 .72rem/1.3 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-2)}
+
+/* ---------- pull quote ---------- */
+.quote{padding:clamp(48px,7vw,100px) 0;background:linear-gradient(180deg,rgba(139,92,246,.08),transparent)}
+.quote blockquote{margin:0;font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.24;max-width:24ch}
+.quote cite{display:block;margin-top:1.4rem;font:600 .8rem/1.4 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2);font-style:normal}
+
+/* ---------- dialog ---------- */
+dialog.vmodal{border:0;padding:0;border-radius:var(--r-lg);max-width:620px;width:calc(100% - 32px);
+  background:linear-gradient(170deg,var(--plum-2),var(--ink));color:#efe9f6;
+  box-shadow:0 50px 120px -30px #000,inset 0 0 0 1px var(--line)}
+dialog.vmodal::backdrop{background:rgba(6,4,10,.72);backdrop-filter:blur(10px)}
+.vmodal .vhead{padding:28px 28px 0}
+.vmodal .vbody{padding:0 28px 28px}
+.vmodal h3{font-size:1.9rem;margin:.35rem 0 .5rem}
+.vmodal .close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(255,255,255,.06);color:#fff;font-size:1.1rem;cursor:pointer}
+.vmodal .close:hover{background:rgba(255,255,255,.14)}
+.vmodal dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.2rem;margin:1.2rem 0 0;font-size:.92rem}
+.vmodal dt{color:var(--mute-2);font-weight:600}
+.vmodal dd{margin:0;color:#d9cfe6}
+
+input[type=search]::-webkit-search-cancel-button{filter:invert(1) opacity(.6)}
+.light input[type=search]::-webkit-search-cancel-button{filter:none}
+
+/* ---------- command palette ---------- */
+.palette .pempty{padding:1rem 1.1rem;color:var(--mute-2);font-size:.9rem}
+.palette{border:0;padding:0;border-radius:20px;width:min(620px,calc(100% - 28px));background:rgba(24,14,32,.96);
+  color:#efe9f6;box-shadow:0 40px 100px -20px #000,inset 0 0 0 1px var(--line);backdrop-filter:blur(20px)}
+.palette::backdrop{background:rgba(5,3,9,.6);backdrop-filter:blur(6px)}
+.palette input{width:100%;padding:20px 22px;background:none;border:0;border-bottom:1px solid var(--line);
+  color:#fff;font:500 1.05rem var(--font);outline:none}
+.palette ul{list-style:none;margin:0;padding:8px;max-height:52vh;overflow:auto}
+.palette li a{display:flex;align-items:center;gap:.8rem;padding:.7rem .8rem;border-radius:12px;color:#e6dcef}
+.palette li a:hover,.palette li[aria-selected=true] a{background:rgba(139,92,246,.22);color:#fff}
+.palette .pkind{font:700 .66rem var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-2);margin-left:auto}
+
+/* ---------- work page ---------- */
+.workhero{position:relative;padding:132px 0 clamp(30px,5vw,60px);overflow:hidden}
+.workhero .bg{position:absolute;inset:0;z-index:-1;opacity:.5}
+.workhero .bg img,.workhero .bg video{width:100%;height:100%;object-fit:cover;
+  filter:saturate(260%) contrast(125%) brightness(.9)}
+.workhero .bg::before{content:"";position:absolute;inset:0;z-index:1;mix-blend-mode:color;opacity:.78;
+  background:linear-gradient(118deg,var(--electric),var(--magenta) 58%,var(--gold))}
+.workhero .bg::after{content:"";position:absolute;inset:0;z-index:2;background:
+  radial-gradient(80% 90% at 8% 45%,rgba(10,7,16,.96),rgba(10,7,16,.55) 55%,transparent 78%),
+  linear-gradient(180deg,rgba(10,7,16,.72),rgba(10,7,16,.15) 40%,var(--ink) 92%)}
+.wlayout{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(26px,4vw,56px);align-items:start}
+.wcover{border-radius:14px;overflow:hidden;box-shadow:0 50px 90px -40px #000;transform:perspective(1200px) rotateY(-6deg);
+  transition:transform .6s var(--ease)}
+.wcover:hover{transform:perspective(1200px) rotateY(0) translateY(-4px)}
+.wcover img{width:100%;height:auto}
+.wcover.ph{aspect-ratio:2/3;display:grid;place-items:center;background:linear-gradient(160deg,var(--plum-2),#2c1a3a)}
+.wcover.ph .mark{width:72px;height:72px;color:var(--violet-2)}
+.wtitle h1{font-size:clamp(2rem,4.6vw,3.6rem);text-wrap:balance}
+.wtitle .wsub{font-size:clamp(1rem,1.6vw,1.24rem);color:#c3b6d2;margin-top:.8rem;max-width:46ch}
+.wactions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.wmain{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:clamp(24px,4vw,56px);align-items:start}
+.prose{font-size:1.08rem;line-height:1.72;color:#d8cde4;max-width:64ch}
+.prose em{color:#fff}
+.panel{border:1px solid var(--line);border-radius:var(--r-md);background:rgba(255,255,255,.03);padding:22px}
+.panel dl{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;margin:0;font-size:.9rem}
+.panel dt{color:var(--mute-2);font-weight:600}
+.panel dd{margin:0;color:#e6dcef;overflow-wrap:anywhere}
+.notice{margin-top:16px;padding:16px 18px;border-radius:var(--r-sm);border:1px solid rgba(167,139,250,.3);
+  background:linear-gradient(160deg,rgba(139,92,246,.16),rgba(232,70,124,.06));font-size:.92rem}
+.notice.gold{border-color:rgba(233,184,114,.34);background:linear-gradient(160deg,rgba(233,184,114,.14),rgba(139,92,246,.08))}
+.notice p:last-child{margin:0}
+.toc{margin-top:2.4rem;columns:2 240px;column-gap:2.4rem;font-size:.92rem;color:var(--mute)}
+.toc li{break-inside:avoid;margin-bottom:.4rem}
+.crumbs{font:600 .78rem var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--mute-2);margin-bottom:1.4rem}
+.crumbs a{color:var(--mute-2)}.crumbs a:hover{color:#fff}
+
+/* ---------- light section (publications) ---------- */
+.light{background:var(--paper);color:#1b1024}
+.light h1,.light h2,.light h3,.light h4{color:#140c1c}
+.light .lede,.light p{color:#4d4257}
+.light .kicker{color:#7c3aed}
+.light .chip{border-color:var(--line-dark);background:#fff;color:#3a3044}
+.light .chip[aria-pressed=true]{background:linear-gradient(105deg,#7c3aed,#e8467c);color:#fff}
+.light .searchbox{background:#fff;border-color:var(--line-dark)}
+.light .searchbox input{color:#1b1024}
+.light .searchbox input::placeholder{color:#8b8098}
+.light .wcard{background:#fff;border-color:var(--line-dark);color:#1b1024;box-shadow:0 1px 0 rgba(20,10,25,.04)}
+.light .wcard:hover{box-shadow:0 20px 40px -26px rgba(28,12,40,.5);background:#fff}
+.light .wcard .wsub{color:#6b5f78}
+.light .pill{background:rgba(124,58,237,.1);color:#6d28d9}
+.light .pill.gold{background:rgba(180,120,20,.12);color:#8a5a00}
+.light .pill.dim{background:rgba(20,10,25,.06);color:#5c5266}
+.light .empty{border-color:var(--line-dark);color:#6b5f78}
+.light a{color:#6d28d9}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:2;padding:clamp(56px,7vw,96px) 0 40px;border-top:1px solid var(--line);
+  background:linear-gradient(180deg,transparent,rgba(139,92,246,.06))}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+footer h4{font:700 .72rem/1.4 var(--font);letter-spacing:.18em;text-transform:uppercase;color:var(--mute-2);margin-bottom:.9rem}
+footer ul{list-style:none;margin:0;padding:0;font-size:.92rem}
+footer li{margin:.42rem 0}
+footer a{color:#cfc3dc}footer a:hover{color:#fff}
+.copy{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--mute-2)}
+.copy .disc{max-width:70ch;line-height:1.6}
+.totop{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;background:none;border:0;color:var(--mute);font:600 .8rem var(--font)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.08s}.rv[data-d="2"]{transition-delay:.16s}
+.rv[data-d="3"]{transition-delay:.24s}.rv[data-d="4"]{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .marquee-track{animation:none}
+  .vdot{animation:none}
+  .hero-media video{display:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .band,.wmain,.wlayout{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .wcover{max-width:240px}
+}
+@media (max-width:680px){
+  .bar{height:64px;padding:0 18px;gap:10px}
+  .brand small{display:none}
+  .brand span{font-size:1rem}
+  .brand svg,.brand .mark{width:26px;height:26px}
+  nav.links{gap:0}
+  nav.links a[aria-current=page]{padding:.5rem .8rem;font-size:.8rem}
+  nav.links a:not([aria-current=page]){display:none}
+  .kbtn{display:none}
+  .wrap,.wide{padding:0 18px}
+  .hero>.wrap{width:100%}
+  .hero-inner{padding:104px 18px 54px}
+  .stats{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr}
+  .scroll-hint{display:none}
+}
+@media print{
+  header.nav,footer,.hero-media,.cursor-glow,.progress,.marquee{display:none}
+  body{background:#fff;color:#000}
+}
 </style></head>
-<body><a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="wrap bar">
-<a class="brand" href="/"><svg class="mark" viewBox="-48 -48 96 96" aria-hidden="true" focusable="false"><g fill="currentColor"><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(288)"/></g><circle r="7" fill="var(--paper)"/></svg><span>Jacaranda Labs<small>Ventures · Portfolio · Publications</small></span></a>
-<nav class="main" aria-label="Main"><a href="/">Laboratories</a><a href="/courage-garikai/">Portfolio</a><a href="/publications/" aria-current=page>Publications</a></nav></div></header>
-<main id="main"><section class="wrap" style="border-top:0;padding-top:44px">
-<p class="meta" style="margin-bottom:1.4rem"><a href="/publications/">Publications</a> › Book</p>
-<div class="work-head has-cover">
-<div class="plate real"><img class="cover-lg" src="/covers/emotional-engineering.jpg" width="300" height="450" alt="Cover of Emotional Engineering for AI-Oriented Infrastructure Operators" loading="lazy"></div>
-<div><p class="kicker">Book</p>
-<h1 style="font-size:clamp(1.9rem,3.8vw,2.9rem)">Emotional Engineering for AI-Oriented Infrastructure Operators</h1>
-<p class="lede" style="font-size:1.12rem">Trust, agency and ethical adoption in systems that act</p>
-<div style="margin-top:.6rem"><span class="tag dim">book</span><span class="tag">Author review</span></div></div>
-</div></section>
-<section style="border-top:1px solid var(--line)"><div class="wrap"><div class="cols">
-<div><p class="kicker">About this work</p>
-<p style="font-size:1.06rem">The book expands the commissioned emotions document into a broader guide for AI-infrastructure operators. It treats AFGR as an operator heuristic, not a validated universal psychological sequence. Research, proposed practices, illustrative examples and STPI operating observations are distinguished. No invented author biography, endorsements, customer outcomes or interviews are claimed.</p>
-</div>
-<aside><dl class="facts"><dt>Kind</dt><dd>Book</dd><dt>Edition</dt><dd>private author-review 2026</dd><dt>Funded by</dt><dd>Jacaranda Labs Think Tank</dd><dt>Length</dt><dd>36,910 words (36,156 outside front matter)</dd><dt>Structure</dt><dd>24 chapters, 12 worksheets, 12 annotated script transformations</dd><dt>Format</dt><dd>159 pages</dd></dl><div class="note"><p><strong>Not available to download.</strong> This is a private author-review edition: catalogued here, not distributed. Editors, reviewers and researchers can <a href="mailto:couragegarikai@atomicmail.io?subject=Review%20copy%20request%3A%20Emotional%20Engineering%20for%20AI-Oriented%20Infrastructure%20Operators">request a review copy</a>.</p></div>
-<p class="meta"><a href="/publications/">← All publications</a></p></aside>
+<body class="">
+<div class="cursor-glow" aria-hidden="true"></div><div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="bar">
+<a class="brand" href="/"><svg class="mark" viewBox="-48 -48 96 96" aria-hidden="true"><g fill="currentColor"><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(288)"/></g></svg><span>Jacaranda Labs<small>Ventures · Portfolio · Publications</small></span></a>
+<nav class="links" aria-label="Main"><a href="/">Laboratories</a><a href="/courage-garikai/">Portfolio</a><a href="/publications/" aria-current=page>Publications</a><a href="/about/">About</a>
+<button class="kbtn" data-open-palette type="button" aria-label="Search the site">Search <kbd>⌘K</kbd></button>
+</nav></div></header>
+<main id="main"><section class="workhero">
+<div class="bg"><div class="">
+<video data-lazy autoplay muted loop playsinline preload="metadata" poster="/assets/art/mesh-poster.jpg" aria-label="">
+<source src="/assets/art/mesh.webm" type="video/webm"><source src="/assets/art/mesh.mp4" type="video/mp4">
+</video></div><style>.workhero .bg video{width:100%;height:100%;object-fit:cover}</style></div>
+<div class="wrap"><p class="crumbs"><a href="/publications/">Publications</a> / book</p>
+<div class="wlayout"><div class="wcover rv"><img class="" src="/covers/emotional-engineering.jpg" width="600" height="900" alt="Cover of Emotional Engineering for AI-Oriented Infrastructure Operators" loading="lazy" decoding="async"></div>
+<div class="wtitle"><p class="kicker rv">book</p>
+<h1 class="rv" data-d="1">Emotional Engineering for AI-Oriented Infrastructure Operators</h1>
+<p class="wsub rv" data-d="2">Trust, agency and ethical adoption in systems that act</p>
+<div class="wactions rv" data-d="3"><span class="pill">Author review</span>
+<a class="btn ghost" href="/publications/">Catalogue</a></div></div></div></div></section>
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="wmain">
+<div><p class="kicker rv">About this work</p>
+<div class="prose rv" data-d="1"><p>The book expands the commissioned emotions document into a broader guide for AI-infrastructure operators. It treats AFGR as an operator heuristic, not a validated universal psychological sequence. Research, proposed practices, illustrative examples and STPI operating observations are distinguished. No invented author biography, endorsements, customer outcomes or interviews are claimed.</p></div></div>
+<aside class="rv" data-d="2"><div class="panel"><dl><dt>Kind</dt><dd>Book</dd><dt>Edition</dt><dd>private author-review 2026</dd><dt>Funded by</dt><dd>Jacaranda Labs Think Tank</dd><dt>Length</dt><dd>36,910 words (36,156 outside front matter)</dd><dt>Structure</dt><dd>24 chapters, 12 worksheets, 12 annotated script transformations</dd><dt>Format</dt><dd>159 pages</dd></dl></div><div class="notice"><p><strong>Private author-review edition.</strong> Catalogued here, not distributed. Editors and reviewers can <a href="mailto:couragegarikai@atomicmail.io?subject=Review%20copy%20request%3A%20Emotional%20Engineering%20for%20AI-Oriented%20Infrastructure%20Operators">request a copy</a>.</p></div></aside>
 </div></div></section>
-<section style="border-top:1px solid var(--line);background:#faf8fc"><div class="wrap">
-<p class="kicker">Also in the catalogue</p><div class="grid"><a class="card" href="/publications/tight-bucket/">
-<span class="no">book</span>
-<h3>The Tight Bucket</h3>
-<p>Designing constraint-native digital businesses</p>
-<span class="go">Read about it →</span></a><a class="card" href="/publications/proof-of-mechanism/">
-<span class="no">book</span>
-<h3>Proof of Mechanism</h3>
-<p>How leaders who build with AI agents tell a working product from a convincing demo</p>
-<span class="go">Read about it →</span></a><a class="card" href="/publications/nobody-was-watching/">
-<span class="no">book</span>
-<h3>Nobody Was Watching</h3>
-<p>How founders run autonomous growth systems without harming strangers, their brand or themselves</p>
-<span class="go">Read about it →</span></a></div></div></section></main>
+<section class="sec" style="padding-top:0"><div class="wrap">
+<div class="sec-head rv"><div><p class="kicker">Also in the catalogue</p><h2 style="font-size:1.7rem">Read next</h2></div></div>
+<div class="wgrid"><a class="wcard rv" data-work data-group="books" data-haystack="the tight bucket designing constraint-native digital businesses book books"
+data-d="3" href="/publications/tight-bucket/">
+<div class="wbody"><span class="wkind">book</span><h4>The Tight Bucket</h4>
+<p class="wsub">Designing constraint-native digital businesses</p>
+<div class="wmeta"><span class="pill">Author review</span></div></div></a><a class="wcard rv" data-work data-group="books" data-haystack="proof of mechanism how leaders who build with ai agents tell a working product from a convincing demo book books"
+data-d="1" href="/publications/proof-of-mechanism/">
+<div class="wbody"><span class="wkind">book</span><h4>Proof of Mechanism</h4>
+<p class="wsub">How leaders who build with AI agents tell a working product from a convincing demo</p>
+<div class="wmeta"><span class="pill">Author review</span></div></div></a><a class="wcard rv" data-work data-group="books" data-haystack="nobody was watching how founders run autonomous growth systems without harming strangers, their brand or themselves book books"
+data-d="3" href="/publications/nobody-was-watching/">
+<div class="wbody"><span class="wkind">book</span><h4>Nobody Was Watching</h4>
+<p class="wsub">How founders run autonomous growth systems without harming strangers, their brand or themselves</p>
+<div class="wmeta"><span class="pill">Author review</span></div></div></a></div></div></section></main>
 <footer><div class="wrap"><div class="fgrid">
+<div><a class="brand" href="/"><svg class="mark" viewBox="-48 -48 96 96" aria-hidden="true"><g fill="currentColor"><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate(288)"/></g></svg><span>Jacaranda Labs<small>Since 2026</small></span></a>
+<p class="small" style="margin-top:1rem;max-width:32ch">Small, constraint-native software ventures from
+Harare, and the books and papers that study them.</p>
+<button class="btn ghost" data-copy="couragegarikai@atomicmail.io" type="button">couragegarikai@atomicmail.io</button></div>
 <div><h4>This site</h4><ul>
-<li><a href="/">Laboratories</a></li>
-<li><a href="/courage-garikai/">Courage Garikai</a></li>
-<li><a href="/publications/">Publications</a></li>
-<li><a href="/about/">About and disclosure</a></li>
-</ul></div>
-<div><h4>Ventures</h4><ul><li><a href="https://attestos-edge.attestos.workers.dev/">AttestOS</a></li><li><a href="https://0x.tightbucket.workers.dev/">TightBucket</a></li><li><a href="https://deskos.deskos.workers.dev/">DeskOS</a></li><li><a href="https://getstpi.pages.dev/">STPi</a></li><li><a href="https://tapstall.zlnew.workers.dev/">Tapstall</a></li><li><a href="https://open-practice.zlnew.workers.dev/">Open Practice</a></li><li><a href="https://mechanism-audit.whop.site/">Mechanism Audit</a></li></ul></div>
-<div><h4>Contact</h4><ul>
-<li><a href="mailto:couragegarikai@atomicmail.io">couragegarikai@atomicmail.io</a></li>
-<li>Harare, Zimbabwe</li>
-<li><a href="/publications/">Catalogue of 20 works</a></li>
-</ul></div>
+<li><a href="/">Laboratories</a></li><li><a href="/courage-garikai/">Portfolio</a></li>
+<li><a href="/publications/">Publications</a></li><li><a href="/about/">About &amp; disclosure</a></li></ul></div>
+<div><h4>Ventures</h4><ul><li><a href="https://attestos-edge.attestos.workers.dev/" rel="noopener">AttestOS</a></li><li><a href="https://0x.tightbucket.workers.dev/" rel="noopener">TightBucket</a></li><li><a href="https://deskos.deskos.workers.dev/" rel="noopener">DeskOS</a></li><li><a href="https://getstpi.pages.dev/" rel="noopener">STPi</a></li><li><a href="https://tapstall.zlnew.workers.dev/" rel="noopener">Tapstall</a></li><li><a href="https://open-practice.zlnew.workers.dev/" rel="noopener">Open Practice</a></li><li><a href="https://mechanism-audit.whop.site/" rel="noopener">Mechanism Audit</a></li></ul></div>
+<div><h4>Elsewhere</h4><ul>
+<li><a href="https://github.com/Jacaranda-Labs" rel="noopener">GitHub</a></li>
+<li><a href="https://jacaranda-labs.github.io/jacaranda-labs/" rel="noopener">Static mirror</a></li>
+<li><a href="/llms.txt">llms.txt</a></li>
+<li><a href="mailto:couragegarikai@atomicmail.io">Email</a></li></ul></div>
 </div>
-<p class="small">Jacaranda Labs owns the ventures below and funds the publications through the Jacaranda Labs AI Think Tank. Every case study names the venture it studies and states that the work was commissioned by the same owner. That disclosure does not imply independent validation.</p>
-<p class="small" style="border:0;padding:0;margin-top:8px">© 2026 Courage Garikai · Jacaranda Labs Press · Harare.
-Published editions are free to read or download. Private author-review editions are catalogued, not distributed; editors and reviewers can request a copy of any of them by email.</p></div></footer>
+<div class="copy"><p class="disc">Jacaranda Labs owns the ventures below and funds the publications through the Jacaranda Labs AI Think Tank. Every case study names the venture it studies and states that the work was commissioned by the same owner. That disclosure does not imply independent validation. Published editions are free to read here. Private author-review editions are catalogued, not distributed; editors and reviewers can request a copy of any of them by email.</p>
+<div style="text-align:right"><div>© 2026 Courage Garikai · Jacaranda Labs Press · Harare</div>
+<button class="totop" data-top type="button">Back to top ↑</button></div></div>
+</div></footer>
+<dialog class="palette" id="palette" aria-label="Search"><input type="search" placeholder="Search works and ventures…" aria-label="Search">
+<ul role="listbox"></ul></dialog>
+<script>window.__index=[{"title": "Emotional Engineering for AI-Oriented Infrastructure Operators", "kind": "book", "sub": "Trust, agency and ethical adoption in systems that act", "url": "/publications/emotional-engineering/"}, {"title": "The Tight Bucket", "kind": "book", "sub": "Designing constraint-native digital businesses", "url": "/publications/tight-bucket/"}, {"title": "Constraint-Native Business Model Design", "kind": "paper", "sub": "Quota-bounded autonomy, proof-first acquisition and verification debt in a zero-cash, AI-built venture", "url": "/publications/constraint-native-business-models/"}, {"title": "Proof of Mechanism", "kind": "book", "sub": "How leaders who build with AI agents tell a working product from a convincing demo", "url": "/publications/proof-of-mechanism/"}, {"title": "Simulated Completeness", "kind": "paper", "sub": "Claim–mechanism gaps, mechanism audits and the rebuild decision in an AI-era trust product", "url": "/publications/simulated-completeness/"}, {"title": "Nobody Was Watching", "kind": "book", "sub": "How founders run autonomous growth systems without harming strangers, their brand or themselves", "url": "/publications/nobody-was-watching/"}, {"title": "Unwitnessed Autonomy", "kind": "paper", "sub": "Externalities, borrowed identities and duplicate clocks in an autonomous growth pipeline", "url": "/publications/unwitnessed-autonomy/"}, {"title": "The Sovereign Micro-Enterprise", "kind": "report", "sub": "A Governance-First Architecture for Zero-Capital Agentic Businesses", "url": "/publications/sovereign-micro-enterprise/"}, {"title": "Flower and Bees", "kind": "book", "sub": "The Jacaranda voice guide: how every page, product and message should feel", "url": "/publications/flower-and-bees/"}, {"title": "The Ledger and the Shopkeeper", "kind": "book", "sub": "Building commerce for the markets the platforms forgot", "url": "/publications/ledger/"}, {"title": "Intelligence, Data and Judgement", "kind": "book", "sub": "An applied introduction to artificial intelligence, with a production case", "url": "/publications/intelligence/"}, {"title": "Order Without Custody", "kind": "research", "sub": "Governance-first design for merchant commerce rails in low-infrastructure economies", "url": "/publications/custody/"}, {"title": "Grounded Cadence", "kind": "research", "sub": "Fact-bound content operations as a governance architecture", "url": "/publications/cadence/"}, {"title": "The Governable Enterprise", "kind": "book", "sub": "A practical guide to evidence, authority and AI operations — lessons from DeskOS", "url": "/publications/governable/"}, {"title": "From Spreadsheet Interface to Governable Autonomy", "kind": "research", "sub": "DeskOS as a critical design-science case of evidence, agency and resource-constrained AI infrastructure", "url": "/publications/autonomy/"}, {"title": "The Musk Mirror", "kind": "book", "sub": "How one billionaire exposed the cracks in China's innovation dream", "url": "/publications/musk-mirror/"}, {"title": "Traffic Is the New Oil", "kind": "book", "sub": "The African digital wealth formula", "url": "/publications/traffic/"}, {"title": "Pinterest Goldmine", "kind": "book", "sub": "The traffic source nobody told you about", "url": "/publications/pinterest/"}, {"title": "The Rocket Man Reckoning", "kind": "essay", "sub": "How China mocked Elon Musk — and why they are now panicking", "url": "/publications/rocket-man/"}, {"title": "Unchained Blueprint", "kind": "essay", "sub": "What to build when every payment door is closed", "url": "/publications/unchained/"}];</script>
+<script>/* ===========================================================================
+   Jacaranda — interaction layer. Vanilla, inline, no dependencies.
+   Every effect degrades to a readable page if it fails.
+   =========================================================================== */
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- 1. scroll progress + sticky nav ---------- */
+  var bar = document.querySelector(".progress");
+  var nav = document.querySelector("header.nav");
+  function onScroll() {
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    if (bar) bar.style.width = (p * 100).toFixed(2) + "%";
+    if (nav) nav.classList.toggle("stuck", h.scrollTop > 24);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- 2. cursor light ---------- */
+  var glow = document.querySelector(".cursor-glow");
+  if (glow && !reduce && matchMedia("(pointer:fine)").matches) {
+    addEventListener("pointermove", function (e) {
+      glow.style.setProperty("--mx", e.clientX + "px");
+      glow.style.setProperty("--my", e.clientY + "px");
+    }, { passive: true });
+  }
+
+  /* ---------- 3. reveal on scroll ---------- */
+  var revealables = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- 4. counters ---------- */
+  function countUp(el) {
+    var to = parseFloat(el.dataset.count || "0");
+    var suffix = el.dataset.suffix || "";
+    if (reduce) { el.textContent = to + suffix; return; }
+    var t0 = performance.now(), dur = 1100;
+    function step(t) {
+      var k = Math.min(1, (t - t0) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(to * e) + suffix;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); cio.unobserve(en.target); } });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(countUp);
+  }
+
+  /* ---------- 5. card tilt ---------- */
+  if (!reduce && matchMedia("(pointer:fine)").matches) {
+    document.querySelectorAll("[data-tilt]").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = "perspective(900px) rotateX(" + (-py * 6).toFixed(2) +
+          "deg) rotateY(" + (px * 8).toFixed(2) + "deg) translateY(-3px)";
+      });
+      card.addEventListener("pointerleave", function () { card.style.transform = ""; });
+    });
+  }
+
+  /* ---------- 6. venture dialog ---------- */
+  var modal = document.getElementById("venture-modal");
+  if (modal && typeof modal.showModal === "function") {
+    document.querySelectorAll("[data-venture]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var v = JSON.parse(btn.getAttribute("data-venture"));
+        modal.querySelector("[data-v-kicker]").textContent = v.kicker;
+        modal.querySelector("[data-v-name]").textContent = v.name;
+        modal.querySelector("[data-v-line]").textContent = v.line || "";
+        var dl = modal.querySelector("[data-v-facts]");
+        dl.innerHTML = "";
+        (v.facts || []).forEach(function (pair) {
+          var dt = document.createElement("dt"); dt.textContent = pair[0];
+          var dd = document.createElement("dd"); dd.textContent = pair[1];
+          dl.appendChild(dt); dl.appendChild(dd);
+        });
+        var link = modal.querySelector("[data-v-link]");
+        link.href = v.url; link.textContent = v.cta;
+        modal.showModal();
+      });
+    });
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal || e.target.matches(".close")) modal.close();
+    });
+  }
+
+  /* ---------- 7. publication filter + search ---------- */
+  var chips = document.querySelectorAll("[data-filter]");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("[data-work]"));
+  var search = document.getElementById("wsearch");
+  var empty = document.getElementById("wempty");
+  var state = { group: "all", q: "" };
+
+  function apply() {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var okGroup = state.group === "all" || c.dataset.group === state.group;
+      var okQuery = !state.q || c.dataset.haystack.indexOf(state.q) !== -1;
+      var ok = okGroup && okQuery;
+      c.hidden = !ok;
+      if (ok) shown++;
+    });
+    if (empty) empty.hidden = shown !== 0;
+    var count = document.getElementById("wcount");
+    if (count) count.textContent = shown;
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+      state.group = chip.dataset.filter;
+      apply();
+    });
+  });
+  if (search) {
+    search.addEventListener("input", function () {
+      state.q = search.value.trim().toLowerCase();
+      if (state.q && state.group !== "all") {          // a search is never silently scoped to a chip
+        state.group = "all";
+        chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.filter === "all")); });
+      }
+      apply();
+    });
+  }
+  if (cards.length) apply();
+
+  /* ---------- 8. command palette ---------- */
+  var pal = document.getElementById("palette");
+  if (pal && typeof pal.showModal === "function") {
+    var pinput = pal.querySelector("input");
+    var plist = pal.querySelector("ul");
+    var items = [];
+    (window.__index || []).forEach(function (it) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = it.url;
+      a.innerHTML = '<span class="ptitle"></span><span class="pkind"></span>';
+      a.querySelector(".ptitle").textContent = it.title;
+      a.querySelector(".pkind").textContent = it.kind;
+      li.appendChild(a); plist.appendChild(li);
+      items.push({ li: li, hay: (it.title + " " + it.kind + " " + (it.sub || "")).toLowerCase() });
+    });
+    var sel = 0;
+    function render() {
+      var q = pinput.value.trim().toLowerCase();
+      var n = 0;
+      items.forEach(function (it) {
+        var on = !q || it.hay.indexOf(q) !== -1;
+        it.li.hidden = !on;
+        if (on && n === 0) { it.li.setAttribute("aria-selected", "true"); sel = items.indexOf(it); }
+        else it.li.removeAttribute("aria-selected");
+        if (on) n++;
+      });
+      var empty = plist.querySelector(".pempty");
+      if (!empty) {
+        empty = document.createElement("li");
+        empty.className = "pempty";
+        empty.textContent = "No match. Try a title, a venture or a kind.";
+        plist.appendChild(empty);
+      }
+      empty.hidden = n !== 0;
+    }
+    function openPal() { pal.showModal(); pinput.value = ""; render(); pinput.focus(); }
+    document.querySelectorAll("[data-open-palette]").forEach(function (b) {
+      b.addEventListener("click", openPal);
+    });
+    addEventListener("keydown", function (e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); openPal(); }
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); openPal(); }
+      if (!pal.open) return;
+      var vis = items.filter(function (i) { return !i.li.hidden; });
+      if (!vis.length) { if (e.key === "Escape") pal.close(); return; }
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        var idx = vis.findIndex(function (i) { return i.li.getAttribute("aria-selected") === "true"; });
+        idx = (idx + (e.key === "ArrowDown" ? 1 : -1) + vis.length) % vis.length;
+        vis.forEach(function (i) { i.li.removeAttribute("aria-selected"); });
+        vis[idx].li.setAttribute("aria-selected", "true");
+        vis[idx].li.querySelector("a").focus();
+      }
+      if (e.key === "Escape") pal.close();
+    });
+    pinput.addEventListener("input", render);
+    pal.addEventListener("click", function (e) { if (e.target === pal) pal.close(); });
+  }
+
+  /* ---------- 9. pause offscreen video (battery, not politeness) ---------- */
+  var vids = document.querySelectorAll("video[data-lazy]");
+  if ("IntersectionObserver" in window) {
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+      });
+    }, { threshold: 0.15 });
+    vids.forEach(function (v) { vio.observe(v); });
+  }
+
+  /* ---------- 10. copy email ---------- */
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = b.getAttribute("data-copy");
+      var done = function () {
+        var old = b.textContent;
+        b.textContent = "Copied";
+        setTimeout(function () { b.textContent = old; }, 1400);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, done);
+      else done();
+    });
+  });
+
+  /* ---------- 11. back to top ---------- */
+  document.querySelectorAll("[data-top]").forEach(function (b) {
+    b.addEventListener("click", function () { scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); });
+  });
+})();
+</script>
 </body></html>
