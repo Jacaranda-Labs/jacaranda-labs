@@ -334,7 +334,7 @@ def work_row(w: dict) -> str:
 <h3><a href="{work_url(w)}">{e(w["title"])}</a></h3>
 <p class="sub">{e(w["subtitle"])}</p>
 <div>{tags_for(w)}</div>
-<p class="meta-row"><span>{e(facts)}</span></p>
+<p class="meta-row"><span>{e(facts)}</span>{f'<a href="{read_href(w)}">Read online →</a>' if w.get("read") else ""}</p>
 </div></div></div></li>"""
 
 
