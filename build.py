@@ -375,6 +375,7 @@ def venture_card(v: dict, i: int) -> str:
 def build_labs() -> dict[str, str]:
     books = [BY_ID[i] for i in GROUPS[0][3]]
     papers = [BY_ID[i] for i in GROUPS[1][3]]
+    n_studied = len([v for v in VENTURES if v.get("research")])
     doors = f"""<section style="border-top:0;padding-top:8px"><div class="doors">
 <a class="door" href="/publications/"><span class="n">01 · The work</span><h3>Publications</h3>
 <p>{len(WORKS)} works: {len(books)} books, {len(papers)} working papers and reports, and the published editions behind them.</p>
@@ -407,10 +408,11 @@ account and its own Whop business. A key that leaks or a quota that runs out tak
 </div></section>"""
 
     research = f"""<section id="research"><div class="wrap">
-<div class="sec-head"><div><p class="kicker">The research</p><h2>Every venture is also a case study</h2>
+<div class="sec-head"><div><p class="kicker">The research</p><h2>{n_studied} of the {NWORD} are also case studies</h2>
 <p class="lede" style="font-size:1.02rem;margin-top:.5rem">The think tank funds books and working papers that
 study these ventures at close range: the audit logs, the commit history, the usage meters. The same owner
-commissions both, and each work says so.</p></div>
+commissions both, and each work says so. {e(wordlist([v["name"] for v in VENTURES if not v.get("research")]))}
+has no study yet — it is new.</p></div>
 <a class="btn ghost" href="/publications/">All {len(WORKS)} works</a></div>
 <div class="grid">{''.join(work_card(w) for w in (books + papers)[:6])}</div>
 </div></section>"""
