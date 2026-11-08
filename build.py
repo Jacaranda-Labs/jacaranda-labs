@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Jacaranda — one site for three catalogues.
 
-    Laboratories      /                      the six ventures, how they are built, the think tank
+    Laboratories      /                      the ventures, how they are built, the think tank
     Portfolio         /courage-garikai/      the author: ventures, works, earlier record
     Publications      /publications/         every work, with a page each
 
@@ -14,7 +14,7 @@ anything — a static host, a CDN, a USB stick — and still be readable in ten 
 WHERE THE CONTENT COMES FROM
     data/works.json      snapshotted from stpi-cloud/publications: README.md, each
                          edition-manifest.json, sites/data/legacy-catalogue.json and earlier.json
-    data/ventures.json   the six ventures and the research each one is studied in
+    data/ventures.json   the ventures, each with the works that study it
     data/author.json     the author record
 Nothing here is invented. If a fact is not in those files it is not on the page.
 """
@@ -67,6 +67,10 @@ VENTURES = load("ventures.json")
 AUTHOR = load("author.json")
 EARLIER = load("earlier.json")
 BY_ID = {w["id"]: w for w in WORKS}
+N = len(VENTURES)
+WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight",
+         9: "nine", 10: "ten"}
+NWORD = WORDS.get(N, str(N))
 
 GROUPS = [
     ("books", "Books", "Long-form works, written to be taught from. Each carries a discussion structure, "
@@ -209,9 +213,21 @@ dl.facts dt{font-weight:650}dl.facts dd{margin:0;color:var(--mute);overflow-wrap
 .cols{display:grid;gap:44px;grid-template-columns:minmax(0,1fr) 300px}.cols.rev{grid-template-columns:300px minmax(0,1fr)}
 /* work page */
 .work-head{display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px;align-items:start}
+.work-head.has-cover{grid-template-columns:300px minmax(0,1fr)}
 .plate{width:150px;aspect-ratio:2/3;border-radius:6px;background:linear-gradient(160deg,var(--soft),#e7dcf1);
 display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(45,25,65,.16);color:var(--a)}
 .plate .mark{width:56px;height:56px}
+.plate.real{background:none;box-shadow:none;display:block;width:100%%;aspect-ratio:auto}
+.cover-lg{width:100%%;height:auto;border-radius:6px;box-shadow:0 10px 30px rgba(45,25,65,.22);display:block}
+.thumb{width:84px;height:126px;object-fit:cover;border-radius:4px;box-shadow:0 3px 10px rgba(45,25,65,.16);flex:0 0 auto}
+.card-cover{width:150px;height:225px;object-fit:cover;border-radius:5px;box-shadow:0 6px 18px rgba(45,25,65,.18);margin-bottom:.5rem}
+.card.with-cover{display:grid;grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;gap:.25rem .9rem;align-items:start}
+.card.with-cover .card-cover{grid-row:1 / span 4;grid-column:1;margin:0}
+.card.with-cover .no,.card.with-cover h3,.card.with-cover p,.card.with-cover .go{grid-column:2}
+@media (max-width:560px){.card.with-cover{grid-template-columns:1fr}.card.with-cover .card-cover{grid-row:auto;grid-column:1;width:110px;height:165px}
+.card.with-cover .no,.card.with-cover h3,.card.with-cover p,.card.with-cover .go{grid-column:1}}
+.with-thumb{display:flex;gap:18px;align-items:flex-start}
+.with-thumb>div{min-width:0}
 ol.toc{padding-left:1.3rem;color:var(--mute);columns:2 260px;column-gap:2.2rem;font-size:.95rem}
 ol.toc li{break-inside:avoid;margin:0 0 .35rem}
 /* footer */
@@ -252,7 +268,7 @@ def page(section: str, path: str, title: str, desc: str, body: str, active: str 
 <meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="{LAB_NAME}"><meta property="og:image" content="{SITE}/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Jacaranda Labs — six businesses, one operator, and a written record of both">
+<meta property="og:image:alt" content="Jacaranda Labs — seven businesses, one operator, and a written record of both">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="{a}">
 <style>{CSS % {"a": a, "soft": soft, "deep": deep}}</style></head>
 <body><a class="skip" href="#main">Skip to content</a>
@@ -313,21 +329,34 @@ def tags_for(w: dict) -> str:
 
 def work_row(w: dict) -> str:
     facts = " · ".join(w.get("facts") or [])
-    return f"""<li><div class="row"><div>
+    thumb = cover_img(w, "thumb", 84, 126)
+    return f"""<li><div class="row"><div class="with-thumb">{thumb}<div>
 <h3><a href="{work_url(w)}">{e(w["title"])}</a></h3>
 <p class="sub">{e(w["subtitle"])}</p>
 <div>{tags_for(w)}</div>
 <p class="meta-row"><span>{e(facts)}</span></p>
-</div></div></li>"""
+</div></div></div></li>"""
+
+
+def cover_img(w: dict, cls: str = "cover", width: int = 240, height: int = 360) -> str:
+    if not w.get("cover"):
+        return ""
+    return (f'<img class="{cls}" src="{e(w["cover"])}" width="{width}" height="{height}" '
+            f'alt="Cover of {e(w["title"])}" loading="lazy">')
+
+
+def read_href(w: dict) -> str:
+    return e(w["read"]) if w.get("read") else ""
 
 
 def work_card(w: dict) -> str:
-    return f"""<a class="card" href="{work_url(w)}">
-<span class="no">{e(w["kind"])}</span>
+    """A card that shows the cover when there is one — a catalogue of books should look like one."""
+    cover = cover_img(w, "card-cover", 150, 225)
+    return f"""<a class="card{' with-cover' if cover else ''}" href="{work_url(w)}">
+{cover}<span class="no">{e(w["kind"])}</span>
 <h3>{e(w["title"])}</h3>
 <p>{e(w["subtitle"])}</p>
-{f'<div>{tags_for(w)}</div>' if False else ''}
-<span class="go">Read about it →</span></a>"""
+<span class="go">{'Read it →' if w.get('read') else 'Read about it →'}</span></a>"""
 
 
 def venture_card(v: dict, i: int) -> str:
@@ -354,7 +383,7 @@ def build_labs() -> dict[str, str]:
 <p>The operator and writer behind the lab: fifteen years of techno-preneurship, including the published failures.</p>
 <span class="go">Read the portfolio →</span></a>
 <a class="door" href="/about/"><span class="n">03 · The rules</span><h3>How this is run</h3>
-<p>One owner, six ventures, agents that do the work — and the disclosure that follows from all three.</p>
+<p>One owner, {NWORD} ventures, agents that do the work — and the disclosure that follows from all three.</p>
 <span class="go">About and disclosure →</span></a>
 </div></section>"""
 
@@ -363,7 +392,7 @@ def build_labs() -> dict[str, str]:
 {''.join(f'<ellipse cx="0" cy="-24" rx="11" ry="20" transform="rotate({a})"/>' for a in (0,72,144,216,288))}
 </g></svg>
 {MARK}<p class="kicker">{LOCATION} · since 2026</p>
-<h1>Six businesses,<br>one operator,<br>and a written record of both.</h1>
+<h1>Six businesses became seven.<br>One operator,<br>and a written record of both.</h1>
 <p class="lede">Jacaranda Labs builds small, constraint-native software ventures and funds the research
 that studies them — including the ones that did not work. This site is the lab, the person and the
 publications in one place.</p>
@@ -387,8 +416,8 @@ commissions both, and each work says so.</p></div>
 </div></section>"""
 
     body = hero + doors + ventures + research
-    desc = ("Jacaranda Labs: six constraint-native software ventures built by one operator and a set of agents, "
-            "and the publications that study them.")
+    desc = (f"Jacaranda Labs: {NWORD} constraint-native software ventures built by one operator and a set of "
+            f"agents, and the publications that study them.")
     return {"/": page("labs", "/", f"{LAB_NAME} · ventures, portfolio and publications", desc, body, "labs")}
 
 
@@ -498,7 +527,14 @@ def build_work(w: dict) -> str:
             facts += f"<dt>{label}</dt><dd>{e(fact)}</dd>"
 
     state = w.get("availability", "private")
-    if state == "available":
+    if state == "available" and w.get("read"):
+        links = (f'<a class="btn" href="{read_href(w)}">Read online</a>'
+                 + "".join(f'<a class="btn ghost" href="{e(u)}">{e(k)}</a>'
+                           for k, u in (w.get("formats") or {}).items()
+                           if k.upper() not in ("HTML",)))
+        avail = (f'<div class="note gold"><p><strong>Read it now.</strong> The full edition is on this site, '
+                 f'no download needed. Files are there too:</p><div>{links}</div></div>')
+    elif state == "available":
         links = "".join(
             f'<a class="btn{" ghost" if i else ""}" href="{e(u)}">{e(k)}</a>'
             for i, (k, u) in enumerate(w["formats"].items()))
@@ -531,8 +567,8 @@ def build_work(w: dict) -> str:
 
     body = f"""<section class="wrap" style="border-top:0;padding-top:44px">
 <p class="meta" style="margin-bottom:1.4rem"><a href="/publications/">Publications</a> › {e(w["kind"].capitalize())}</p>
-<div class="work-head">
-<div class="plate">{MARK}</div>
+<div class="work-head{" has-cover" if w.get("cover") else ""}">
+{f'<div class="plate real">{cover_img(w, "cover-lg", 300, 450)}</div>' if w.get("cover") else f'<div class="plate">{MARK}</div>'}
 <div><p class="kicker">{e(w["kind"].capitalize())}</p>
 <h1 style="font-size:clamp(1.9rem,3.8vw,2.9rem)">{e(w["title"])}</h1>
 <p class="lede" style="font-size:1.12rem">{e(w["subtitle"])}</p>
@@ -563,7 +599,7 @@ def build_about() -> str:
 a small number of AI agents doing the execution, and a written record of what happened.</p></div></section>
 <section style="border-top:0"><div class="wrap"><div class="cols">
 <div><h2>The lab</h2>
-<p>Six ventures run from Harare: AttestOS, TightBucket, DeskOS, STPi, Tapstall and Open Practice. Each one is
+<p>{NWORD.capitalize()} ventures run from Harare: {e(wordlist([v["name"] for v in VENTURES]))}. Each one is
 small, self-hosted on free or near-free infrastructure, and sold directly rather than through an app store.</p>
 <p>The {TANK_NAME} funds the books and working papers in the catalogue. It is a funding relationship, not a
 publisher's peer review: no work here has been independently refereed.</p>
@@ -578,7 +614,7 @@ publisher's peer review: no work here has been independently refereed.</p>
 <div class="note plain"><p><strong>What is not claimed.</strong> No independent validation, no customer
 outcomes, no certification. Works that study a venture say so in their own disclosure.</p></div></aside>
 </div></div></section>"""
-    desc = ("How Jacaranda Labs runs six ventures and funds the publications that study them, with the "
+    desc = (f"How Jacaranda Labs runs {NWORD} ventures and funds the publications that study them, with the "
             "disclosure that follows from a single owner.")
     return page("labs", "/about/", "About and disclosure", desc, body, "labs")
 
@@ -594,10 +630,10 @@ def build_404() -> str:
 # --------------------------------------------------------------------------- extras
 def llms_txt() -> str:
     lines = [f"# {LAB_NAME}", "",
-             f"> Six software ventures built by one operator and a set of agents, and the publications that "
+             f"> {NWORD.capitalize()} software ventures built by one operator and a set of agents, and the publications that "
              f"study them. {LOCATION}.", "",
              "## Sections", "",
-             f"- [Laboratories]({SITE}/): the six ventures and how they are built",
+             f"- [Laboratories]({SITE}/): the {NWORD} ventures and how they are built",
              f"- [Portfolio]({SITE}/courage-garikai/): {AUTHOR['name']}, {AUTHOR['role']}",
              f"- [Publications]({SITE}/publications/): {len(WORKS)} works with availability stated",
              f"- [About]({SITE}/about/): ownership and disclosure", "",
@@ -658,8 +694,13 @@ def main(argv=None) -> int:
     for path, html_text in pages.items():
         write(path, html_text)
     write("/favicon.svg", FAVICON)
-    for asset in sorted((ROOT / "assets").glob("*")) if (ROOT / "assets").is_dir() else []:
-        (DIST / asset.name).write_bytes(asset.read_bytes())
+    # every asset, recursively: covers, the readable editions, their figures, the share card
+    if (ROOT / "assets").is_dir():
+        for asset in sorted((ROOT / "assets").rglob("*")):
+            if asset.is_file():
+                target = DIST / asset.relative_to(ROOT / "assets")
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(asset.read_bytes())
     write("/_headers", HEADERS)
     write("/robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write("/sitemap.xml", sitemap([p for p in pages if p != "/404.html"]))
@@ -694,13 +735,23 @@ def run_checks(pages: dict[str, str]) -> bool:
         p = work_url(w)
         if p not in pages:
             problems.append(f"missing page for {w['id']}")
-        elif not re.search(r"request a review copy|Available now\.|Listed for the record\.|Published edition\.", pages[p]):
+        elif not re.search(r"request a review copy|Read it now\.|Available now\.|Listed for the record\.|Published edition\.", pages[p]):
             problems.append(f"{p}: does not state availability")
         elif "script" in pages[p].lower().replace("description", ""):
             pass
     for path, text in pages.items():
         if text.count("<h1") != 1:
             problems.append(f"{path}: expected exactly one h1, found {text.count('<h1')}")
+    for w in WORKS:
+        for key in ("cover", "read"):
+            rel = w.get(key) or ""
+            if rel and not (DIST / rel.lstrip("/")).is_file():
+                problems.append(f"{w['id']}: {key} {rel} is missing from dist/")
+    # a readable edition must also be linked from its own work page
+    for w in WORKS:
+        if w.get("read") and w["read"] not in pages[work_url(w)]:
+            problems.append(f"{w['id']}: the readable edition is not linked from its page")
+
     for p in problems:
         print("  ✗", p, file=sys.stderr)
     print(f"  {'✓' if not problems else '✗'} {len(pages)} pages checked, {len(problems)} problems")

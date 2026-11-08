@@ -16,7 +16,8 @@
   ],
   "toc": [],
   "formats": {},
-  "availability": "private"
+  "availability": "private",
+  "cover": "/covers/emotional-engineering.jpg"
  },
  {
   "id": "tight-bucket",
@@ -150,7 +151,8 @@
   },
   "availability": "available",
   "licence": "All rights reserved",
-  "merged_note": "An earlier edition of this report was catalogued in the legacy press catalogue; this page points at that published edition."
+  "merged_note": "An earlier edition of this report was catalogued in the legacy press catalogue; this page points at that published edition.",
+  "read": "/read/sovereign-micro-enterprise.html"
  },
  {
   "id": "flower-and-bees",
@@ -209,7 +211,8 @@
    "39 · The blank page"
   ],
   "formats": {},
-  "availability": "private"
+  "availability": "private",
+  "cover": "/covers/flower-and-bees.jpg"
  },
  {
   "id": "ledger",
@@ -234,7 +237,9 @@
   },
   "licence": "CC BY 4.0",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/the-ledger-and-the-shopkeeper.html",
+  "cover": "/covers/the-ledger-and-the-shopkeeper.jpg"
  },
  {
   "id": "intelligence",
@@ -259,7 +264,9 @@
   },
   "licence": "CC BY 4.0",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/intelligence-data-and-judgement.html",
+  "cover": "/covers/intelligence-data-and-judgement.jpg"
  },
  {
   "id": "custody",
@@ -284,7 +291,8 @@
   },
   "licence": "CC BY 4.0",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/order-without-custody.html"
  },
  {
   "id": "cadence",
@@ -307,7 +315,8 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/grounded-cadence.html"
  },
  {
   "id": "governable",
@@ -326,7 +335,8 @@
   "formats": {},
   "licence": "No open-content licence granted",
   "year": "2026",
-  "availability": "catalogued"
+  "availability": "catalogued",
+  "cover": "/covers/the-governable-enterprise.jpg"
  },
  {
   "id": "autonomy",
@@ -364,7 +374,9 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/the-musk-mirror.html",
+  "cover": "/covers/the-musk-mirror.jpg"
  },
  {
   "id": "traffic",
@@ -385,7 +397,9 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/traffic-is-the-new-oil.html",
+  "cover": "/covers/traffic-is-the-new-oil.jpg"
  },
  {
   "id": "pinterest",
@@ -406,7 +420,9 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/pinterest-goldmine.html",
+  "cover": "/covers/pinterest-goldmine.jpg"
  },
  {
   "id": "rocket-man",
@@ -427,7 +443,9 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/the-rocket-man-reckoning.html",
+  "cover": "/covers/the-rocket-man-reckoning.jpg"
  },
  {
   "id": "unchained",
@@ -448,6 +466,8 @@
   },
   "licence": "All rights reserved",
   "year": "2026",
-  "availability": "available"
+  "availability": "available",
+  "read": "/read/unchained-blueprint.html",
+  "cover": "/covers/unchained-blueprint.jpg"
  }
 ]
