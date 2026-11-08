@@ -1,0 +1,66 @@
+{
+ "_note": "One entry per posting identity. markers = strings that make a post promo; promo_ids/value_ids override the heuristic by platform post id.",
+ "identities": [
+  {
+   "key": "op",
+   "name": "Open Practice",
+   "platform": "bluesky",
+   "handle": "open-practice.bsky.social",
+   "markers": ["open practice", "open-practice", "86 guided", "39 free tools", "no signup"]
+  },
+  {
+   "key": "op-masto",
+   "name": "Open Practice",
+   "platform": "mastodon",
+   "handle": "open_si_practice@mastodon.social",
+   "instance": "mastodon.social",
+   "markers": ["open practice", "open-practice", "86 guided", "39 free tools", "no signup"]
+  },
+  {
+   "key": "ma",
+   "name": "Mechanism Audit",
+   "platform": "bluesky",
+   "handle": "mechanism-audit.bsky.social",
+   "markers": ["mechanism audit", "mechanism-audit", "product audit"]
+  },
+  {
+   "key": "ma-masto",
+   "name": "Mechanism Audit",
+   "platform": "mastodon",
+   "handle": "mechanismaudit@mastodon.social",
+   "instance": "mastodon.social",
+   "markers": ["mechanism audit", "mechanism-audit", "product audit"]
+  },
+  {
+   "key": "attestos",
+   "name": "AttestOS",
+   "platform": "bluesky",
+   "handle": "attestos.bsky.social",
+   "markers": ["attestos", "free scanner", "verify call"]
+  },
+  {
+   "key": "attestos-masto",
+   "name": "AttestOS",
+   "platform": "mastodon",
+   "handle": "attestos@mastodon.social",
+   "instance": "mastodon.social",
+   "markers": ["attestos", "free scanner", "verify call"]
+  },
+  {
+   "key": "attestos-nostr",
+   "name": "AttestOS",
+   "platform": "nostr",
+   "npub": "npub1ptwswm3vmp0pjtlrumv47xc9jfpa7kyl0lp4hzzd0vzpazwscmwsteds6l",
+   "relays": ["wss://relay.nostr.net", "wss://relay.primal.net"],
+   "markers": ["attestos", "free scanner", "verify call"]
+  },
+  {
+   "key": "op-nostr",
+   "name": "Open Practice",
+   "platform": "nostr",
+   "npub": "npub13ststv2dt7h92k6ztad2eq2u2lt9jc5pcs5z24n6369z0ayfuy5qk4h",
+   "relays": ["wss://relay.nostr.net", "wss://relay.primal.net"],
+   "markers": ["open practice", "open-practice"]
+  }
+ ]
+}

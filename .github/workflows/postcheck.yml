@@ -1,0 +1,34 @@
+name: postcheck
+
+# The two owner rules, checked against the platforms rather than against our own logs:
+#   1. every post carries an image
+#   2. value posts outnumber promo posts at least 2:1 over the trailing window
+# A red run here means a rail is publishing without an image, or selling too often.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"      # daily, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install websocket-client
+      - name: Selftest
+        run: python3 tools/postcheck.py --selftest
+      - name: Audit the live feeds
+        run: |
+          python3 tools/postcheck.py --no-strict
+          echo "## postcheck" >> "$GITHUB_STEP_SUMMARY"
+          python3 tools/postcheck.py --no-strict --markdown >> "$GITHUB_STEP_SUMMARY"
+      - name: Enforce
+        run: python3 tools/postcheck.py --strict
