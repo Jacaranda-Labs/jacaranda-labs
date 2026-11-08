@@ -10,7 +10,10 @@
    "proof-of-mechanism",
    "simulated-completeness",
    "flower-and-bees"
-  ]
+  ],
+  "buy": "https://attestos-edge.attestos.workers.dev/go/integrity",
+  "from": "$49",
+  "buy_label": "Buy IntegrityRuntime Pro"
  },
  {
   "id": "tightbucket",
@@ -23,7 +26,10 @@
    "tight-bucket",
    "constraint-native-business-models",
    "flower-and-bees"
-  ]
+  ],
+  "buy": "https://0x.tightbucket.workers.dev/go/leads",
+  "from": "$49",
+  "buy_label": "Buy Leads"
  },
  {
   "id": "deskos",
@@ -34,7 +40,10 @@
   "for": "Trade, travel and consulting firms",
   "research": [
    "flower-and-bees"
-  ]
+  ],
+  "buy": "https://whop.com/checkout/plan_N442cp3szC9O4",
+  "from": "$69",
+  "buy_label": "Buy the Bid Desk"
  },
  {
   "id": "stpi",
@@ -46,7 +55,10 @@
   "research": [
    "emotional-engineering",
    "flower-and-bees"
-  ]
+  ],
+  "buy": "https://whop.com/checkout/ch_abZZn55zTTq9VO0/",
+  "from": "$306",
+  "buy_label": "Buy STPi Solo"
  },
  {
   "id": "tapstall",
@@ -62,7 +74,10 @@
    "order-without-custody",
    "intelligence-data-and-judgement",
    "flower-and-bees"
-  ]
+  ],
+  "from": "$60",
+  "buy": "https://tapstall.zlnew.workers.dev/onboard",
+  "buy_label": "Open a shop — free for 60 days"
  },
  {
   "id": "open-practice",
@@ -82,6 +97,9 @@
   "line": "The product audit that reads the evidence.",
   "what": "A five-day written audit of what a product actually does: the claim on the page, the mechanism behind it, and the gap in writing. Three priced products — the audit, a self-check pack and a fix sprint — sold through the store.",
   "for": "Founders and product teams who need a working product distinguished from a convincing demo.",
-  "research": []
+  "research": [],
+  "buy": "https://whop.com/checkout/plan_ad7rpY2pcvOSL/",
+  "from": "$450",
+  "buy_label": "Book the audit"
  }
 ]

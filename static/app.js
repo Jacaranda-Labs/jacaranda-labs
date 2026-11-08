@@ -96,6 +96,11 @@
         });
         var link = modal.querySelector("[data-v-link]");
         link.href = v.url; link.textContent = v.cta;
+        var buyBtn = modal.querySelector("[data-v-buy]");      // the storefront lives here too
+        if (buyBtn) {
+          if (v.buy) { buyBtn.href = v.buy; buyBtn.textContent = v.buy_label || ("Buy · " + v.from); buyBtn.hidden = false; }
+          else { buyBtn.hidden = true; }
+        }
         modal.showModal();
       });
     });

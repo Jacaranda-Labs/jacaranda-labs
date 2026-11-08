@@ -90,6 +90,21 @@ the site is night.
   CSP in `_headers` is now `default-src 'self'` rather than `default-src 'none'`, since every asset is
   local and inline.
 
+## Self-serve audit (`tools/selfserve.py`)
+
+The owner's test — *the business sells without my input* — is a chain, not a feeling: offer, link,
+rendering checkout, delivery, voice. `tools/selfserve.py` walks that chain from outside, for all seven
+ventures, and exits non-zero when one of them cannot take money on its own.
+
+```
+python3 tools/selfserve.py              # full render audit (needs playwright chromium)
+python3 tools/selfserve.py --fast       # HTTP only: is there a price and a buy control
+python3 tools/selfserve.py --json out.json
+```
+
+A plain 200 proves nothing on Whop: `whop.com/checkout/<invented id>` also returns 200. The audit
+therefore *renders* each buy link in a browser and reads the price a signed-out buyer sees.
+
 ## Deploying
 
 **Live:** https://jacaranda-labs.pages.dev (Cloudflare Pages) · https://jacaranda-labs.github.io/jacaranda-labs/

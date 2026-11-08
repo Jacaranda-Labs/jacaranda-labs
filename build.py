@@ -230,7 +230,8 @@ def venture_data(v, i: int) -> str:
     facts += extra
     d = {"kicker": f"Venture {i:02d}", "name": v["name"], "line": v["line"], "what": v["what"],
          "url": v["url"] + "/",
-         "cta": f"Open {v['name']} →", "facts": facts}
+         "buy": v.get("buy", ""), "from": v.get("from", ""),
+         "buy_label": v.get("buy_label", ""), "cta": f"Open {v['name']} →", "facts": facts}
     return e(json.dumps(d, ensure_ascii=False))
 
 
@@ -260,7 +261,9 @@ the books and working papers that study them, including the ones that did not wo
                + "".join(f"<span>{e(m)} <i></i></span>" for m in marquee_items * 3) + "</div></div>")
 
     vcards = "".join(f"""<button class="vcard rv{' wide' if i == len(VENTURES) else ''}" data-tilt data-venture="{venture_data(v, i)}" data-d="{min(i % 4 + 1, 4)}" type="button">
-<div class="vtop"><span class="vnum">{i:02d}</span><span class="vdot" aria-hidden="true"></span></div>
+<div class="vtop"><span class="vnum">{i:02d}</span>
+{f'<span class="vprice">from {e(v["from"])}</span>' if v.get("from") else ''}
+<span class="vdot" aria-hidden="true"></span></div>
 <h3>{e(v["name"])}</h3>
 <p class="vtag">{e(v["line"])}</p>
 <p>{e(v["what"])[:132]}{'…' if len(v.get('what','')) > 132 else ''}</p>
@@ -277,7 +280,8 @@ key or an exhausted quota takes down one venture, never the set.</p></div>
 <dialog class="vmodal" id="venture-modal"><div class="vhead"><p class="kicker" data-v-kicker></p>
 <h3 data-v-name></h3><p class="vtag" data-v-line></p></div>
 <div class="vbody"><dl data-v-facts></dl>
-<div class="wactions"><a class="btn" data-v-link href="#" rel="noopener">Open →</a>
+<div class="wactions"><a class="btn buy" data-v-buy href="#" rel="noopener"></a>
+<a class="btn ghost" data-v-link href="#" rel="noopener">Open →</a>
 <button class="btn ghost close" type="button" style="position:static;width:auto;border-radius:999px">Close</button></div>
 </div></dialog>"""
 
