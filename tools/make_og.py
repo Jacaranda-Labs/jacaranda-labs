@@ -85,7 +85,10 @@ def main():
            font=f_foot, fill=(233, 184, 114))
     d.text((x + 760, 582), "jacaranda-labs.pages.dev", font=f_foot, fill=(168, 148, 196))
 
-    out.convert("RGB").save("assets/og.png", optimize=True)
+    card = out.convert("RGB")
+    # 8-bit palette keeps the card under ~200 KB without visible banding at this size
+    card.quantize(colors=160, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG).save(
+        "assets/og.png", optimize=True)
     print("assets/og.png", out.size)
 
 
