@@ -1,0 +1,77 @@
+name: social
+
+# The company accounts post on their own. Two jobs:
+#   verify - daily, answers "is every credential still live?" without posting anything
+#   post   - on dispatch (and only on dispatch: nothing here should ever surprise the owner)
+# A credential that dies should be seen before a post silently fails.
+on:
+  schedule:
+    - cron: "23 6 * * *"        # 06:23 UTC daily: verify only
+  workflow_dispatch:
+    inputs:
+      text:
+        description: "What to post. Empty = verify only."
+        required: false
+        default: ""
+      link:
+        description: "URL to append (defaults to the site)"
+        required: false
+        default: ""
+      rails:
+        description: "Comma list: bsky,mastodon,nostr,discord,tumblr,pinterest. Empty = all armed."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  rails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q coincurve websocket-client
+      - name: unit tests
+        run: python3 -m unittest discover -s tests -p "test_social.py"
+      - name: verify every credential
+        env:
+          MA_BSKY_ID: ${{ secrets.MA_BSKY_ID }}
+          MA_BSKY_PASS: ${{ secrets.MA_BSKY_PASS }}
+          MA_MASTODON_INSTANCE: ${{ secrets.MA_MASTODON_INSTANCE }}
+          MA_MASTODON_TOKEN: ${{ secrets.MA_MASTODON_TOKEN }}
+          MA_NOSTR_NSEC: ${{ secrets.MA_NOSTR_NSEC }}
+          MA_CARD_URL: ${{ secrets.MA_CARD_URL }}
+          MA_DISCORD_WEBHOOK: ${{ secrets.MA_DISCORD_WEBHOOK }}
+          MA_TUMBLR_CK: ${{ secrets.MA_TUMBLR_CK }}
+          MA_TUMBLR_CS: ${{ secrets.MA_TUMBLR_CS }}
+          MA_TUMBLR_TOKEN: ${{ secrets.MA_TUMBLR_TOKEN }}
+          MA_TUMBLR_TOKEN_SECRET: ${{ secrets.MA_TUMBLR_TOKEN_SECRET }}
+          MA_TUMBLR_BLOG: ${{ secrets.MA_TUMBLR_BLOG }}
+          MA_BUFFER_TOKEN: ${{ secrets.MA_BUFFER_TOKEN }}
+          MA_PINTEREST_BOARD: ${{ secrets.MA_PINTEREST_BOARD }}
+        run: python3 social.py verify
+      - name: post
+        if: github.event_name == 'workflow_dispatch' && inputs.text != ''
+        env:
+          MA_BSKY_ID: ${{ secrets.MA_BSKY_ID }}
+          MA_BSKY_PASS: ${{ secrets.MA_BSKY_PASS }}
+          MA_MASTODON_INSTANCE: ${{ secrets.MA_MASTODON_INSTANCE }}
+          MA_MASTODON_TOKEN: ${{ secrets.MA_MASTODON_TOKEN }}
+          MA_NOSTR_NSEC: ${{ secrets.MA_NOSTR_NSEC }}
+          MA_DISCORD_WEBHOOK: ${{ secrets.MA_DISCORD_WEBHOOK }}
+          MA_TUMBLR_CK: ${{ secrets.MA_TUMBLR_CK }}
+          MA_TUMBLR_CS: ${{ secrets.MA_TUMBLR_CS }}
+          MA_TUMBLR_TOKEN: ${{ secrets.MA_TUMBLR_TOKEN }}
+          MA_TUMBLR_TOKEN_SECRET: ${{ secrets.MA_TUMBLR_TOKEN_SECRET }}
+          MA_TUMBLR_BLOG: ${{ secrets.MA_TUMBLR_BLOG }}
+          MA_BUFFER_TOKEN: ${{ secrets.MA_BUFFER_TOKEN }}
+          MA_PINTEREST_BOARD: ${{ secrets.MA_PINTEREST_BOARD }}
+        run: |
+          set -e
+          args=(--text "${{ inputs.text }}")
+          [ -n "${{ inputs.link }}" ] && args+=(--link "${{ inputs.link }}")
+          [ -n "${{ inputs.rails }}" ] && args+=(--rails "${{ inputs.rails }}")
+          python3 social.py post "${args[@]}"

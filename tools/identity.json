@@ -6,7 +6,13 @@
    "name": "Open Practice",
    "platform": "bluesky",
    "handle": "open-practice.bsky.social",
-   "markers": ["open practice", "open-practice", "86 guided", "39 free tools", "no signup"]
+   "markers": [
+    "open practice",
+    "open-practice",
+    "86 guided",
+    "39 free tools",
+    "no signup"
+   ]
   },
   {
    "key": "op-masto",
@@ -14,14 +20,24 @@
    "platform": "mastodon",
    "handle": "open_si_practice@mastodon.social",
    "instance": "mastodon.social",
-   "markers": ["open practice", "open-practice", "86 guided", "39 free tools", "no signup"]
+   "markers": [
+    "open practice",
+    "open-practice",
+    "86 guided",
+    "39 free tools",
+    "no signup"
+   ]
   },
   {
    "key": "ma",
    "name": "Mechanism Audit",
    "platform": "bluesky",
    "handle": "mechanism-audit.bsky.social",
-   "markers": ["mechanism audit", "mechanism-audit", "product audit"]
+   "markers": [
+    "mechanism audit",
+    "mechanism-audit",
+    "product audit"
+   ]
   },
   {
    "key": "ma-masto",
@@ -29,14 +45,22 @@
    "platform": "mastodon",
    "handle": "mechanismaudit@mastodon.social",
    "instance": "mastodon.social",
-   "markers": ["mechanism audit", "mechanism-audit", "product audit"]
+   "markers": [
+    "mechanism audit",
+    "mechanism-audit",
+    "product audit"
+   ]
   },
   {
    "key": "attestos",
    "name": "AttestOS",
    "platform": "bluesky",
    "handle": "attestos.bsky.social",
-   "markers": ["attestos", "free scanner", "verify call"]
+   "markers": [
+    "attestos",
+    "free scanner",
+    "verify call"
+   ]
   },
   {
    "key": "attestos-masto",
@@ -44,23 +68,99 @@
    "platform": "mastodon",
    "handle": "attestos@mastodon.social",
    "instance": "mastodon.social",
-   "markers": ["attestos", "free scanner", "verify call"]
+   "markers": [
+    "attestos",
+    "free scanner",
+    "verify call"
+   ]
   },
   {
    "key": "attestos-nostr",
    "name": "AttestOS",
    "platform": "nostr",
    "npub": "npub1ptwswm3vmp0pjtlrumv47xc9jfpa7kyl0lp4hzzd0vzpazwscmwsteds6l",
-   "relays": ["wss://relay.nostr.net", "wss://relay.primal.net"],
-   "markers": ["attestos", "free scanner", "verify call"]
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "attestos",
+    "free scanner",
+    "verify call"
+   ]
   },
   {
    "key": "op-nostr",
    "name": "Open Practice",
    "platform": "nostr",
-   "npub": "npub13ststv2dt7h92k6ztad2eq2u2lt9jc5pcs5z24n6369z0ayfuy5qk4h",
-   "relays": ["wss://relay.nostr.net", "wss://relay.primal.net"],
-   "markers": ["open practice", "open-practice"]
+   "npub": "npub13ststv2dt7h92k6ztad2eq2u2lt9jc5pcs5z24n6369z0ayfuy5qk4hn65",
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "open practice",
+    "open-practice"
+   ]
+  },
+  {
+   "key": "deskos-nostr",
+   "name": "DeskOS",
+   "platform": "nostr",
+   "npub": "npub1mjazqszs9z6lwsgszqg2k6c5vpzmzqyllwh90nhhwyg4zmslr5zqsr3gay",
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "deskos",
+    "desk-os"
+   ]
+  },
+  {
+   "key": "tightbucket-nostr",
+   "name": "TightBucket",
+   "platform": "nostr",
+   "npub": "npub18h2j0ulc6xd728e8sayywchllw5w28ayqtfd6dekgk9umn9jk9dsgnu367",
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "tightbucket"
+   ]
+  },
+  {
+   "key": "tapstall-nostr",
+   "name": "Tapstall",
+   "platform": "nostr",
+   "npub": "npub18mxc2ad6p9z33vlknhl3fn04t4s5xtz3c6vqfd3ps66ep44nhu6sezqcn0",
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "tapstall"
+   ]
+  },
+  {
+   "key": "ma-nostr",
+   "name": "Mechanism Audit",
+   "platform": "nostr",
+   "npub": "npub1t3d0z8jgq2nh5yu7vjrjcqpauzzf9pj4djtecpfe2q3xd9p0cz2sfvsgyc",
+   "relays": [
+    "wss://relay.nostr.net",
+    "wss://relay.primal.net",
+    "wss://nos.lol"
+   ],
+   "markers": [
+    "mechanism audit"
+   ]
   }
  ]
 }

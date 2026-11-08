@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://jacaranda-labs.pages.dev/sitemap.xml
