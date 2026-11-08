@@ -476,7 +476,7 @@ def build_work(w) -> str:
 <p class="wsub rv" data-d="2">{e(w["subtitle"])}</p>
 <div class="wactions rv" data-d="3">{state_pill(w)}{(' ' + f'<a class="btn" href="{e(w["read"])}">Read it now</a>') if w.get("read") else ''}
 <a class="btn ghost" href="/publications/">Catalogue</a></div></div></div></div></section>
-<section class="sec" style="padding-top:0"><div class="wrap"><div class="wmain">
+<section class="sec flush"><div class="wrap"><div class="wmain">
 <div><p class="kicker rv">About this work</p>
 <div class="prose rv" data-d="1"><p>{inline(w["blurb"])}</p></div>{disc}{toc}</div>
 <aside class="rv" data-d="2"><div class="panel"><dl>{facts}</dl></div>{notice}</aside>
@@ -490,7 +490,7 @@ def build_work(w) -> str:
 def related(w) -> str:
     group = [i for i in next(g[3] for g in GROUPS if w["id"] in g[3]) if i != w["id"]]
     picks = [BY_ID[i] for i in group[:3]] or [x for x in WORKS if x["id"] != w["id"]][:3]
-    return f"""<section class="sec" style="padding-top:0"><div class="wrap">
+    return f"""<section class="sec"><div class="wrap">
 <div class="sec-head rv"><div><p class="kicker">Also in the catalogue</p><h2 style="font-size:1.7rem">Read next</h2></div></div>
 <div class="wgrid">{''.join(work_card(x) for x in picks)}</div></div></section>"""
 

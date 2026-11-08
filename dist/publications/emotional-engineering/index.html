@@ -128,7 +128,8 @@ nav.links a[aria-current=page]{color:#fff;background:rgba(139,92,246,.22);box-sh
 /* ---------- sections ---------- */
 section{position:relative;z-index:2}
 .sec{padding:clamp(64px,8vw,124px) 0}
-.workhero + .sec{padding-top:clamp(36px,5vw,64px)}
+.sec.flush{padding-top:0;padding-bottom:clamp(30px,4vw,54px)}
+.sec.flush + .sec{padding-top:0}
 .workhero{padding-bottom:clamp(24px,4vw,48px)}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,54px)}
 .sec-head h2{max-width:22ch}
@@ -368,12 +369,12 @@ footer a{color:#cfc3dc}footer a:hover{color:#fff}
 <p class="wsub rv" data-d="2">Trust, agency and ethical adoption in systems that act</p>
 <div class="wactions rv" data-d="3"><span class="pill">Author review</span>
 <a class="btn ghost" href="/publications/">Catalogue</a></div></div></div></div></section>
-<section class="sec" style="padding-top:0"><div class="wrap"><div class="wmain">
+<section class="sec flush"><div class="wrap"><div class="wmain">
 <div><p class="kicker rv">About this work</p>
 <div class="prose rv" data-d="1"><p>The book expands the commissioned emotions document into a broader guide for AI-infrastructure operators. It treats AFGR as an operator heuristic, not a validated universal psychological sequence. Research, proposed practices, illustrative examples and STPI operating observations are distinguished. No invented author biography, endorsements, customer outcomes or interviews are claimed.</p></div></div>
 <aside class="rv" data-d="2"><div class="panel"><dl><dt>Kind</dt><dd>Book</dd><dt>Edition</dt><dd>private author-review 2026</dd><dt>Funded by</dt><dd>Jacaranda Labs Think Tank</dd><dt>Length</dt><dd>36,910 words (36,156 outside front matter)</dd><dt>Structure</dt><dd>24 chapters, 12 worksheets, 12 annotated script transformations</dd><dt>Format</dt><dd>159 pages</dd></dl></div><div class="notice"><p><strong>Private author-review edition.</strong> Catalogued here, not distributed. Editors and reviewers can <a href="mailto:couragegarikai@atomicmail.io?subject=Review%20copy%20request%3A%20Emotional%20Engineering%20for%20AI-Oriented%20Infrastructure%20Operators">request a copy</a>.</p></div></aside>
 </div></div></section>
-<section class="sec" style="padding-top:0"><div class="wrap">
+<section class="sec"><div class="wrap">
 <div class="sec-head rv"><div><p class="kicker">Also in the catalogue</p><h2 style="font-size:1.7rem">Read next</h2></div></div>
 <div class="wgrid"><a class="wcard rv" data-work data-group="books" data-haystack="the tight bucket designing constraint-native digital businesses book books"
 data-d="3" href="/publications/tight-bucket/">

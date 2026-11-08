@@ -70,6 +70,26 @@ breaks either rule. See `social-audit-2026-11-08.md` for the first run's finding
 * **No download links for private editions.** Only the `formats` map produces a download button.
 * **The disclosure travels with the work.** Case disclosures come from the manifests, not from this repo.
 
+## Design (rebuilt 2026-11)
+
+The front end was replaced wholesale. Dark editorial base (`--ink #0a0710`, violet `#8b5cf6`, magenta
+`#e8467c`, gold `#e9b872`) with one paper-white band for the catalogue, because the books are paper and
+the site is night.
+
+* **Motion that carries meaning:** a 12-second video hero on every page (generated artwork, `zoompan`
+  loops shipped as WebM + MP4 with a JPEG poster), scroll reveals, a cursor glow, a marquee of venture
+  names, and cards that tilt under the pointer.
+* **Interactive:** venture cards open one shared `<dialog>`; the catalogue has group chips, live search
+  and an empty state; `⌘K` / `/` opens a palette over every venture, work and page.
+* **Built, not fetched:** `static/app.css` and `static/app.js` are inlined into every page by `build.py`.
+  No framework, no CDN, no external font. `window.__index` is the palette's data.
+* **Cheap to keep:** artwork is generated once by `tools/make_og.py` (share card) and ffmpeg loops under
+  `assets/art/` (76 s of encoding, ~250 KB per clip). `build.py --check` refuses a build whose media is
+  missing.
+* **Degrades:** `prefers-reduced-motion` drops the video and the reveals; print drops the chrome; the
+  CSP in `_headers` is now `default-src 'self'` rather than `default-src 'none'`, since every asset is
+  local and inline.
+
 ## Deploying
 
 **Live:** https://jacaranda-labs.pages.dev (Cloudflare Pages) · https://jacaranda-labs.github.io/jacaranda-labs/
