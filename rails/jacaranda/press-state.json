@@ -1,8 +1,9 @@
 {
  "sent": [
-  "method"
+  "method",
+  "work-ledger"
  ],
- "last_at": "2026-11-09T12:13:35.747258Z",
+ "last_at": "2026-11-09T15:55:36.468014Z",
  "log": [
   {
    "id": "method",
@@ -14,6 +15,11 @@
     "pinterest": "6af1b8a52c4acc7aad292a02",
     "mastodon": "https://mastodon.social/@jacaranda_labs/117586424233003850"
    }
+  },
+  {
+   "id": "work-ledger",
+   "at": "2026-11-09T15:55:36.468014Z",
+   "rails": 7
   }
  ]
 }
