@@ -1,0 +1,234 @@
+# Who buys each venture, what to say, and where to look.
+#
+# This is the part that makes the lead hunter general: the machinery is the same for all seven, and
+# only this file changes. A profile is an ICP (who, where, which words mean "in market"), an offer
+# with a real price, and a first-touch line short enough to read on a phone.
+#
+# Rules this file is written under:
+#   * every venture sells something a stranger can buy today, at a published price
+#   * the first line names the venture and what it does — no coy "quick question"
+#   * one email, no follow-up sequence unless a human marks the lead engaged
+#   * a lead only enters the list if the contact detail is published by the organisation itself
+
+defaults:
+  sender: "Courage Garikai <couragegarikai@atomicmail.io>"
+  country_hints: [ZW, ZA, ZM, KE, NG, BW, NA, MW, TZ, UG]
+  contact_paths: [/contact, /contact-us, /contactus, /about, /about-us, /get-in-touch, /team]
+  min_score: 45
+  max_pages_per_site: 4
+  delay_seconds: 2.0
+  robots: true
+  do_not_contact: growth/dnc.txt
+
+ventures:
+  deskos:
+    name: DeskOS
+    url: https://desk.tapstall.com
+    sells: "a tender desk: open public tenders from 13 sources read every morning, soonest deadline first"
+    price: "free tier; Pro for the weekly pack"
+    who: "small firms that bid for public contracts — construction, supplies, consulting, IT, cleaning, security"
+    signals:
+      strong: [tender, tenders, procurement, bid, bids, rfq, rfp, eoi, "request for proposal", praz, ppa]
+      weak: [supplier, contractor, "registered supplier", sidama, "vendor number"]
+    queries:
+      - 'site:*.co.zw "registered supplier" tender OR procurement contact'
+      - '"supplier registration" "tender" Harare Zimbabwe contact email'
+      - '"bid" "tender" "company profile" Zambia OR Zimbabwe procurement contact'
+    first_touch: |
+      Subject: {company} and the tenders you have not seen yet
+
+      Hello,
+
+      I run DeskOS. It reads 13 public tender sources — World Bank, UN agencies, the EBRD, EU TED and
+      national portals — every morning and puts them on one page, soonest deadline first, each linked
+      to the original notice.
+
+      {why}
+
+      The free tier covers the daily list. If it is useful, Pro adds the weekly read: what closed,
+      what is closing, and what your firm is eligible for. No account needed to look:
+      https://desk.tapstall.com
+
+      If this is not relevant, reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  tightbucket:
+    name: TightBucket
+    url: https://tightbucket.whop.site
+    sells: "a leak audit for online shops: what the storefront gives away, priced in lost orders"
+    price: "audit from US$450"
+    who: "Shopify and WooCommerce shops doing real volume, especially in ZW/ZA/KE"
+    signals:
+      strong: [shopify, woocommerce, "online store", checkout, cart, "free shipping"]
+      weak: [store, shop, boutique, "add to cart", delivery]
+    queries:
+      - '"shopify" OR "woocommerce" store Zimbabwe OR Zambia "add to cart" contact'
+      - '"online shop" Harare OR Lusaka OR Nairobi "delivery" contact email'
+    first_touch: |
+      Subject: three things {domain} gives away at checkout
+
+      Hello,
+
+      I run TightBucket, which audits online shops for the leaks that cost orders rather than views —
+      checkout friction, delivery promises that do not survive contact with a courier, and the
+      discount structure that trains buyers to wait.
+
+      {why}
+
+      The audit is US$450 and you get the findings, the screenshots and the fix order. If the first
+      three paragraphs are not worth it, do not pay: https://tightbucket.whop.site
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  tapstall:
+    name: Tapstall
+    url: https://tapstall.zlnew.workers.dev
+    sells: "a WhatsApp shop: one link, orders in a dashboard you own, exact-amount payment matching"
+    price: "from US$15/month"
+    who: "social sellers and small shops in ZW/ZA/KE taking orders in DMs"
+    signals:
+      strong: ["whatsapp order", "dm to order", "inbox", "price list", "order via whatsapp"]
+      weak: [menu, catalogue, catalog, "we deliver", "place your order"]
+    queries:
+      - '"order via WhatsApp" Zimbabwe OR Zambia shop'
+      - '"DM to order" OR "WhatsApp us to order" Harare OR Bulawayo OR Lusaka'
+    first_touch: |
+      Subject: {company} — orders in one place instead of a chat
+
+      Hello,
+
+      I run Tapstall. It gives a seller one shop link: the customer orders and pays an exact amount to
+      your own account, and every order lands in a dashboard you own instead of being scrolled past
+      in a WhatsApp thread.
+
+      {why}
+
+      US$15 a month, no commission on your sales. See the shop math here:
+      https://tapstall.zlnew.workers.dev
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  attestos:
+    name: AttestOS
+    url: https://attestos.whop.site
+    sells: "proof that a request comes from a real user and not a script — passkeys, private access tokens, proof of work"
+    price: "free scanner; paid plans"
+    who: "SaaS teams with free trials or signup abuse — API keys farmed, credits drained"
+    signals:
+      strong: ["free trial", "sign up free", "api key", "self-serve", "developer platform", "sandbox"]
+      weak: [saas, api, "get started", pricing]
+    queries:
+      - '"free trial" "no credit card" SaaS API signup'
+      - '"developer platform" "get your API key" signup abuse'
+    first_touch: |
+      Subject: {company} — the free-trial abuse you cannot see in the logs
+
+      Hello,
+
+      I run AttestOS. The usual pattern: a free tier that costs money per signup, keys harvested by
+      scripts, and a support inbox that cannot tell the difference between a customer and a farm.
+
+      {why}
+
+      The scanner is free and takes one page: https://attestos.whop.site
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  open-practice:
+    name: Open Practice
+    url: https://open-practice.open-practice.workers.dev
+    sells: "free practical AI training — 50 activities, 39 tools, offline HTML workspaces"
+    price: "free; facilitators kit paid"
+    who: "trainers, NGOs, schools and libraries running AI literacy programmes"
+    signals:
+      strong: [training, workshop, curriculum, facilitator, "digital skills", literacy]
+      weak: [ngo, school, library, programme, program]
+    queries:
+      - '"digital skills" training NGO Zimbabwe OR Zambia AI workshop'
+      - '"AI literacy" programme facilitator Africa'
+    first_touch: |
+      Subject: free AI curriculum for {company}'s next workshop
+
+      Hello,
+
+      I run Open Practice. It is free, non-accredited practical AI training: 50 activities, 39 tools,
+      and offline HTML workspaces for classrooms with unreliable connectivity.
+
+      {why}
+
+      Everything is downloadable and reusable under CC BY 4.0:
+      https://open-practice.open-practice.workers.dev
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  mechanism-audit:
+    name: Mechanism Audit
+    url: https://mechanism-audit.whop.site
+    sells: "an audit of whether a product's stated mechanism is the one it actually runs"
+    price: "from US$450"
+    who: "founders raising, and buyers doing diligence"
+    signals:
+      strong: [methodology, "how it works", whitepaper, benchmark, "case study", "our approach"]
+      weak: [product, platform, report]
+    queries:
+      - '"how it works" AI product methodology benchmark startup'
+    first_touch: |
+      Subject: {company} — one question about the mechanism you describe
+
+      Hello,
+
+      I run Mechanism Audit. We read the product, then test whether the mechanism it describes is the
+      one that runs — the gap between the diagram and the code is usually where the risk is.
+
+      {why}
+
+      US$450 for the first audit: https://mechanism-audit.whop.site
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev
+
+  stpi:
+    name: STPi
+    url: https://getstpi.pages.dev
+    sells: "job search plus the paperwork — applications written to the advert, submitted in the right format"
+    price: "free demo, no email needed; paid tiers"
+    who: "job seekers applying at volume, and the small agencies that write applications for them"
+    signals:
+      strong: [vacancies, vacancy, "apply now", "job advert", "cv", "cover letter", recruitment]
+      weak: [careers, jobs, hiring, "send your cv"]
+    queries:
+      - '"recruitment agency" OR "careers centre" Zimbabwe OR Zambia "send your CV"'
+      - '"job vacancies" Harare OR Lusaka "apply" contact'
+    first_touch: |
+      Subject: {company} — applications written to the advert, not around it
+
+      Hello,
+
+      I run STPi. It finds the vacancies, then writes the application to the advert's own language and
+      submits it in the format that portal actually accepts — the part that decides whether a good
+      candidate is read at all.
+
+      {why}
+
+      There is a free demo and it needs no email: https://getstpi.pages.dev
+
+      Reply "stop" and I will remove you.
+
+      Courage
+      Jacaranda Labs · jacaranda-labs.pages.dev

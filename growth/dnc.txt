@@ -1,0 +1,3 @@
+# Organisations that asked us not to contact them, or that we have decided not to.
+
+# one domain per line; everything after a # is a note
