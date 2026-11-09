@@ -192,6 +192,10 @@ def post_mastodon(text: str, image: "postimage.Img | None" = None) -> tuple[bool
         body, ctype = postimage.mastodon_media_body(image)
         st, media = _req(f"https://{host}/api/v2/media", body,
                          {**auth, "Content-Type": ctype}, "POST")
+        if st == 401:            # a fresh token can 401 for a moment before its scopes take effect
+            time.sleep(3)
+            st, media = _req(f"https://{host}/api/v2/media", body,
+                             {**auth, "Content-Type": ctype}, "POST")
         if st in (200, 201, 202) and isinstance(media, dict) and media.get("id"):
             media_id = str(media["id"])
             if st == 202:                                   # accepted, still processing
