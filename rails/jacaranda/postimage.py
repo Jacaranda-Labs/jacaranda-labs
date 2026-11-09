@@ -297,12 +297,16 @@ def discord_payload(text: str, img: Img, username: str = "") -> dict:
 
 
 def tumblr_fields(text: str, img: Img) -> dict:
-    """`native_inline_images` makes Tumblr host its own copy, so the post survives the card URL
-    changing. A dead image URL is worse than no post."""
+    """A photo post: Tumblr fetches `source` once and hosts its own copy of the card.
+
+    A text post with an inline <img> points at our CDN for ever — one redeploy of the cards and every
+    old post loses its picture. A photo post survives that, because the bytes are Tumblr's problem
+    the moment it has fetched them.
+    """
     if not img.url:
-        raise NoImage("tumblr needs a public url for the inline image")
-    body = f"![{img.alt or 'card'}]({img.url})\n\n{text}"
-    return {"body": body[:3000], "native_inline_images": "true"}
+        raise NoImage("tumblr needs a public url to fetch the card from")
+    return {"type": "photo", "source": img.url, "caption": text[:3000],
+            "link": img.url.split("/assets/")[0] if "/assets/" in img.url else img.url}
 
 
 # --------------------------------------------------------------------------- http shim

@@ -123,7 +123,7 @@ def finish(args) -> int:
         raise SystemExit("no pending handshake — run --start first")
     with open(path) as f:
         p = json.load(f)
-    body = call(ACCESS_URL, {"oauth_verifier": _verifier(args.verifier)},
+    body = call(ACCESS_URL, {"oauth_verifier": _verifier(args.finish)},
                 p["consumer_key"], p["consumer_secret"], p["request_token"], p["request_secret"])
     got = parse(body)
     if not got.get("oauth_token"):

@@ -387,7 +387,7 @@ def _tumblr_title(text: str) -> str:
 
 
 def post_tumblr(text: str, tags: list[str] | None = None,
-                image: "postimage.Img | None" = None) -> tuple[bool, str]:
+                image: "postimage.Img | None" = None, link: str = "") -> tuple[bool, str]:
     ck, cs, tok, tsec, blog = env("JACARANDA_TUMBLR_CK", "JACARANDA_TUMBLR_CS", "JACARANDA_TUMBLR_TOKEN",
                                   "JACARANDA_TUMBLR_TOKEN_SECRET", "JACARANDA_TUMBLR_BLOG")
     if not all([ck, cs, tok, tsec, blog]):
@@ -398,8 +398,8 @@ def post_tumblr(text: str, tags: list[str] | None = None,
         except postimage.NoImage as e:
             return False, f"no image, not posting: {e}"
     url = f"https://api.tumblr.com/v2/blog/{blog}/post"      # singular: the form-encoded route
-    fields = {"type": "text", "format": "markdown", "title": _tumblr_title(text)}
-    fields.update(postimage.tumblr_fields(text, image))
+    fields = postimage.tumblr_fields(text, image)            # a photo post; the card is the post
+    fields["link"] = link or SITE
     if tags:
         fields["tags"] = ",".join(t.replace("#", "")[:40] for t in tags[:5])
     st, resp = _req(url, urllib.parse.urlencode(fields).encode(),
@@ -699,7 +699,7 @@ def post(text: str, link: str = "", tags: list[str] | None = None,
             elif name == "discord":
                 results[name] = post_discord(full, image=card)
             elif name == "tumblr":
-                results[name] = post_tumblr(full, tags=tags, image=card)
+                results[name] = post_tumblr(full, tags=tags, image=card, link=link)
             elif name == "reddit":
                 results[name] = post_reddit(full, link=link, image=card)
             elif name == "medium":
