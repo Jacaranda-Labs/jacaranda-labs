@@ -1,0 +1,67 @@
+name: press
+
+# The lab's own accounts, on the same rail as the ventures: hourly check, 30-hour cadence inside
+# press.py, one post per run at most, state committed back so a dead runner cannot repeat a post.
+#
+# Every post carries a rendered card (assets/cards/<id>.png) and the selftest refuses a bank that
+# breaks 2 value : 1 promo, so a bad push fails here rather than on the timeline.
+
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+    inputs:
+      post:
+        description: "post id to publish now (blank = whichever is due)"
+        required: false
+      dry:
+        description: "1 = dry run"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: press
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install pillow websocket-client coincurve
+      - name: Selftest the bank
+        run: python3 rails/jacaranda/press.py --selftest
+      - name: Publish
+        env:
+          JACARANDA_BSKY_ID: ${{ secrets.JACARANDA_BSKY_ID }}
+          JACARANDA_BSKY_PASS: ${{ secrets.JACARANDA_BSKY_PASS }}
+          JACARANDA_MASTODON_INSTANCE: ${{ secrets.JACARANDA_MASTODON_INSTANCE }}
+          JACARANDA_MASTODON_TOKEN: ${{ secrets.JACARANDA_MASTODON_TOKEN }}
+          JACARANDA_NOSTR_NSEC: ${{ secrets.JACARANDA_NOSTR_NSEC }}
+          JACARANDA_BUFFER_TOKEN: ${{ secrets.JACARANDA_BUFFER_TOKEN }}
+          DRY: ${{ github.event.inputs.dry || '0' }}
+          ONCE: ${{ github.event.inputs.post }}
+        run: |
+          set -euo pipefail
+          ARGS=""
+          [ "$DRY" = "1" ] && ARGS="--dry"
+          if [ -n "$ONCE" ]; then
+            python3 rails/jacaranda/press.py --post "$ONCE" $ARGS
+          else
+            python3 rails/jacaranda/press.py --due $ARGS
+          fi
+      - name: Remember what went out
+        run: |
+          if [ -n "$(git status --porcelain rails/jacaranda/press-state.json)" ]; then
+            git config user.name "Jacaranda Labs"
+            git config user.email "jacarandalabs@atomicmail.io"
+            git add rails/jacaranda/press-state.json
+            git commit -m "press: state after $(date -u +%FT%TZ)"
+            git push
+          fi
