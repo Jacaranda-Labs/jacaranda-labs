@@ -151,8 +151,38 @@ def video_block(name: str, alt: str, cls: str = "hero-media", poster_dir="art") 
 
 
 # --------------------------------------------------------------------------- shell
+def ld_graph(path: str, title: str, desc: str, extra: list | None = None) -> str:
+    """The machine-readable version of the page: who we are, what the page is, what it is part of.
+
+    An answer engine that cannot find a declared entity has to infer one from prose, and it usually
+    infers the wrong one. This is cheap to emit and it is the difference between being quoted and
+    being paraphrased badly.
+    """
+    org = {"@type": "Organization", "@id": f"{SITE}/#org", "name": LAB_NAME, "url": SITE + "/",
+           "logo": {"@type": "ImageObject", "url": f"{SITE}/og.png", "width": 1200, "height": 630},
+           "founder": {"@type": "Person", "@id": f"{SITE}/#person", "name": AUTHOR["name"],
+                       "jobTitle": AUTHOR["role"], "url": f"{SITE}/courage-garikai/"},
+           "foundingDate": "2026", "address": {"@type": "PostalAddress", "addressLocality": "Harare",
+                                              "addressCountry": "ZW"},
+           "email": CONTACT, "sameAs": ["https://github.com/Jacaranda-Labs"],
+           "description": ("Jacaranda Labs builds constraint-native software ventures from Harare and "
+                           "funds the books and working papers that study them.")}
+    site = {"@type": "WebSite", "@id": f"{SITE}/#site", "url": SITE + "/", "name": LAB_NAME,
+            "publisher": {"@id": f"{SITE}/#org"}, "inLanguage": "en"}
+    page = {"@type": "WebPage" if path != "/" else "CollectionPage", "@id": f"{SITE}{path}#page",
+            "url": f"{SITE}{path}", "name": title, "description": desc,
+            "isPartOf": {"@id": f"{SITE}/#site"}, "about": {"@id": f"{SITE}/#org"},
+            "inLanguage": "en", "primaryImageOfPage": {"@type": "ImageObject",
+                                                       "url": f"{SITE}/og.png"}}
+    graph = [org, site, page] + (extra or [])
+    return ('<script type="application/ld+json">'
+            + json.dumps({"@context": "https://schema.org", "@graph": graph},
+                         ensure_ascii=False, separators=(",", ":"))
+            + "</script>")
+
+
 def page(section: str, path: str, title: str, desc: str, body: str, active: str = "",
-         light: bool = False, index: list | None = None) -> str:
+         light: bool = False, index: list | None = None, ld: list | None = None) -> str:
     full = f"{title} · {LAB_NAME}" if LAB_NAME not in title else title
     nav = "".join(
         f'<a href="{h}"{" aria-current=page" if k == active else ""}>{e(t)}</a>'
@@ -168,6 +198,8 @@ def page(section: str, path: str, title: str, desc: str, body: str, active: str 
 <meta property="og:type" content="website"><meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="{LAB_NAME}"><meta property="og:image" content="{SITE}/og.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{SITE}/og.png">
+{ld_graph(path, title, desc, ld)}
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0a0710">
 <style>{CSS.replace('@@A@@', ACCENT.get(section, ACCENT['labs']))}</style></head>
@@ -430,8 +462,11 @@ open in place. Private author-review editions are catalogued, not distributed.</
              + [{"title": g[1], "kind": "section", "url": "/publications/"} for g in GROUPS])
     desc = (f"The catalogue: {len(WORKS)} books, working papers and essays from Jacaranda Labs Press, "
             f"{sum(1 for w in WORKS if w.get('read'))} of them free to read on the site.")
+    cat_ld = [{"@type": "ItemList", "name": "Jacaranda Labs Press catalogue", "numberOfItems": len(WORKS),
+               "itemListElement": [{"@type": "ListItem", "position": i, "url": f"{SITE}{work_url(x)}",
+                                    "name": x["title"]} for i, x in enumerate(WORKS, 1)]}]
     return {"/publications/": page("publications", "/publications/", "Publications · the catalogue",
-                                    desc, body, "publications", index=index)}
+                                    desc, body, "publications", index=index, ld=cat_ld)}
 
 
 def build_work(w) -> str:
@@ -487,8 +522,24 @@ def build_work(w) -> str:
 </div></div></section>
 {related(w)}"""
     idx = [{"title": x["title"], "kind": x["kind"], "sub": x["subtitle"], "url": work_url(x)} for x in WORKS]
+    kind_ld = {"book": "Book", "paper": "ScholarlyArticle", "research": "Report", "essay": "Article"}.get(
+        (w.get("kind") or "").lower(), "CreativeWork")
+    work_ld = [{"@type": kind_ld, "@id": f"{SITE}{work_url(w)}#work", "name": w["title"],
+                "headline": w["title"], "alternativeHeadline": w.get("subtitle", ""),
+                "abstract": (w.get("blurb") or "")[:500],
+                "author": {"@type": "Person", "@id": f"{SITE}/#person", "name": AUTHOR["name"]},
+                "publisher": {"@id": f"{SITE}/#org"},
+                "inLanguage": "en",
+                **({"image": f"{SITE}{w['cover']}"} if w.get("cover") else {}),
+                **({"datePublished": "2026"} if "2026" in str(w.get("edition") or "") else {}),
+                "isPartOf": {"@id": f"{SITE}/#site"},
+                "url": f"{SITE}{work_url(w)}"},
+               {"@type": "BreadcrumbList", "itemListElement": [
+                   {"@type": "ListItem", "position": 1, "name": "Publications", "item": f"{SITE}/publications/"},
+                   {"@type": "ListItem", "position": 2, "name": w["title"],
+                    "item": f"{SITE}{work_url(w)}"}]}]
     return page("publications", work_url(w), w["title"], (w.get("blurb") or w["subtitle"])[:180],
-                body, "publications", index=idx)
+                body, "publications", index=idx, ld=work_ld)
 
 
 def related(w) -> str:
