@@ -1,0 +1,64 @@
+name: lead hunt
+
+# Weekly research pass over the venture profiles in growth/ventures.yaml.
+#
+# It researches only. There is no send step and no SMTP anywhere in this repo: outbound goes out
+# from a person's own mailbox, one lead at a time, after somebody has read the row. That is not
+# timidity — a domain with no sending history that suddenly mails a few hundred addresses is a
+# domain that stops arriving, and every one of these ventures depends on mail arriving.
+#
+# Leads are uploaded as a build artifact rather than committed: they are other people's contact
+# details, and a public repository is the wrong place for them.
+
+on:
+  schedule:
+    - cron: "41 6 * * 1"        # Mondays, 06:41 UTC
+  workflow_dispatch:
+    inputs:
+      venture:
+        description: "single venture (deskos, tapstall, tightbucket, attestos, open-practice, mechanism-audit, stpi)"
+        required: false
+      max:
+        description: "new leads per venture"
+        default: "10"
+
+permissions:
+  contents: read
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Hunt
+        env:
+          GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
+          GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX }}
+        run: |
+          set -euo pipefail
+          MAX="${{ github.event.inputs.max || '10' }}"
+          if [ -n "${{ github.event.inputs.venture }}" ]; then
+            python3 growth/leadhunt.py --venture "${{ github.event.inputs.venture }}" \
+              --seeds "growth/seeds/${{ github.event.inputs.venture }}.txt" --search --max "$MAX" || true
+          else
+            for f in growth/seeds/*.txt; do
+              v=$(basename "$f" .txt)
+              echo "::group::$v"
+              python3 growth/leadhunt.py --venture "$v" --seeds "$f" --search --max "$MAX" || true
+              echo "::endgroup::"
+            done
+          fi
+          python3 growth/leadhunt.py --status | tee status.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: leads
+          path: |
+            growth/leads/*.csv
+            growth/leads/store.jsonl
+            status.txt
+          retention-days: 30
+          if-no-files-found: warn

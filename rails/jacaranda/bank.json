@@ -88,5 +88,20 @@
    "tightbucket"
   ],
   "card": "https://jacaranda-labs.pages.dev/assets/cards/venture-tightbucket.png"
+ },
+ {
+  "kind": "value",
+  "work": "cadence",
+  "id": "work-cadence",
+  "kicker": "FREE TO READ · WORKING PAPER",
+  "headline": "Grounded Cadence",
+  "card_body": "Fact-bound content operations as a governance architecture",
+  "text": "Grounded Cadence: Fact-bound content operations as a governance architecture. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/grounded-cadence.html",
+  "link": "https://jacaranda-labs.pages.dev/read/grounded-cadence.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-cadence.png"
  }
 ]
