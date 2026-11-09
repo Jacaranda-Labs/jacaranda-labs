@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+
+# Lead research output: other people's contact details do not belong in a public repo.
+growth/leads/*
+!growth/leads/.gitkeep

@@ -97,7 +97,11 @@
   "line": "The product audit that reads the evidence.",
   "what": "A five-day written audit of what a product actually does: the claim on the page, the mechanism behind it, and the gap in writing. Three priced products — the audit, a self-check pack and a fix sprint — sold through the store.",
   "for": "Founders and product teams who need a working product distinguished from a convincing demo.",
-  "research": [],
+  "research": [
+   "mechanism-audit",
+   "the-mechanism-auditor",
+   "proof-of-mechanism"
+  ],
   "buy": "https://whop.com/checkout/plan_ad7rpY2pcvOSL/",
   "from": "$450",
   "buy_label": "Book the audit"

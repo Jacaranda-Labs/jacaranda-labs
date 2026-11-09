@@ -12,7 +12,8 @@
     "86 guided",
     "39 free tools",
     "no signup"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "op-masto",
@@ -26,7 +27,8 @@
     "86 guided",
     "39 free tools",
     "no signup"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "ma",
@@ -37,7 +39,8 @@
     "mechanism audit",
     "mechanism-audit",
     "product audit"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "ma-masto",
@@ -49,7 +52,8 @@
     "mechanism audit",
     "mechanism-audit",
     "product audit"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "attestos",
@@ -60,7 +64,8 @@
     "attestos",
     "free scanner",
     "verify call"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "attestos-masto",
@@ -72,7 +77,8 @@
     "attestos",
     "free scanner",
     "verify call"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "attestos-nostr",
@@ -88,7 +94,8 @@
     "attestos",
     "free scanner",
     "verify call"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "op-nostr",
@@ -103,7 +110,8 @@
    "markers": [
     "open practice",
     "open-practice"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "deskos-nostr",
@@ -118,7 +126,8 @@
    "markers": [
     "deskos",
     "desk-os"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "tightbucket-nostr",
@@ -132,7 +141,8 @@
    ],
    "markers": [
     "tightbucket"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "tapstall-nostr",
@@ -146,7 +156,8 @@
    ],
    "markers": [
     "tapstall"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
   },
   {
    "key": "ma-nostr",
@@ -160,7 +171,63 @@
    ],
    "markers": [
     "mechanism audit"
-   ]
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
+  },
+  {
+   "key": "tapstall",
+   "name": "Tapstall",
+   "platform": "bluesky",
+   "handle": "tapstall.bsky.social",
+   "markers": [
+    "tapstall",
+    "shop link",
+    "60 days"
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
+  },
+  {
+   "key": "tapstall-masto",
+   "name": "Tapstall",
+   "platform": "mastodon",
+   "handle": "tapstall@mastodon.social",
+   "instance": "mastodon.social",
+   "markers": [
+    "tapstall",
+    "shop link",
+    "60 days"
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
+  },
+  {
+   "key": "deskos",
+   "name": "DeskOS",
+   "platform": "bluesky",
+   "handle": "deskos.bsky.social",
+   "markers": [
+    "deskos",
+    "bid desk",
+    "tender"
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
+  },
+  {
+   "key": "tightbucket",
+   "name": "TightBucket",
+   "platform": "bluesky",
+   "handle": "tightbucket.bsky.social",
+   "markers": [
+    "tightbucket",
+    "leak audit"
+   ],
+   "rail_since": "2026-11-09T11:00:00Z"
+  },
+  {
+   "key": "ma-bsky",
+   "name": "Mechanism Audit",
+   "platform": "bluesky",
+   "handle": "mechanism-audit.bsky.social",
+   "rail_since": "2026-11-09T11:00:00Z"
   }
  ]
 }

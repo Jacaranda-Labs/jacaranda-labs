@@ -1,0 +1,25 @@
+{
+ "sent": [
+  "method",
+  "work-ledger"
+ ],
+ "last_at": "2026-11-09T15:55:36.468014Z",
+ "log": [
+  {
+   "id": "method",
+   "at": "2026-11-09T12:13:35.747258Z",
+   "rails": 4,
+   "where": {
+    "bsky": "at://did:plc:w4e2no5pydzd4wj34w5fw6nj/app.bsky.feed.post/3mzuvjto62m2y",
+    "nostr": "23ac87ed31e7ab83 (relay-accepted)",
+    "pinterest": "6af1b8a52c4acc7aad292a02",
+    "mastodon": "https://mastodon.social/@jacaranda_labs/117586424233003850"
+   }
+  },
+  {
+   "id": "work-ledger",
+   "at": "2026-11-09T15:55:36.468014Z",
+   "rails": 7
+  }
+ ]
+}

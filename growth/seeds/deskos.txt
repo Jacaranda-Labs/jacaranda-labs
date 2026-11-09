@@ -1,0 +1,3 @@
+# Hand-picked starting points for the DeskOS profile: firms that publish a supplier/procurement page.
+# Add domains here rather than widening the search query — a small list that is right beats a large
+# one that is approximate. Every entry is crawled politely and only public contact details are kept.

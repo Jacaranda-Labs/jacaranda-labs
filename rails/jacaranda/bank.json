@@ -1,0 +1,92 @@
+[
+ {
+  "kind": "value",
+  "work": "sovereign-micro-enterprise",
+  "id": "work-sovereign-micro-enterprise",
+  "kicker": "FREE TO READ · REPORT",
+  "headline": "The Sovereign Micro-Enterprise",
+  "card_body": "A Governance-First Architecture for Zero-Capital Agentic Businesses",
+  "text": "The Sovereign Micro-Enterprise: A Governance-First Architecture for Zero-Capital Agentic Businesses. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/sovereign-micro-enterprise.html",
+  "link": "https://jacaranda-labs.pages.dev/read/sovereign-micro-enterprise.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-sovereign-micro-enterprise.png"
+ },
+ {
+  "kind": "value",
+  "work": "ledger",
+  "id": "work-ledger",
+  "kicker": "FREE TO READ · BOOK",
+  "headline": "The Ledger and the Shopkeeper",
+  "card_body": "Building commerce for the markets the platforms forgot",
+  "text": "The Ledger and the Shopkeeper: Building commerce for the markets the platforms forgot. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/the-ledger-and-the-shopkeeper.html",
+  "link": "https://jacaranda-labs.pages.dev/read/the-ledger-and-the-shopkeeper.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-ledger.png"
+ },
+ {
+  "id": "venture-attestos",
+  "kind": "promo",
+  "venture": "attestos",
+  "kicker": "ATTESTOS · FROM $49",
+  "headline": "Bot checks your visitors never see",
+  "card_body": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles.",
+  "text": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles. For website owners and developers. From $49.\n\nhttps://attestos-edge.attestos.workers.dev/go/integrity",
+  "link": "https://attestos-edge.attestos.workers.dev/go/integrity",
+  "tags": [
+   "smallbusiness",
+   "attestos"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/venture-attestos.png"
+ },
+ {
+  "kind": "value",
+  "work": "intelligence",
+  "id": "work-intelligence",
+  "kicker": "FREE TO READ · BOOK",
+  "headline": "Intelligence, Data and Judgement",
+  "card_body": "An applied introduction to artificial intelligence, with a production case",
+  "text": "Intelligence, Data and Judgement: An applied introduction to artificial intelligence, with a production case. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/intelligence-data-and-judgement.html",
+  "link": "https://jacaranda-labs.pages.dev/read/intelligence-data-and-judgement.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-intelligence.png"
+ },
+ {
+  "kind": "value",
+  "work": "custody",
+  "id": "work-custody",
+  "kicker": "FREE TO READ · WORKING PAPER",
+  "headline": "Order Without Custody",
+  "card_body": "Governance-first design for merchant commerce rails in low-infrastructure economies",
+  "text": "Order Without Custody: Governance-first design for merchant commerce rails in low-infrastructure economies. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/order-without-custody.html",
+  "link": "https://jacaranda-labs.pages.dev/read/order-without-custody.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-custody.png"
+ },
+ {
+  "id": "venture-tightbucket",
+  "kind": "promo",
+  "venture": "tightbucket",
+  "kicker": "TIGHTBUCKET · FROM $49",
+  "headline": "Website leak audits",
+  "card_body": "Twenty-second audits that show where a website loses revenue, with the evidence and the fix",
+  "text": "Twenty-second audits that show where a website loses revenue, with the evidence and the fix. For online stores, SaaS and agencies. From $49.\n\nhttps://0x.tightbucket.workers.dev/go/leads",
+  "link": "https://0x.tightbucket.workers.dev/go/leads",
+  "tags": [
+   "smallbusiness",
+   "tightbucket"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/venture-tightbucket.png"
+ }
+]

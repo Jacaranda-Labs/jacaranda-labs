@@ -21,6 +21,7 @@ import sys
 import urllib.request
 
 SITE = "https://jacaranda-labs.pages.dev"
+UA = "jacaranda-ask/1.0 (+https://jacaranda-labs.pages.dev)"   # Cloudflare answers a bare urllib UA with 403
 ENDPOINT = "https://api.indexnow.org/indexnow"
 
 
@@ -41,7 +42,9 @@ def ping(batch: list[str], dry: bool = False) -> int:
     k = key()
     # the key file must already be live, or the ping is rejected — check before claiming success
     try:
-        live = urllib.request.urlopen(f"{SITE}/{k}.txt", timeout=20).read().decode().strip()
+        live = urllib.request.urlopen(
+            urllib.request.Request(f"{SITE}/{k}.txt", headers={"User-Agent": UA}),
+            timeout=20).read().decode().strip()
     except Exception as e:                                  # noqa: BLE001
         print(f"✗ key file is not live at {SITE}/{k}.txt ({e}) — deploy first")
         return 2
@@ -56,7 +59,8 @@ def ping(batch: list[str], dry: bool = False) -> int:
         print(json.dumps(payload, indent=1)[:400])
         return 0
     req = urllib.request.Request(ENDPOINT, data=json.dumps(payload).encode(),
-                                 headers={"content-type": "application/json; charset=utf-8"})
+                                 headers={"content-type": "application/json; charset=utf-8",
+                                          "User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             # 200 = accepted, 202 = accepted, key pending validation

@@ -469,5 +469,58 @@
   "availability": "available",
   "read": "/read/unchained-blueprint.html",
   "cover": "/covers/unchained-blueprint.jpg"
+ },
+ {
+  "id": "mechanism-audit",
+  "title": "The Mechanism Audit",
+  "subtitle": "Evidence-first review for products that act without an operator",
+  "kind": "research",
+  "series": "Jacaranda Labs Think Tank Working Paper 2026-04",
+  "edition": "Working paper; not peer reviewed",
+  "funded_by": "Jacaranda Labs AI Think Tank",
+  "case_disclosure": "The estate audited in this paper is owned by the author. Incidents are self-reported and drawn from seven ventures operated by the same owner; no independent replication is claimed.",
+  "blurb": "Software reviews were built on the assumption that a human performed every action and a second human watched. Products that commit, publish and invoice on their own have removed the witness, and the instruments of review — the demo, the screenshot, the QA script — cannot certify a mechanism nobody saw run. This paper sets out a method for auditing that class of product: a claim ledger, a mechanism map, an evidence trail, a detector and a response, with the requirement that a stranger can re-run all five. Six failure signatures are formalised — the green run, the allowlist, the credential that authenticates, the retry that published twice, the fallback that looked like output, the origin that had not propagated — each with a production incident attached from one week of operating seven ventures, and each mapped to one of six gap classes: claim–evidence, scope, capability, ownership, propagation, attribution.",
+  "facts": [
+   "3,774 words",
+   "6 failure signatures",
+   "2 incident tables"
+  ],
+  "toc": [],
+  "formats": {
+   "HTML": "https://jacaranda-labs.pages.dev/read/mechanism-audit.html",
+   "MD": "https://jacaranda-labs.pages.dev/read/mechanism-audit.md"
+  },
+  "licence": "CC BY 4.0",
+  "year": "2026",
+  "availability": "available",
+  "read": "/read/mechanism-audit.html",
+  "cover": "/covers/mechanism-audit.jpg"
+ },
+ {
+  "id": "the-mechanism-auditor",
+  "title": "The Mechanism Auditor",
+  "subtitle": "How to review a product that runs without you",
+  "kind": "book",
+  "series": null,
+  "edition": "First edition",
+  "funded_by": "Jacaranda Labs Press · Harare",
+  "case_disclosure": "The failures described are the author's own, in an estate of seven ventures he owns. They are disclosed as incidents, not as third-party case studies.",
+  "blurb": "A trade book for the person who is now the only witness to software that acts on its own. Part one is the loss: the demo was a promise, and a green tick says less than everyone believes. Part two is the instrument: the claim ledger, the mechanism map, the evidence trail, the detector and the response, each with the failure it is built to catch. Part three is the field guide — six signatures, from the green run to the origin that had not yet propagated, taken from one week of ordinary operation across seven products. Part four is the practice, including a first week in the order it happened. Part five is the business of auditing: what to charge, what to refuse. Part six is the twelve rules and the uncomfortable arithmetic that follows from them.",
+  "facts": [
+   "6,826 words",
+   "20 chapters",
+   "12 rules",
+   "10 mutation tests"
+  ],
+  "toc": [],
+  "formats": {
+   "HTML": "https://jacaranda-labs.pages.dev/read/the-mechanism-auditor.html",
+   "MD": "https://jacaranda-labs.pages.dev/read/the-mechanism-auditor.md"
+  },
+  "licence": "CC BY 4.0",
+  "year": "2026",
+  "availability": "available",
+  "read": "/read/the-mechanism-auditor.html",
+  "cover": "/covers/the-mechanism-auditor.jpg"
  }
 ]
