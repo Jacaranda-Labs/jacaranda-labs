@@ -59,7 +59,8 @@ class Post:
         return self.label or classify(self.text)
 
 
-def classify(text: str, markers: list[str]) -> str:
+def classify(text: str, markers: list[str] | None = None) -> str:
+    markers = markers or []
     """promo = it names the product and asks for something. Everything else is value."""
     t = text or ""
     names = any(m.lower() in t.lower() for m in markers)
@@ -85,12 +86,16 @@ def fetch_bluesky(ident: dict, n: int) -> list[Post]:
             continue
         p = item["post"]
         rec = p["record"]
-        emb = (rec.get("embed") or {}).get("$type", "")
-        has_img = "images" in emb
+        embed = rec.get("embed") or {}
+        emb = embed.get("$type", "")
+        # a link card with a thumbnail is an image on the post: DeskOS and the other presses all
+        # publish through that path, and counting only `images[]` reported them as text-only.
+        thumb = bool((embed.get("external") or {}).get("thumb"))
+        has_img = "images" in emb or thumb
         out.append(Post(
             id=p["uri"].rsplit("/", 1)[-1], platform="bluesky", at=p["indexedAt"][:16],
             text=rec.get("text", ""), has_image=has_img,
-            image_kind="embed" if has_img else ("card" if "external" in emb else ""),
+            image_kind=("images" if "images" in emb else "thumb") if has_img else "",
             url=f"https://bsky.app/profile/{ident['handle']}/post/{p['uri'].rsplit('/', 1)[-1]}",
         ))
     return out
@@ -179,6 +184,8 @@ class Verdict:
     posts: list[Post] = field(default_factory=list)
     problems: list[str] = field(default_factory=list)
     error: str = ""
+    legacy: list = field(default_factory=list)   # published before this identity had a rail
+    note: str = ""
 
     @property
     def n(self) -> int:
@@ -205,6 +212,20 @@ class Verdict:
         return not self.error and not self.problems
 
 
+def _epoch(stamp: str) -> int:
+    """A post's time as an epoch second. Bluesky/Mastodon posts carry ISO text, Nostr an epoch."""
+    try:
+        return int(float(stamp))
+    except (TypeError, ValueError):
+        pass
+    from datetime import datetime, timezone
+    s = str(stamp).replace("Z", "+00:00")
+    try:
+        return int(datetime.fromisoformat(s).timestamp())
+    except ValueError:
+        return 0
+
+
 def judge(ident: dict, posts: list[Post], window: int = WINDOW) -> Verdict:
     v = Verdict(ident=ident["name"], platform=ident["platform"])
     relay_errors = [p for p in posts if p.label.startswith("__relay_error__")]
@@ -217,6 +238,21 @@ def judge(ident: dict, posts: list[Post], window: int = WINDOW) -> Verdict:
         return v
 
     posts = sorted(posts, key=lambda p: p.at, reverse=True)[:window]
+
+    # Posts written before this identity had a rail are history, not a live breach: nothing can
+    # retro-fit an image onto them, and a build that stays red forever is a build nobody reads.
+    # They are still listed, with URLs, so they can be deleted — they just do not fail the run.
+    since = ident.get("rail_since")
+    legacy: list[Post] = []
+    if since:
+        cutoff = _epoch(since)
+        legacy = [p for p in posts if _epoch(p.at) < cutoff]
+        posts = [p for p in posts if _epoch(p.at) >= cutoff]
+    v.legacy = legacy
+    if not posts:
+        v.note = (f"nothing published since the rail went live ({since}); "
+                  f"{len(legacy)} older post(s) are history, not a breach")
+        return v
     for p in posts:                                   # manual overrides win over the heuristic
         if p.id and p.id in (ident.get("promo_ids") or []):
             p.label = "promo"
@@ -232,8 +268,10 @@ def judge(ident: dict, posts: list[Post], window: int = WINDOW) -> Verdict:
         v.problems.append(f"{len(bare)} of {len(posts)} posts carry no image "
                           f"(most recent: {bare[0].at} {bare[0].url or '(no url)'})")
 
-    # rule 2 — value outnumbers promo at least 2:1
-    if v.promo and (v.value / v.promo) < MIN_RATIO:
+    # rule 2 — value outnumbers promo at least 2:1.
+    # Not judged on a two-post window: 1 value + 1 promo is a 1:1 ratio that says nothing, and a
+    # press that posted twice today should not be called a failure for it.
+    if len(posts) >= 3 and v.promo and (v.value / v.promo) < MIN_RATIO:
         v.problems.append(f"value:promo is {v.value}:{v.promo} over the last {len(posts)} posts, "
                           f"needs at least {int(MIN_RATIO)}:1")
     # a run of promos is a violation even if the window average looks fine
@@ -249,16 +287,21 @@ def judge(ident: dict, posts: list[Post], window: int = WINDOW) -> Verdict:
 # --------------------------------------------------------------------------- report
 def render(results: list[Verdict], markdown: bool = False) -> str:
     if markdown:
-        lines = ["| identity | platform | posts | with image | value | promo | value:promo | verdict |",
-                 "|---|---|---|---|---|---|---|---|"]
+        lines = ["| identity | platform | posts | with image | value | promo | value:promo | legacy | verdict |",
+                 "|---|---|---|---|---|---|---|---|---|"]
         for v in results:
             if v.error:
-                lines.append(f"| {v.ident} | {v.platform} | — | — | — | — | — | **{v.error}** |")
+                lines.append(f"| {v.ident} | {v.platform} | — | — | — | — | — | — | **{v.error}** |")
                 continue
             ratio = "∞" if v.promo == 0 else f"{v.ratio:.1f}:1"
             mark = "pass" if v.ok else "**fail**"
             lines.append(f"| {v.ident} | {v.platform} | {v.n} | {v.with_image}/{v.n} | {v.value} | "
-                         f"{v.promo} | {ratio} | {mark} |")
+                         f"{v.promo} | {ratio} | {len(v.legacy)} | {mark} |")
+        hist = [v for v in results if v.legacy]
+        if hist:
+            lines += ["", "**History (pre-rail, not enforced)**", ""]
+            lines += [f"- {v.ident}: {len(v.legacy)} post(s), "
+                      f"{sum(1 for p in v.legacy if not p.has_image)} without an image" for v in hist]
         fails = [p for v in results for p in v.problems]
         errs = [f"{v.ident}: {v.error}" for v in results if v.error]
         if fails or errs:
@@ -286,6 +329,17 @@ def render(results: list[Verdict], markdown: bool = False) -> str:
             for p in v.posts:
                 out.append(f"   {p.at:<12} {p.kind:<5} img={'yes' if p.has_image else 'NO ':<3} "
                            f"{p.text[:64].replace(chr(10), ' ')}")
+    legacy = [v for v in results if v.legacy]
+    if legacy:
+        out.append("")
+        out.append("HISTORY — published before the rail was in code, reported but not enforced")
+        for v in legacy:
+            out.append(f"{v.ident} — {len(v.legacy)} post(s)")
+            for p in v.legacy[-6:]:
+                out.append(f"   {p.at:<12} img={'yes' if p.has_image else 'NO ':<3} {p.text[:56]}")
+                if not p.has_image and p.url:
+                    out.append(f"   {'':<12} delete: {p.url}")
+
     problems = [f"{v.ident}: {v.error}" for v in results if v.error]
     problems += [f"{v.ident}: {p}" for v in results for p in v.problems]
     out.append("")
