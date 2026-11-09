@@ -25,6 +25,10 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 STATE = HERE / "press-state.json"
 CARDS = "https://jacaranda-labs.pages.dev/assets/cards"
+# Cards are committed, so they are also on the repo and behind jsDelivr. The site deploy can lag
+# (and did: a fresh card 404'd on the apex for minutes while the deployment already served it), so
+# every post names both and takes whichever answers first.
+CARD_MIRROR = "https://cdn.jsdelivr.net/gh/Jacaranda-Labs/jacaranda-labs@main/assets/cards"
 SITE = "https://jacaranda-labs.pages.dev"
 VENTURES = f"{SITE}/#ventures"
 PUBLICATIONS = f"{SITE}/publications/"
@@ -197,9 +201,11 @@ def publish(post: dict, dry: bool = False) -> int:
     if not post:
         print("the bank is spent — write the next post before the queue runs dry", file=sys.stderr)
         return 3
-    print(f"→ {post['id']} ({post['kind']}) card={post['card'].rsplit('/', 1)[-1]}")
+    name = post["card"].rsplit("/", 1)[-1]
+    print(f"→ {post['id']} ({post['kind']}) card={name}")
+    chain = f"{post['card']} {CARD_MIRROR}/{name}"          # site first, mirror second
     res = social.post(post["text"], link=post.get("link", ""), tags=post.get("tags", []),
-                      image=post["card"], dry=dry)
+                      image=chain, dry=dry)
     good = sum(1 for ok, _ in res.values() if ok)
     for rail, (ok, detail) in res.items():
         print(f"  {'OK  ' if ok else 'FAIL'} {rail:9s} {detail}")

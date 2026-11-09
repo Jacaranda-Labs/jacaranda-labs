@@ -78,8 +78,10 @@ def _image(text: str, link: str = "", override: str = "") -> "postimage.Img":
         want = hint.group(1).strip()
         if not want.startswith(("http://", "https://")):
             want = SITE + "/assets/" + want
-    url = want or CARD
-    return postimage.resolve_chain([url, CARD_FALLBACK], alt, FALLBACK_CARD)
+    # a card can name a chain — "site url, then mirror" — so a deploy that is still propagating
+    # (or a Pages project that has stopped promoting) cannot stop a post going out
+    urls = [u.strip() for u in re.split(r"[\s,]+", want) if u.strip()] or [CARD]
+    return postimage.resolve_chain(urls + [CARD_FALLBACK], alt, FALLBACK_CARD)
 
 
 def _post_raw(url: str, data: bytes, headers: dict) -> dict:
