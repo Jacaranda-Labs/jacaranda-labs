@@ -35,8 +35,22 @@ jobs:
           python-version: "3.12"
       - name: Install
         run: pip install pillow websocket-client coincurve
+      - name: Cards
+        run: |
+          # the seed cards are not committed (7 MB of PNG that never changes), so render any that
+          # are missing. Rendering is deterministic: on a checkout that has them this is a no-op.
+          set -euo pipefail
+          missing=0
+          for id in $(python3 -c "import sys;sys.path.insert(0,'rails/jacaranda');import press;print(' '.join(p['id'] for p in press.SEED))"); do
+            [ -s "assets/cards/$id.png" ] || missing=1
+          done
+          if [ "$missing" = "1" ]; then python3 tools/social_cards.py; fi
       - name: Selftest the bank
-        run: python3 rails/jacaranda/press.py --selftest
+        run: |
+          python3 rails/jacaranda/press.py --selftest
+          python3 rails/jacaranda/refill.py --selftest
+      - name: Top up the bank
+        run: python3 rails/jacaranda/refill.py --ensure 6
       - name: Publish
         env:
           JACARANDA_BSKY_ID: ${{ secrets.JACARANDA_BSKY_ID }}
@@ -65,14 +79,14 @@ jobs:
           if [ -n "$ONCE" ]; then
             python3 rails/jacaranda/press.py --post "$ONCE" $ARGS
           else
-            python3 rails/jacaranda/press.py --due $ARGS
+            python3 rails/jacaranda/press.py --due --no-refill $ARGS
           fi
       - name: Remember what went out
         run: |
-          if [ -n "$(git status --porcelain rails/jacaranda/press-state.json rails/jacaranda/outbox)" ]; then
+          if [ -n "$(git status --porcelain rails/jacaranda/press-state.json rails/jacaranda/outbox rails/jacaranda/bank.json assets/cards)" ]; then
             git config user.name "Jacaranda Labs"
             git config user.email "jacarandalabs@atomicmail.io"
-            git add rails/jacaranda/press-state.json rails/jacaranda/outbox
-            git commit -m "press: state and handoff drafts after $(date -u +%FT%TZ)"
+            git add rails/jacaranda/press-state.json rails/jacaranda/outbox rails/jacaranda/bank.json assets/cards
+            git commit -m "press: state, bank and drafts after $(date -u +%FT%TZ)"
             git push
           fi

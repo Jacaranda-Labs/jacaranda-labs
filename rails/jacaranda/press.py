@@ -32,7 +32,7 @@ DISCLOSURE = f"{SITE}/about/"
 
 # kind: "value" is worth reading even if you never buy anything; "promo" asks.
 # card: a real rendered card. No post ships without one — enforced in social.post().
-BANK = [
+SEED = [
     dict(id="method", kind="value", card=f"{CARDS}/method.png",
          kicker="CONSTRAINT-NATIVE SOFTWARE",
          headline="Built by agents instead of a team.",
@@ -123,8 +123,31 @@ BANK = [
 ]
 
 # value first, and never two promos adjacent. Written out, not computed, so a diff shows the order.
-ROTATION = ["method", "promo-portfolio", "ledger", "failure", "promo-publications", "harare",
-            "disclosure", "promo-ventures", "numbers", "reading", "promo-read", "open"]
+SEED_ROTATION = ["method", "promo-portfolio", "ledger", "failure", "promo-publications", "harare",
+                 "disclosure", "promo-ventures", "numbers", "reading", "promo-read", "open"]
+
+# The seed bank is written by hand and runs out after about a fortnight. refill.py tops it up from the
+# site's own data — public works only, and one promo per venture — into bank.json. BANK and ROTATION
+# here are seed + generated, in that order, so the hand-written twelve always go out first.
+BANK_FILE = HERE / "bank.json"
+
+
+def reload_bank() -> None:
+    global BANK, ROTATION
+    gen: list[dict] = []
+    if BANK_FILE.exists():
+        try:
+            gen = json.loads(BANK_FILE.read_text())
+        except Exception as exc:                                   # a broken bank must not stop a post
+            print(f"bank.json unreadable ({exc}) — running on the seed bank", file=sys.stderr)
+            gen = []
+    for g in gen:
+        g.setdefault("kind", "value")
+    BANK = SEED + gen
+    ROTATION = SEED_ROTATION + [g["id"] for g in gen if g["id"] not in SEED_ROTATION]
+
+
+reload_bank()
 
 CADENCE_HOURS = 30          # same rhythm as the ventures: present, not a firehose
 
@@ -180,6 +203,10 @@ def publish(post: dict, dry: bool = False) -> int:
     good = sum(1 for ok, _ in res.values() if ok)
     for rail, (ok, detail) in res.items():
         print(f"  {'OK  ' if ok else 'FAIL'} {rail:9s} {detail}")
+    if not good and not dry and res and all(
+            ("no image" in d) or ("404" in d) or ("not an image" in d) for _, d in res.values()):
+        print("  … nothing sent: the card is not deployed yet. The next hourly run retries.")
+        return 0
     if not dry and good:
         st = load_state()
         st["sent"] = list(st.get("sent", [])) + [post["id"]]
@@ -187,6 +214,18 @@ def publish(post: dict, dry: bool = False) -> int:
         st.setdefault("log", []).append({"id": post["id"], "at": st["last_at"], "rails": good})
         save_state(st)
     return 0 if good else 1
+
+
+def _top_up(keep: int, skip: bool = False) -> None:
+    """Keep the bank ahead of the cursor, so the rail never stops for want of a post."""
+    if skip:
+        return
+    try:
+        import refill
+        refill.refill(keep, quiet=True)
+        reload_bank()
+    except Exception as exc:                                       # top-up must never block a post
+        print(f"refill skipped: {exc!r}", file=sys.stderr)
 
 
 def plan(st: dict) -> None:
@@ -242,6 +281,9 @@ def main() -> int:
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--refill", type=int, default=0, metavar="N",
+                    help="top the generated bank up to N unposted posts, then continue")
+    ap.add_argument("--no-refill", action="store_true", help="never top up automatically")
     a = ap.parse_args()
     st = load_state()
 
@@ -251,11 +293,13 @@ def main() -> int:
         plan(st)
         return 0
     if a.post:
+        reload_bank()                       # bank.json may have grown since import
         return publish(by_id(a.post), a.dry)
     if a.due:
         if not due(st):
             print(f"not due yet (last {st.get('last_at')}, cadence {CADENCE_HOURS}h) — nothing sent")
             return 0
+        _top_up(a.refill or 3, skip=a.no_refill)
         return publish(next_post(st), a.dry)
     ap.print_help()
     return 2
