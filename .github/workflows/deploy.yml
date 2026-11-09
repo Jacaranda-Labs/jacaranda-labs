@@ -39,6 +39,12 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4 pages deploy dist --project-name jacaranda-labs --branch main --commit-dirty=true
 
+      - name: Prove the public address serves this build
+        # The estate's own S6 signature: a deployment reports success while the address a reader
+        # uses serves an older build. Pages propagation is normal; silence is not, so this fails
+        # loudly if the origin is still serving something else after a few minutes.
+        run: python3 tools/deploy_verify.py --wait 240 --interval 30
+
       - name: Deploy static mirror to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         if: github.event_name == 'push'
