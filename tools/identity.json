@@ -161,6 +161,56 @@
    "markers": [
     "mechanism audit"
    ]
+  },
+  {
+   "key": "tapstall",
+   "name": "Tapstall",
+   "platform": "bluesky",
+   "handle": "tapstall.bsky.social",
+   "markers": [
+    "tapstall",
+    "shop link",
+    "60 days"
+   ]
+  },
+  {
+   "key": "tapstall-masto",
+   "name": "Tapstall",
+   "platform": "mastodon",
+   "handle": "tapstall@mastodon.social",
+   "instance": "mastodon.social",
+   "markers": [
+    "tapstall",
+    "shop link",
+    "60 days"
+   ]
+  },
+  {
+   "key": "deskos",
+   "name": "DeskOS",
+   "platform": "bluesky",
+   "handle": "deskos.bsky.social",
+   "markers": [
+    "deskos",
+    "bid desk",
+    "tender"
+   ]
+  },
+  {
+   "key": "tightbucket",
+   "name": "TightBucket",
+   "platform": "bluesky",
+   "handle": "tightbucket.bsky.social",
+   "markers": [
+    "tightbucket",
+    "leak audit"
+   ]
+  },
+  {
+   "key": "ma-bsky",
+   "name": "Mechanism Audit",
+   "platform": "bluesky",
+   "handle": "mechanism-audit.bsky.social"
   }
  ]
 }

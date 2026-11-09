@@ -24,7 +24,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-ART = ROOT / "assets" / "art" / "hero-bloom.png"
+ART = ROOT / "assets" / "art" / "jacaranda-hero-v1.jpg"
 
 INK = (10, 7, 16)
 VIOLET = (139, 92, 246)
@@ -117,30 +117,22 @@ def avatar(out: Path, px: int = 1000) -> Path:
 def banner(out: Path, w: int, h: int) -> Path:
     base = Image.new("RGB", (w, h), INK).convert("RGBA")
 
-    # the artwork, cropped to the right third and faded into the ink
+    # the artwork lives in the right 58% and fades into ink, so no petal ever sits under the type
     if ART.exists():
+        aw = int(w * .58)
         art = Image.open(ART).convert("RGB")
-        scale = max((w * .62) / art.width, h / art.height)
+        scale = max(aw / art.width, h / art.height)
         art = art.resize((round(art.width * scale), round(art.height * scale)), Image.LANCZOS)
-        art = art.crop((art.width - int(w * .62), (art.height - h) // 2,
-                        art.width, (art.height - h) // 2 + h))
-        art = art.resize((w, h), Image.LANCZOS)
-        art = art.convert("RGBA")
-        # horizontal fade: opaque at the right edge, invisible where the type sits
-        fade = Image.linear_gradient("L").rotate(90, expand=True).resize((w, h))
+        left = (art.width - aw) // 2
+        top = int((art.height - h) * .35)
+        art = art.crop((left, top, left + aw, top + h))
+        art = ImageEnhance.Brightness(art.convert("RGB")).enhance(.92) if "ImageEnhance" in globals() else art
+        canvas = Image.new("RGB", (w, h), INK)
+        canvas.paste(art, (w - aw, 0))
+        fade = Image.linear_gradient("L").rotate(90, expand=True).resize((aw, h))
         mask = Image.new("L", (w, h), 0)
-        mask.paste(fade.crop((int(w * .38), 0, w, h)), (int(w * .38), 0))
-        mask = mask.filter(ImageFilter.GaussianBlur(w // 300))
-        # keep it dim under the text side
-        veil = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-        vd = ImageDraw.Draw(veil)
-        for x in range(w):
-            t = x / w
-            a = int(215 * max(0.0, 1 - t * 1.25))
-            vd.line([(x, 0), (x, h)], fill=(10, 7, 16, a))
-        art.putalpha(mask)
-        base = Image.alpha_composite(base, art)
-        base = Image.alpha_composite(base, veil)
+        mask.paste(fade.point(lambda v: min(255, int(v * 2.1))), (w - aw, 0))
+        base = Image.composite(canvas, base, mask)
 
     base = Image.alpha_composite(base, diagonal_glow((w, h), (int(w * .13), int(h * .2)), int(h * .95), VIOLET, 130))
 
@@ -172,7 +164,7 @@ def banner(out: Path, w: int, h: int) -> Path:
             size -= 2
         return ImageFont.truetype(kind, min_px)
 
-    avail = w - pad * 2 - int(w * .18)          # leave the artwork its right-hand room
+    avail = int(w * .54)                        # the photograph owns the right 58%
     line1_a, line1_b = "Six businesses became ", "seven."
     f_line = fitted(line1_a + line1_b, SERIF, int(h * .15), int(h * .07), avail)
     y = int(h * .47)
@@ -198,13 +190,26 @@ def banner(out: Path, w: int, h: int) -> Path:
     return p
 
 
+def linkedin(out: Path, w: int = 1584, h: int = 396) -> Path:
+    """LinkedIn lays the avatar over the banner's bottom-left, so this variant keeps that corner empty."""
+    im = banner(out, w, h)
+    src = Image.open(im).convert("RGB")
+    # shift the whole composition right so a 152px avatar circle cannot sit on the type
+    art = Image.new("RGB", (w, h), INK)
+    art.paste(src.crop((0, 0, w - 190, h)), (190, 0))
+    p = out / f"banner-linkedin-{w}x{h}.png"
+    art.quantize(colors=192, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG).save(p, optimize=True)
+    im.unlink()                                    # the square banner it borrowed is not needed
+    return p
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT.parent / "brand" / "social"))
     a = ap.parse_args()
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    made = [avatar(out), banner(out, 1500, 500), banner(out, 3000, 1000)]
+    made = [avatar(out), banner(out, 1500, 500), banner(out, 3000, 1000), linkedin(out)]
     for p in made:
         im = Image.open(p)
         print(f"  {p.name:<24} {im.width}x{im.height}  {p.stat().st_size // 1024} KB")

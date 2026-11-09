@@ -8,12 +8,12 @@ SANS = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 SANSB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 
-def cover(path, w, h):
+def cover(path, w, h, dx: float = .5, dy: float = .5):
     im = Image.open(path).convert("RGB")
     s = max(w / im.width, h / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    x = (im.width - w) // 2
-    y = (im.height - h) // 2
+    x = int((im.width - w) * dx)
+    y = int((im.height - h) * dy)
     return im.crop((x, y, x + w, y + h))
 
 
@@ -30,13 +30,21 @@ def grad(w, h, stops):
 
 
 def main():
-    base = cover("assets/art/hero-bloom.png", W, H)
-    # darken left, keep the bloom on the right
+    # the photograph sits in the right 60% and fades into ink, so the headline is never over petals
+    base = Image.new("RGB", (W, H), INK)
+    art = cover("assets/art/jacaranda-hero-v1.jpg", int(W * .72), H, dx=.55)
+    fade = Image.linear_gradient("L").rotate(90, expand=True).resize((art.width, H))
+    mask = Image.new("L", (W, H), 0)
+    mask.paste(fade.point(lambda v: min(255, int(v * 1.9))), (W - art.width, 0))
+    art_canvas = Image.new("RGB", (W, H), INK)
+    art_canvas.paste(art, (W - art.width, 0))
+    base = Image.composite(art_canvas, base, mask)
+
     veil = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     vd = ImageDraw.Draw(veil)
     for x in range(W):                                   # horizontal scrim
         t = x / W
-        a = int(246 * max(0.0, 1 - t * 1.55) + 40)
+        a = int(215 * max(0.0, 1 - t * 1.35) + 12)
         vd.line([(x, 0), (x, H)], fill=(10, 7, 16, a))
     top = grad(W, H, [(0, 150), (0.35, 30), (0.72, 60), (1, 210)])
     veil = Image.alpha_composite(veil, Image.merge("RGBA", (

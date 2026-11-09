@@ -142,6 +142,19 @@ def state_pill(w) -> str:
     }[s]
 
 
+def photo_block(name: str, alt: str, cls: str = "hero-media", low: bool = False) -> str:
+    """A hero photograph: one decode, no autoplay, no 500 KB of media to fail on a phone.
+
+    The motion that used to be a video is a 28-second CSS drift on the image itself, which the
+    compositor can run without touching layout or the main thread. A phone downloads the 960px
+    version instead of the 1920px one, and anybody who has asked for reduced motion gets a still.
+    """
+    srcset = (f'srcset="/assets/art/{name}-960.jpg 960w, /assets/art/{name}.jpg 1920w" '
+              f'sizes="100vw" ' if low else "")
+    return (f'<div class="{cls}"><img src="/assets/art/{name}.jpg" {srcset} '
+            f'width="1920" height="1080" alt="{e(alt)}" fetchpriority="high" decoding="async"></div>')
+
+
 def video_block(name: str, alt: str, cls: str = "hero-media", poster_dir="art") -> str:
     base = f"/assets/{poster_dir}/{name}"
     return f'''<div class="{cls}">
@@ -269,7 +282,7 @@ def venture_data(v, i: int) -> str:
 
 def build_home() -> dict:
     hero = f"""<section class="hero">
-{video_block("hero", "A jacaranda blossom in violet light")}
+{photo_block("hero", "Jacaranda mimosifolia blossoms: violet trumpet flowers on a dark branch", low=True)}
 <div class="wrap hero-inner">
 <p class="kicker rv">{LOCATION} · since 2026</p>
 <h1 class="rv" data-d="1">Six businesses became <em>seven</em>.<br>One operator.<br>A written record of both.</h1>
@@ -588,8 +601,8 @@ customer outcomes, no certification. Works that study a venture say so in their 
 
 
 def build_404() -> dict:
-    body = f"""<section class="workhero"><div class="bg">{video_block("hero", "", cls="", poster_dir="art")}
-<style>.workhero .bg video{{width:100%;height:100%;object-fit:cover}}</style></div>
+    body = f"""<section class="workhero"><div class="bg">{photo_block("hero", "", cls="")}
+<style>.workhero .bg img{{width:100%;height:100%;object-fit:cover}}</style></div>
 <div class="wrap"><p class="kicker">404</p><h1>That page is not here.</h1>
 <p class="lede">It may have moved when the three catalogues were merged into one site.</p>
 <div class="hero-cta"><a class="btn" href="/">Laboratories</a>
@@ -737,7 +750,7 @@ def run_checks(pages: dict) -> bool:
                 problems.append(f"{w['id']}: {key} {rel} missing from dist/")
         if w.get("read") and w["read"] not in pages[p]:
             problems.append(f"{w['id']}: readable edition not linked from its page")
-    for asset in ("art/hero-poster.jpg", "art/hero.mp4", "art/hero.webm", "og.png"):
+    for asset in ("art/hero.jpg", "art/hero-960.jpg", "og.png"):
         if not (DIST / "assets" / asset).is_file():
             problems.append(f"missing media: assets/{asset}")
     for p in problems:
