@@ -25,6 +25,7 @@ skip, not an exception.
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 import base64
 import hashlib
 import hmac
@@ -46,6 +47,7 @@ except ImportError:  # pragma: no cover - the module sits next to this file in t
     import postimage
 
 UA = "Mozilla/5.0 (compatible; Jacaranda Labs/1.0; +https://jacaranda-labs.pages.dev)"
+REDDIT_UA = "web:jacaranda-labs:1.0 (by /u/Jacaranda_labs)"
 SITE = os.environ.get("JACARANDA_SITE_URL", "https://jacaranda-labs.pages.dev").rstrip("/")
 BRAND = "https://king-kunta-cpu.github.io/jacaranda/brand"
 CARD = BRAND + "/og-banner.png"
@@ -408,6 +410,144 @@ def post_tumblr(text: str, tags: list[str] | None = None,
     return True, str((resp.get("response") or {}).get("id", "posted"))
 
 
+# ----------------------------------------------------------------------------- reddit
+def reddit_armed() -> bool:
+    return all(env("JACARANDA_REDDIT_CID", "JACARANDA_REDDIT_CSECRET",
+                   "JACARANDA_REDDIT_USER", "JACARANDA_REDDIT_PASS"))
+
+
+def _reddit_token() -> tuple[str, str]:
+    """Client id/secret + username/password -> a bearer token for the submitting identity."""
+    cid, csec, user, pw = env("JACARANDA_REDDIT_CID", "JACARANDA_REDDIT_CSECRET",
+                              "JACARANDA_REDDIT_USER", "JACARANDA_REDDIT_PASS")
+    basic = base64.b64encode(f"{cid}:{csec}".encode()).decode()
+    st, body = _req("https://www.reddit.com/api/v1/access_token",
+                    urllib.parse.urlencode({"grant_type": "password", "username": user,
+                                            "password": pw, "scope": "submit read"}).encode(),
+                    {"Authorization": f"Basic {basic}",
+                     "Content-Type": "application/x-www-form-urlencoded",
+                     "User-Agent": REDDIT_UA}, "POST")
+    if st != 200 or not isinstance(body, dict) or not body.get("access_token"):
+        return "", f"token {st}: {str(body)[:120]}"
+    return str(body["access_token"]), user
+
+
+def post_reddit(text: str, link: str = "", image: "postimage.Img | None" = None) -> tuple[bool, str]:
+    """A self post on the venture's own profile — u/<user> — never a cold drop into someone's sub.
+
+    Reddit's rules on self-promotion are the reason this is pinned to the profile: a brand posting
+    links into a community it does not take part in is removed and can be banned. The profile is
+    ours, it is indexable, and it keeps the rail honest.
+    """
+    if not reddit_armed():
+        return False, "skip: JACARANDA_REDDIT_{CID,CSECRET,USER,PASS} not set"
+    tok, user = _reddit_token()
+    if not tok:
+        return False, user
+    sub = (os.environ.get("JACARANDA_REDDIT_SUB") or f"u_{user}").strip()
+    title = _tumblr_title(text)
+    body = text if not link or link in text else f"{text}\n\n{link}"
+    if image is not None and getattr(image, "url", ""):
+        body += f"\n\n[card]({image.url})"
+    st, resp = _req("https://oauth.reddit.com/api/submit",
+                    urllib.parse.urlencode({"sr": sub, "kind": "self", "title": title[:300],
+                                            "text": body, "api_type": "json",
+                                            "sendreplies": "true"}).encode(),
+                    {"Authorization": f"bearer {tok}",
+                     "Content-Type": "application/x-www-form-urlencoded",
+                     "User-Agent": REDDIT_UA}, "POST")
+    if st not in (200, 201):
+        return False, f"submit {st}: {str(resp)[:150]}"
+    errs = (((resp or {}).get("json") or {}).get("errors") or []) if isinstance(resp, dict) else []
+    if errs:
+        return False, f"submit refused: {errs[0][1] if errs and len(errs[0]) > 1 else errs}"[:150]
+    url = (((resp or {}).get("json") or {}).get("data") or {}).get("url", "posted")
+    return True, str(url)
+
+
+# ----------------------------------------------------------------------------- handoff rails
+# Medium stopped issuing integration tokens (January 2025) and Quora has never had a write API.
+# Both are still real surfaces: a handoff rail writes the post, the card and the exact next click
+# into rails/jacaranda/outbox/<rail>/ so the copy is never lost and never has to be rewritten by
+# hand. The workflow commits the outbox, so a dead runner cannot swallow a draft.
+OUTBOX = os.environ.get("JACARANDA_OUTBOX") or os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "rails", "jacaranda", "outbox")
+
+HANDOFF = {
+    "medium": {
+        "why": "Medium closed its API to new integrations in January 2025. Import the article URL "
+               "instead: Medium pulls the page, keeps our canonical, and the story lands formatted.",
+        "steps": ["open https://medium.com/p/import",
+                  "paste the canonical URL above",
+                  "check the title, subhead and the card image came through",
+                  "publish, and leave the canonical pointing at jacaranda-labs.pages.dev"],
+    },
+    "quora": {
+        "why": "Quora has no write API. Answer from the account the sheet already has: the draft "
+               "below is written to be pasted as an answer, and the question is chosen to be one "
+               "a buyer actually types.",
+        "steps": ["open https://www.quora.com/search?q=" ,
+                  "pick the question closest to the title",
+                  "paste the body, put the link on its own line at the end",
+                  "add the card as an image if the answer box offers it"],
+    },
+}
+
+
+def _slug(text: str, n: int = 48) -> str:
+    words = "".join(c if c.isalnum() or c in " -" else " " for c in text.split("\n")[0]).split()
+    return "-".join(words)[:n].strip("-").lower() or "post"
+
+
+def _outbox(rail: str, text: str, link: str = "", image: "postimage.Img | None" = None,
+            tags: list[str] | None = None) -> tuple[bool, str]:
+    spec = HANDOFF[rail]
+    now = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    d = os.path.join(OUTBOX, rail)
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, f"{now}-{_slug(text)}.md")
+    canonical = link or SITE
+    body = text if not link or link in text else f"{text}\n\n{link}"
+    steps = list(spec["steps"])
+    steps[0] = steps[0] + urllib.parse.quote(_tumblr_title(text))
+    card_url = getattr(image, "url", "") or "(bundled fallback: rails/jacaranda/fallback-card.png)"
+    doc = [
+        "---",
+        f"platform: {rail}",
+        f"created: {now}",
+        f"canonical: {canonical}",
+        f"card: {card_url}",
+        f"tags: {', '.join(t.replace('#', '') for t in (tags or []))}",
+        "---",
+        "",
+        f"# {_tumblr_title(text)}",
+        "",
+        body,
+        "",
+        "---",
+        "",
+        f"**Why this is a handoff.** {spec['why']}",
+        "",
+        "**Next click:**",
+        *[f"{i}. {s}" for i, s in enumerate(steps, 1)],
+        "",
+    ]
+    Path(path).write_text("\n".join(doc))
+    return True, f"handoff → {os.path.relpath(path, os.path.dirname(OUTBOX))}"
+
+
+def post_medium(text: str, link: str = "", image: "postimage.Img | None" = None,
+                tags: list[str] | None = None) -> tuple[bool, str]:
+    return _outbox("medium", text, link, image, tags)
+
+
+def post_quora(text: str, link: str = "", image: "postimage.Img | None" = None,
+                tags: list[str] | None = None) -> tuple[bool, str]:
+    return _outbox("quora", text, link, image, tags)
+
+
+
 # ----------------------------------------------------------------------------- buffer (Pinterest)
 BUFFER_GQL = "https://api.buffer.com"
 _ORG: dict[str, str] = {}
@@ -487,7 +627,11 @@ def post_buffer(text: str, link: str = "", image: str = "", title: str = "") -> 
 # names, not function objects: resolved through globals() at call time so a rail can be swapped in
 # a test (or patched in a hurry) without rebuilding the table
 RAILS = {"bsky": "post_bsky", "mastodon": "post_mastodon", "nostr": "post_nostr",
-         "discord": "post_discord", "tumblr": "post_tumblr", "pinterest": "post_buffer"}
+         "discord": "post_discord", "tumblr": "post_tumblr", "pinterest": "post_buffer",
+         "reddit": "post_reddit", "medium": "post_medium", "quora": "post_quora"}
+
+# rails that never need a credential: they write a ready-to-paste draft and say where to click
+HANDOFF_RAILS = ("medium", "quora")
 
 
 def armed() -> list[str]:
@@ -504,6 +648,9 @@ def armed() -> list[str]:
         out.append("tumblr")
     if env("JACARANDA_BUFFER_TOKEN")[0]:
         out.append("pinterest")
+    if reddit_armed():
+        out.append("reddit")
+    out.extend(HANDOFF_RAILS)          # always on: a draft costs nothing and never goes stale
     return out
 
 
@@ -553,6 +700,12 @@ def post(text: str, link: str = "", tags: list[str] | None = None,
                 results[name] = post_discord(full, image=card)
             elif name == "tumblr":
                 results[name] = post_tumblr(full, tags=tags, image=card)
+            elif name == "reddit":
+                results[name] = post_reddit(full, link=link, image=card)
+            elif name == "medium":
+                results[name] = post_medium(full, link=link, image=card, tags=tags)
+            elif name == "quora":
+                results[name] = post_quora(full, link=link, image=card, tags=tags)
             elif name == "pinterest":
                 # a pin has its own tall-format art; an explicit image or a [[image:]] hint wins,
                 # otherwise the pin keeps the brand's pin card exactly as before
@@ -592,6 +745,17 @@ def verify() -> dict:
         out["discord"] = f"webhook '{r.get('name')}' ch {r.get('channel_id')}" if st == 200 and isinstance(r, dict) else f"FAIL {st}"
     if tumblr_armed():
         out["tumblr"] = "armed"
+    if reddit_armed():
+        tok, who = _reddit_token()
+        if tok:
+            st, r = _req("https://oauth.reddit.com/api/v1/me", headers={"Authorization": f"bearer {tok}",
+                                                                       "User-Agent": REDDIT_UA})
+            out["reddit"] = (f"u/{r.get('name')} ({r.get('total_karma', 0)} karma)"
+                             if st == 200 and isinstance(r, dict) else f"FAIL {st}")
+        else:
+            out["reddit"] = f"FAIL {who}"
+    out["medium"] = "handoff (no API since Jan 2025) → outbox/medium/"
+    out["quora"] = "handoff (no write API) → outbox/quora/"
     if env("JACARANDA_BUFFER_TOKEN")[0]:
         chans = buffer_channels()
         out["pinterest"] = ("channel " + ", ".join(f"{c['service']}/{c['name']}" for c in chans)) if chans else "FAIL no channels"

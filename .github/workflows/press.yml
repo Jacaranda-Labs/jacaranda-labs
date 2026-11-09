@@ -45,6 +45,17 @@ jobs:
           JACARANDA_MASTODON_TOKEN: ${{ secrets.JACARANDA_MASTODON_TOKEN }}
           JACARANDA_NOSTR_NSEC: ${{ secrets.JACARANDA_NOSTR_NSEC }}
           JACARANDA_BUFFER_TOKEN: ${{ secrets.JACARANDA_BUFFER_TOKEN }}
+          JACARANDA_TUMBLR_CK: ${{ secrets.JACARANDA_TUMBLR_CK }}
+          JACARANDA_TUMBLR_CS: ${{ secrets.JACARANDA_TUMBLR_CS }}
+          JACARANDA_TUMBLR_TOKEN: ${{ secrets.JACARANDA_TUMBLR_TOKEN }}
+          JACARANDA_TUMBLR_TOKEN_SECRET: ${{ secrets.JACARANDA_TUMBLR_TOKEN_SECRET }}
+          JACARANDA_TUMBLR_BLOG: ${{ secrets.JACARANDA_TUMBLR_BLOG }}
+          JACARANDA_DISCORD_WEBHOOK: ${{ secrets.JACARANDA_DISCORD_WEBHOOK }}
+          JACARANDA_REDDIT_CID: ${{ secrets.JACARANDA_REDDIT_CID }}
+          JACARANDA_REDDIT_CSECRET: ${{ secrets.JACARANDA_REDDIT_CSECRET }}
+          JACARANDA_REDDIT_USER: ${{ secrets.JACARANDA_REDDIT_USER }}
+          JACARANDA_REDDIT_PASS: ${{ secrets.JACARANDA_REDDIT_PASS }}
+          JACARANDA_REDDIT_SUB: ${{ secrets.JACARANDA_REDDIT_SUB }}
           DRY: ${{ github.event.inputs.dry || '0' }}
           ONCE: ${{ github.event.inputs.post }}
         run: |
@@ -58,10 +69,10 @@ jobs:
           fi
       - name: Remember what went out
         run: |
-          if [ -n "$(git status --porcelain rails/jacaranda/press-state.json)" ]; then
+          if [ -n "$(git status --porcelain rails/jacaranda/press-state.json rails/jacaranda/outbox)" ]; then
             git config user.name "Jacaranda Labs"
             git config user.email "jacarandalabs@atomicmail.io"
-            git add rails/jacaranda/press-state.json
-            git commit -m "press: state after $(date -u +%FT%TZ)"
+            git add rails/jacaranda/press-state.json rails/jacaranda/outbox
+            git commit -m "press: state and handoff drafts after $(date -u +%FT%TZ)"
             git push
           fi
