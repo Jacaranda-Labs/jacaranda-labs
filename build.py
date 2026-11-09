@@ -631,6 +631,11 @@ def sitemap(paths) -> str:
             f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
 
 
+# IndexNow: Bing, Yandex, Seznam and Naver accept a ping the moment a URL changes; Google does not,
+# so this is the one index we can push without a Search Console login. The key is public by design —
+# it is served at /<key>.txt and proves we own the host.
+INDEXNOW_KEY = "5a7541fb26984a8bca8973a4024d8233"
+
 HEADERS = """/*
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'
   X-Content-Type-Options: nosniff
@@ -677,6 +682,7 @@ def main(argv=None) -> int:
     for path, html_text in pages.items():
         write(path, html_text)
 
+    write(f"/{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
     write("/favicon.svg", FAVICON)
     write("/_headers", HEADERS)
     write("/robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
