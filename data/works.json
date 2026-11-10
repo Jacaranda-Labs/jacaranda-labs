@@ -532,17 +532,20 @@
   "edition": "First edition",
   "funded_by": "Jacaranda Labs Press · Harare",
   "case_disclosure": "The incidents, hours and thresholds described are the author's own, in an estate of seven ventures he operates alone. Nothing here is clinical evidence and nothing here is a substitute for care from a professional.",
-  "blurb": "Every component in a one-person estate has a failover — the rails retry, the bank refills, the deploys verify, the front doors are watched hourly. There is exactly one part with no redundancy, and it is not the server. This book gives the operator the treatment every other component gets: written down, checked, given limits, monitored. Five parts — the single point of failure; nine non-negotiables with the mechanism each one protects and the check that takes seconds; the bad day and the pause switch; the difference between the ledger and the self; and where a book has to stop and a person has to start. It is not therapy and says so on the first page. It is the set of structural rules that stop this specific way of working — unbounded surface, one decider, a machine that runs at 3am — from eating the person doing it.",
+  "blurb": "Every component in a one-person estate has a failover — the rails retry, the bank refills, the deploys verify, the front doors are watched hourly. There is exactly one part with no redundancy, and it is not the server. This book gives the operator the treatment every other component gets: written down, checked, given limits, monitored. Five parts — the single point of failure; nine non-negotiables, each with the mechanism it protects, the way it fails, and a check that takes seconds; the bad day, the pause switch and the week after it; the ledger kept apart from the self; and where a book has to stop and a person has to start. It comes with the apparatus of a working manual rather than a monograph: eighteen activities, six drawn figures, a printable operator's card, eight hand-kept instruments, a one-page estate audit, a glossary, an index and a typeset PDF. It is not therapy and says so on the first page.",
   "facts": [
-   "5,984 words",
-   "25 chapters",
+   "12,194 words",
+   "26 chapters",
    "9 non-negotiables",
-   "1 pause switch"
+   "18 activities",
+   "6 figures",
+   "49-page PDF"
   ],
   "toc": [],
   "formats": {
    "HTML": "https://jacaranda-labs.pages.dev/read/the-point-of-failure.html",
-   "MD": "https://jacaranda-labs.pages.dev/read/the-point-of-failure.md"
+   "MD": "https://jacaranda-labs.pages.dev/read/the-point-of-failure.md",
+   "PDF": "https://jacaranda-labs.pages.dev/assets/download/the-point-of-failure.pdf"
   },
   "licence": "CC BY 4.0",
   "year": "2026",
@@ -559,17 +562,20 @@
   "edition": "First edition",
   "funded_by": "Jacaranda Labs Press · Harare",
   "case_disclosure": "The specimen estate is the author's own: seven ventures, twenty-two works, five publishing rails, roughly three hours twenty minutes a week of human attention. One estate is a case, not a study, and the book says so in the chapter it reports the numbers in.",
-  "blurb": "Technopreneurship was never a theory of value. It was a description of an arbitrage: capability, distribution and coordination were all scarce, and the person who had learned them held a moat priced in years. Superintelligence — capability at expert breadth, rented by the token — repriced all three at once, and what became scarce was everything that used to be free because a human was carrying it implicitly: trust, attention, taste, and the willingness to be answerable. This book does the autopsy in five parts — the word, the breakfast, the name, the curriculum and the risk — then names the successor and defines it in one sentence: operatorship is the practice of owning the consequences of machine work you did not perform. It ends with a replacement syllabus and an exam question that cannot be answered by a generated document, because its subject is a thing that either runs or does not.",
+  "blurb": "Technopreneurship was never a theory of value. It was a description of an arbitrage: capability, distribution and coordination were all scarce, and the person who had learned them held a moat priced in years. Superintelligence — capability at expert breadth, rented by the token — repriced all three at once, and what became scarce was everything that used to be free because a human was carrying it implicitly: trust, attention, taste, and the willingness to be answerable. This book does the autopsy in five parts — the word, the breakfast, the name, the curriculum and the risk — then names the successor and defines it in one sentence: operatorship is the practice of owning the consequences of machine work you did not perform. It ends with a replacement syllabus, an exam that cannot be answered by a generated document, and five falsifiable predictions — plus seventeen activities, six figures, a teacher's pack, a glossary, an index and a typeset PDF.",
   "facts": [
-   "6,351 words",
-   "23 chapters",
-   "1 new name",
-   "5 falsifiable predictions"
+   "11,340 words",
+   "25 chapters",
+   "9-module syllabus",
+   "17 activities",
+   "6 figures",
+   "47-page PDF"
   ],
   "toc": [],
   "formats": {
    "HTML": "https://jacaranda-labs.pages.dev/read/operatorship.html",
-   "MD": "https://jacaranda-labs.pages.dev/read/operatorship.md"
+   "MD": "https://jacaranda-labs.pages.dev/read/operatorship.md",
+   "PDF": "https://jacaranda-labs.pages.dev/assets/download/operatorship.pdf"
   },
   "licence": "CC BY 4.0",
   "year": "2026",

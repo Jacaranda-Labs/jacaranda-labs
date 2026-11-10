@@ -1,13 +1,43 @@
 ---
 title: Operatorship: What Ate Technopreneurship, and What Replaced It
-series: Jacaranda Labs · the mechanism series
+series: The Mechanism Series
 byline: Courage Garikai — Jacaranda Labs, Harare, Zimbabwe
 programme: Jacaranda Labs Press — Harare
 date: First edition, November 2026
 slug: operatorship
 ---
 
+# Front matter
+
+## About this book
+
+This book began as an argument with a syllabus. I was taught *technopreneurship* in a first degree in entrepreneurship — the module in which online business was made to sound like a serious subject — and for twenty years the word was accurate. Then, over about four years, it stopped being accurate, and almost nobody in the classroom where I learned it has said so out loud. Students are still being taught a description of a world in which building was hard. It is not hard any more. It is a subscription.
+
+So this book does two things. The first is an autopsy: an account of what actually died, why, and in what order. The second is a naming: a term for the form of business that replaced it, defined closely enough to be argued with, tested, and — in the last part — falsified.
+
+## How to read it
+
+**If you want the answer first**, read chapter 13, then come back to the beginning. The name is *operatorship*, and the definition is one sentence long. The fifteen chapters before it are why the sentence is not a slogan.
+
+**If you are teaching**, Part Four is the syllabus, and chapter 18 is the exam. It is designed to be stolen.
+
+**If you are sceptical** — and you should be, because this is an argument about your livelihood written by one person with one estate — start at chapter 22, where the book states the three ways it could be wrong and the five observations that would finish it.
+
+## What this book is not
+
+It is not a forecast that anyone will succeed. It is not investment advice, and it is not a claim that the collapse of one word's usefulness implies anything about the fortunes of any particular business. It is not a technology review: the specific models, prices and products are incidental, and they will be stale within a year, which is precisely the argument.
+
+Nor is it a lament. The technopreneurs had a real advantage for a real period and many of them built real things. The book is grateful for that and moves on, because a word that names the abundant input cannot describe the scarce one, and the vocabulary has to follow the scarcity.
+
+## A note on the specimen
+
+The estate described in these pages is the author's own: seven ventures, twenty-four works including this one, five publishing rails, an hourly monitor, a three-touch outreach sequence, and roughly three hours twenty minutes a week of human attention. One estate is a case, not a study. It is reported because the *shape* of the labour in it is a prediction — almost none of the week is building, almost all of it is deciding — and a prediction can be checked. Chapter 21 says what would show it to be wrong.
+
+---
+
 # Part One — The word
+
+*What this part is for: to establish what technopreneurship actually claimed, and to show that the claim was an arbitrage rather than a theory. By the end you should be able to state, in one sentence, what a technopreneur was selling and to whom.*
 
 ## 1. What the word was doing
 
@@ -16,6 +46,8 @@ slug: operatorship
 I was taught it in a first degree in entrepreneurship, where it served as the respectable name for "businesses on the internet". That is how it was used: a container for online ventures, a way of saying *this is real business, not a hobby with a website*. The word was doing honest work. It was telling a generation of students that the skills of a technologist and the skills of a founder could be held by the same person, and that holding both was a position of advantage.
 
 The advantage was real. That is the part that matters, and it is the part that has ended.
+
+**Activity 1.1 — Recover your own curriculum.** Write down the modules of any business or entrepreneurship course you have taken, in the order they were taught, and beside each one write what it assumed was scarce. Most people find that the list describes a world of expensive building: plans, projections, market research, protection. Keep the list; chapter 19 returns to it, and the comparison is the argument. *(15 minutes.)*
 
 ## 2. A word from a classroom, not from a market
 
@@ -26,6 +58,8 @@ The syllabus tells you what the institution believed was scarce. A typical techn
 Read that syllabus as an economist and it says something specific: **the scarce acts were building and reaching.** The course taught you how to construct a plan, protect a product, find a market, run operations, and count the money, because each of those was a skill that took years to acquire and separated the person who could do it from the person who could not. The technology module sat inside that structure as an amplifier: the same entrepreneurial acts, executed faster and further.
 
 This is worth stating plainly because it is the premise that has to be tested. Technopreneurship was never a theory of value. It was a description of an arbitrage: *the things required to start a technology business are hard, and I have learned them.*
+
+**Activity 2.1 — The scarcity reading.** Take any syllabus or course outline you can find — yours, a university's, an online bootcamp's — and mark every module `B` (building), `R` (reaching) or `C` (counting). If the page is mostly B and R, it is a course about a world where those were hard. Then ask the only question that matters: which of these modules still describes something the average motivated person cannot do unaided in a week? *(20 minutes.)*
 
 ## 3. The three scarcities it arbitraged
 
@@ -41,9 +75,13 @@ Every one of those three was a moat. Every one of them was priced in years and i
 
 The word is now a monument to a closed arbitrage. What follows is the autopsy.
 
+**Activity 3.1 — Price your own moat.** Write the three headings: capability, distribution, coordination. Under each, write what you personally can do that a competent stranger could not do a week from now with a laptop and a card. This is uncomfortable, and it is the most useful exercise in the book. Most readers find one real entry and two blanks, and the blank ones are where the business actually is. *(20 minutes.)*
+
 ---
 
 # Part Two — The breakfast
+
+*What this part is for: to show the mechanism by which each moat was repriced, and to establish what became scarce in its place. By the end you should be able to name the four things that are now expensive, and say which of them you are actually accumulating.*
 
 ## 4. What superintelligence actually removed
 
@@ -67,9 +105,15 @@ Look at the third row carefully, because it is where the trap is. Coordination g
 
 This is the mechanism by which a moat becomes a commodity. It is not that the moat was breached; it is that the water was lowered everywhere at once.
 
+**Activity 5.1 — The Tuesday test.** Take your last three months of delivery and write what you shipped. For each item, ask: could a competitor have shipped this by Tuesday, using the same tools, if they had started on Monday? Everything that survives is your position; everything that does not is your activity. The ratio is the honest measure of a moat. *(30 minutes, and it will annoy you.)*
+
 ## 6. Three waves, one pattern
 
 Technopreneurship did not die in a single morning. It was eaten over fifteen years, in three waves, and each wave removed one of the three moats — which is why the pattern is worth learning rather than the dates.
+
+![Figure 1](/read/fig/b-01-moats.svg)
+
+*Figure 1 — Three waves, three moats. The moat moves down one level each time, and what sits under thought is consequence.*
 
 **Wave one: software as a service.** Renting the machine instead of buying it removed the capital barrier. A person no longer needed servers, licences or an IT department. What survived: you still had to build the product. Capability was intact, so the technopreneur thrived — this was the era that made the word feel obviously true.
 
@@ -80,6 +124,8 @@ Technopreneurship did not die in a single morning. It was eaten over fifteen yea
 The pattern across the three: **each wave commoditised the layer above the one before, and the moat moved down one level each time** — from capital, to product shape, to thought. What is underneath thought is consequence, and there is nothing under that. Which is why this wave is the last one that can reprice the fundamentals, and why the name has to change now rather than later.
 
 There is a second pattern, in who notices first. In every wave, the people who noticed were the ones whose business depended on the moat, and they noticed late — because the early evidence looked like an improvement. Cheaper hosting felt like a gift. Templates felt like a gift. A model that writes the code feels like the best gift yet. It is the same gift every time: your advantage, handed to everybody.
+
+**Activity 6.1 — Find the tell.** For any business you believe has a moat, write the sentence that would prove it lost it. "They raised a round" is not a tell. "A stranger reproduced their product in an afternoon and the market did not care" is a tell. Then run the same test on yourself, and keep the sentence somewhere you will see it. *(20 minutes.)*
 
 ## 7. Four things that got more expensive
 
@@ -95,9 +141,11 @@ Here is the part most treatments of this subject miss. The collapse of capabilit
 
 Read those four together and a shape appears. Everything that used to be hard has become cheap. Everything that is now hard was previously free, because it was carried implicitly by the human who did the doing. Remove the doing and the carrying becomes visible, and it is the only thing left that anyone will pay for.
 
-## 8. The tell
+![Figure 2](/read/fig/b-02-cost.svg)
 
-You can watch the transition in a single artefact: the pitch deck.
+*Figure 2 — Two curves that crossed. The cost of making the thing fell to nothing; the cost of being believed did not move, and then became the whole job.*
+
+**The tell.** You can watch the transition in a single artefact: the pitch deck.
 
 For twenty years the deck was a credible signal because it was expensive to make and hard to fake. Market sizing required research. Financial models required arithmetic and assumptions you could be questioned on. Competitive analysis required reading. A good deck was evidence of work done, which is why investors read them at all.
 
@@ -109,9 +157,25 @@ So what still reads as evidence? Only this: something running, with a record of 
 
 Which is a name, of sorts, before we have one.
 
+**Activity 7.1 — The evidence swap.** Take the one artefact you would send to a stranger to prove your business exists — a deck, a one-pager, a site. Delete every claim a generator could have made in ninety seconds. Whatever is left is your real evidence. Then write the single thing you could add this month that would survive the deletion test: a running thing, a record, a name, a phone number that answers. *(30 minutes, then a decision.)*
+
+## 8. The economics: what a decision costs
+
+Here is the shift stated as arithmetic rather than as narrative.
+
+In 2015, launching a software venture with a real product, a real site, real payments and a real support inbox cost roughly three to nine months of one competent person's time, plus a few thousand dollars. That cost was the barrier, and the technopreneur's edge was being able to pay it.
+
+In 2026 the same launch costs days of attention and tens of dollars of metered compute. The barrier is gone. What is now scarce and priced accordingly is *the decision to launch at all, and the willingness to be answerable afterwards*. Call it a unit of judgement: one consequential choice, well made, with the evidence to support it and a person to carry it.
+
+A technopreneur was paid for capability, priced by the market's ignorance of how the thing was made. An operator is paid for judgement, priced by the market's awareness that anybody could have made the thing and almost nobody will stand behind it.
+
+That is a better business, and a harder one. It pays less for enthusiasm and more for being right, and it pays nothing at all for effort.
+
 ---
 
 # Part Three — The name
+
+*What this part is for: to name the successor, define it in one sentence, and show what it owns that a machine cannot. By the end you should be able to say the definition from memory and name the five burdens it implies.*
 
 ## 9. What a name has to do
 
@@ -137,6 +201,8 @@ Tested against those four, the obvious candidates fail, and it is worth being ex
 | Promptpreneur | Names a keystroke. |
 | Custodianship | Right about accountability, wrong about agency. A custodian keeps; an operator runs. |
 
+**Activity 9.1 — Name it yourself first.** Before reading chapter 10, spend fifteen minutes writing your own candidate, with the four tests applied. Then read the next chapter and see whether the book's name beats yours. This is not a rhetorical device: if your name is better, the rest of the book still holds, because the concept is the argument and the word is a convenience. *(15 minutes.)*
+
 ## 10. Operatorship
 
 **Operatorship is the practice of owning the consequences of machine work you did not perform.**
@@ -155,9 +221,15 @@ I did not invent the word; I am reclaiming it, and the reclamation is the argume
 
 That is the job now. The software is a utility. The ventures are hypotheses. The operator is the one who runs the machinery, reads the instruments, says what is true about the numbers, and answers for the outcome.
 
+**Activity 10.1 — The operator's sentence.** Write the definition in your own words, then write the version you would say out loud when someone asks what you do. The second one is the one that has to work at a dinner table, in a bank, and in a message to a stranger. If it comes out as "I run a few small software businesses", that is fine — the point is that the sentence says what you are answerable for, not what you use. *(10 minutes.)*
+
 ## 11. What the operator actually owns
 
 Five things, none of which the machine can hold.
+
+![Figure 3](/read/fig/b-03-owns.svg)
+
+*Figure 3 — The operator at the centre, and the five things that do not delegate.*
 
 **Consequence.** When the rail posts something wrong, the operator's name is on it. When a checkout charges someone twice, the operator refunds. When the product does not do what the page said, the operator is who was lying. There is no version of this work where consequence can be delegated to a model, because a model cannot be sued, shamed, or trusted again.
 
@@ -170,6 +242,8 @@ Five things, none of which the machine can hold.
 **Contact with other humans.** A reply is a person. A customer is a person. The machine can draft the sentence and cannot be the one who meant it. Every business that has ever mattered was, at the bottom, a relationship with a human who chose you.
 
 Notice that all five are *burdens*, not skills. That is the sign you are looking at the scarce input. Scarce inputs in a mature market are always the things nobody wants to do.
+
+**Activity 11.1 — The five-column audit.** Five columns: consequence, taste, naming, truth-about-the-numbers, contact. For each, write the last time you personally exercised it, with a date. Any column where the answer is "the system does it" is a column where you have stopped operating, and it is where the next failure will come from. *(25 minutes, quarterly.)*
 
 ## 12. The five impostors
 
@@ -185,6 +259,8 @@ Any name that catches on attracts things that are not it. These are the five to 
 
 **The absentee.** The inverse failure. Interprets *the machine runs without me* as *I need not understand it*. This works until the day it does not, and that day arrives with a specific date and an invoice. An operator who cannot read the instruments is not operating; they are gambling with a very good excuse.
 
+**Activity 12.1 — The mirror.** Score yourself 0–3 on each impostor, honestly, for the last month. Then do the same for the most visible operator in your feed, and notice which of the two scores was easier to be honest about. That is the point of the exercise. *(15 minutes.)*
+
 ## 13. The unit is the estate, not the venture
 
 This is the structural difference between technopreneurship and operatorship, and it is the part most people get wrong.
@@ -193,9 +269,13 @@ A technopreneur's unit was the venture: one company, one product, one market, on
 
 The operator's unit is the **estate**: a shared set of machinery — publishing, payment, verification, monitoring, records — running a portfolio of ventures, each of which is a hypothesis with a price attached. The ventures are cheap and disposable. The estate is expensive and durable. A venture that fails costs a test; the estate learns the mechanism.
 
+![Figure 4](/read/fig/b-04-estate.svg)
+
+*Figure 4 — The estate is durable and the ventures are cheap. Every venture must be individually killable, or it is not a venture; it is a dependency.*
+
 Three consequences follow, and each is a practical rule.
 
-**The marginal venture is nearly free.** Publishing, checkout, deployment, monitoring and the record of what was said to whom are shared. Launching hypothesis number eight costs a page, a price, and a fortnight. This is why an estate can hold seven ventures where a company would hold one — not because the operator is seven times as capable, but because the fixed cost is paid once.
+**The marginal venture is nearly free.** Publishing, checkout, deployment, monitoring and the record of what was said to whom are shared. Launching hypothesis number eight costs a page, a price, and a fortnight. This is why an estate can hold seven ventures where a company would hold one — not because the operator is seven times more capable, but because the fixed cost is paid once.
 
 **Every venture must be individually killable.** A venture that cannot be closed without damaging the estate is not a venture; it is a dependency. The kill list is part of the architecture, and a month with nothing on it is a month in which nothing was tested.
 
@@ -203,21 +283,15 @@ Three consequences follow, and each is a practical rule.
 
 This is also why a solo estate can genuinely support a life. Seven ventures do not require seven people if the estate does the operating; they require one person who decides, plus the machinery. The arithmetic that made technopreneurship attractive — small team, large reach — is still true, but the reason has inverted. It used to be *because I can build*; it is now *because I do not need to build.*
 
-## 14. The economics: what a decision costs
+**Activity 13.1 — Draw your own estate.** One box for the shared machinery, one box per venture, one arrow from the machinery to each venture. Then mark, on each venture, whether you could kill it this month without breaking anything else. Anything that cannot be killed is a dependency, and the diagram is now a to-do list. *(30 minutes.)*
 
-Here is the shift stated as arithmetic rather than as narrative.
-
-In 2015, launching a software venture with a real product, a real site, real payments and a real support inbox cost roughly three to nine months of one competent person's time, plus a few thousand dollars. That cost was the barrier, and the technopreneur's edge was being able to pay it.
-
-In 2026 the same launch costs days of attention and tens of dollars of metered compute. The barrier is gone. What is now scarce and priced accordingly is *the decision to launch at all, and the willingness to be answerable afterwards*. Call it a unit of judgement: one consequential choice, well made, with the evidence to support it and a person to carry it.
-
-A technopreneur was paid for capability, priced by the market's ignorance of how the thing was made. An operator is paid for judgement, priced by the market's awareness that anybody could have made the thing and almost nobody will stand behind it.
-
-That is a better business, and a harder one. It pays less for enthusiasm and more for being right, and it pays nothing at all for effort.
-
-## 15. The five failure modes of operatorship
+## 14. The five failure modes of operatorship
 
 Naming a practice honestly means naming how it breaks. These five are the ones I have hit, in the order I hit them.
+
+![Figure 6](/read/fig/b-06-failures.svg)
+
+*Figure 6 — Five failure modes. The first four are failures of the estate; the fifth is the operator.*
 
 **Novelty drift.** Building is now so cheap that *starting* is always available as a way of avoiding *finishing*. The estate fills with half-tested hypotheses, each of which looked obvious at midnight. The rule that holds: no new venture while two are unresolved.
 
@@ -229,11 +303,9 @@ Naming a practice honestly means naming how it breaks. These five are the ones I
 
 **The loneliness of the sole decider.** Thirty consequential decisions a week, made alone, with nobody in the building to say *are you sure*. This is the failure mode that eats the operator rather than the estate, and it has its own book in this series. The rule is not professional, it is human: one non-business conversation a day, and one person told the truth about how it is going.
 
----
+**Activity 14.1 — The ghost-authority hunt.** Pick the three automated things in your business that you trust most. For each, ask: when did a human last look at the output and check it against the world? If the answer is "never" or "I do not know", you have found ghost authority. Pick one and audit it today. *(45 minutes, and it is the highest-value 45 minutes in the book.)*
 
-# Part Four — The curriculum
-
-## 16. Operatorship where the constraint is not capital
+## 15. Operatorship where the constraint is not capital
 
 There is a version of this argument that only works in San Francisco, and it is worth saying which parts survive the trip to Harare.
 
@@ -247,7 +319,15 @@ The technopreneur's advantage was imported: a skill learned from the same tutori
 
 One more thing that travels badly: the assumption that failure is cheap. In a market with a social safety net, a failed venture is a semester. Without one, it is a year, and the operator's arithmetic has to include the cost of the years. That is an argument for smaller tests, shorter cycles, and a stricter rule about how many unresolved ventures may exist at once — not because discipline is virtuous, but because the downside is priced differently here.
 
-## 17. What to stop teaching
+**Activity 15.1 — Price your constraints.** List the five things that make building a business where you are harder than it is in a rich market. For each, write either "the machine removed this" or "the machine ignored this". The second list is your real strategy: it is where local knowledge is worth more than capability, and where an imported playbook will reliably fail. *(20 minutes.)*
+
+---
+
+# Part Four — The curriculum
+
+*What this part is for: to say what should be taught instead, and to give a teacher something they can use on Monday. By the end you should have a nine-module outline and an assessment that cannot be faked with a generated document.*
+
+## 16. What to stop teaching
 
 If operatorship is the successor, the syllabus has to change, and the changes are not cosmetic. Each item below is a module from the technopreneurship course, with what has happened to it.
 
@@ -264,9 +344,13 @@ If operatorship is the successor, the syllabus has to change, and the changes ar
 
 The general shape: everything that was *produced* has been commoditised, and everything that was *carried* has become the curriculum.
 
-## 18. What to teach instead
+## 17. What to teach instead
 
 Nine modules. Each one is checkable, each one produces an artefact, and none of them can be completed by a model on the student's behalf without the student being present.
+
+![Figure 5](/read/fig/b-05-syllabus.svg)
+
+*Figure 5 — The two syllabi side by side. The right-hand column is a proposal, not a standard; steal and amend it.*
 
 **1. Proof of operation.** By the end of the term, one thing must be running in the world and taking money or users. Not planned. Running. The grade is the record, not the intention.
 
@@ -286,7 +370,9 @@ Nine modules. Each one is checkable, each one produces an artefact, and none of 
 
 **9. How to be a person who can live.** Not a wellness module. An operational one: fixed hours, a shutdown, sleep as an input, one day off, one conversation. Assessed by a written record kept for the term, not by an essay about balance.
 
-## 19. The exam question that replaces the business plan
+**Activity 17.1 — Teach it once.** Pick the module you would be worst at teaching, and write its first session: the question it opens with, the artefact the students leave with, and the one thing you would refuse to let them delegate to a model. If you cannot name that last item, the module is not yet teachable. *(45 minutes.)*
+
+## 18. The exam question that replaces the business plan
 
 If I could change one thing about how this is taught, it would be the final assessment. Not a plan. A defence.
 
@@ -304,7 +390,9 @@ The marking scheme, roughly:
 
 A student who can pass that has an operator's first credential, and it cannot be faked with a generated document, because the subject of the document is a thing that either runs or does not.
 
-## 20. What to do with the word technopreneur now
+**Activity 18.1 — Sit the exam on yourself.** Run the five criteria against your own business this term, and score out of 100. Most operators score well on the first and badly on the second and fifth. The fifth — a named human who has agreed to be accountable — is the one that reveals whether there is a business or a performance. *(30 minutes.)*
+
+## 19. What to do with the word technopreneur now
 
 Retire it, with honour.
 
@@ -320,17 +408,21 @@ Technopreneurship is going the same way, and for the same reason, but the succes
 
 # Part Five — The evidence and the risk
 
-## 21. The estate as specimen
+*What this part is for: to submit the argument to the specimen, to state what would prove it wrong, and to name where the book itself is weakest.*
+
+## 20. The estate as specimen
 
 I should be explicit about the sample, because the argument is strong and the evidence is one person.
 
-I run seven small software businesses from one desk in Harare. Twenty-two works in the catalogue, thirty-six editions across them, five publishing rails that post to six platforms, an hourly front-door monitor with thirteen checks, a three-touch outreach sequence that drafts for every channel it holds a contact for and sends on the two rails that can send, and a daily screen that tells me in four lines what the estate needs from me. Human attention required: roughly three hours twenty minutes a week, of which about seventeen minutes is genuinely manual.
+I run seven small software businesses from one desk in Harare. Twenty-four works in the catalogue including this book, thirty-six editions across them, five publishing rails that post to six platforms, an hourly front-door monitor with seventeen checks, a three-touch outreach sequence that drafts for every channel it holds a contact for and sends on the two rails that can send, and a daily screen that tells me in four lines what the estate needs from me. Human attention required: roughly three hours twenty minutes a week, of which about seventeen minutes is genuinely manual.
 
 What that specimen shows: an estate of this size is now operable by one person with a life. What it does not show: that it is profitable, that it generalises, or that the same shape works in a domain with physical inventory, regulation, or staff. One estate is a case, not a study.
 
 What makes it worth reporting anyway is the *shape* of the labour, because that shape is a prediction. Almost none of my week is building. Almost all of it is deciding what not to build, checking that what was built actually happened, refusing the third good idea of the month, and talking to humans. If you asked me in 2015 what a technopreneur did all day, I would have described a builder. In 2026 I describe an operator, and the description is not a preference. It is what is left when the building is a subscription.
 
-## 22. Falsifiable predictions
+**Activity 20.1 — Time your own week.** For one week, keep a two-column log: *doing* and *deciding*. Not minutes — events. At the end, count them. The ratio is your position on the curve between the two forms of business, and it will tell you which book you actually needed. *(1 week, 2 minutes a day.)*
+
+## 21. Falsifiable predictions
 
 An argument that cannot lose is not an argument. Five claims, each with the observation that would prove it wrong.
 
@@ -344,7 +436,9 @@ An argument that cannot lose is not an argument. Five claims, each with the obse
 
 **5. The distinguishing failure of the decade will be ghost authority** — systems reporting success that nobody verified, at scale, in regulated domains. Disconfirmed if the notable failures of the next five years are all ordinary fraud and ordinary bugs.
 
-## 23. Where this book is wrong
+**Activity 21.1 — Make your own bet.** Write one prediction of your own, in the same form: the claim, the date, and the observation that would prove it wrong. Put it in a sealed envelope, physical or digital, with a calendar reminder for the date. Operators who cannot be wrong are indistinguishable from salesmen, and the exercise is the difference. *(15 minutes, once.)*
+
+## 22. Where this book is wrong
 
 Three ways it could be wrong, stated plainly, because a mechanism audit that does not include itself is a brochure.
 
@@ -356,9 +450,59 @@ Three ways it could be wrong, stated plainly, because a mechanism audit that doe
 
 ---
 
-# End matter
+# Part Six — The activities
 
-## The definition, on one page
+*What this part is for: to collect the nineteen exercises in one place, in the order the book uses them, with a note on which to do first.*
+
+## 23. How to use the activities
+
+**The argument set (do these three, in this order, before anything else).** 1.1 (recover your curriculum), 3.1 (price your own moat), 7.1 (the evidence swap). Together they take two hours and they will change the argument from something you are reading into something about you.
+
+**The practice set (do these when you are running something).** 5.1 (the Tuesday test), 11.1 (the five-column audit), 12.1 (the mirror), 13.1 (draw your own estate), 14.1 (the ghost-authority hunt), 20.1 (time your own week). This is the operating kit.
+
+**The teaching set (if you teach or mentor).** 2.1 (the scarcity reading), 17.1 (teach it once), 18.1 (sit the exam on yourself). These turn the book into a course.
+
+**The honesty set (do these alone, once a year).** 9.1 (name it yourself first), 10.1 (the operator's sentence), 15.1 (price your constraints), 21.1 (make your own bet), 22 (read the chapter where the book is wrong, again).
+
+## 24. The activity index
+
+| # | Activity | Time | Group |
+|---|---|---|---|
+| 1.1 | Recover your own curriculum | 15 min | argument |
+| 2.1 | The scarcity reading | 20 min | teaching |
+| 3.1 | Price your own moat | 20 min | argument |
+| 5.1 | The Tuesday test | 30 min | practice |
+| 6.1 | Find the tell | 20 min | practice |
+| 7.1 | The evidence swap | 30 min | argument |
+| 9.1 | Name it yourself first | 15 min | honesty |
+| 10.1 | The operator's sentence | 10 min | honesty |
+| 11.1 | The five-column audit | 25 min | practice |
+| 12.1 | The mirror | 15 min | practice |
+| 13.1 | Draw your own estate | 30 min | practice |
+| 14.1 | The ghost-authority hunt | 45 min | practice |
+| 15.1 | Price your constraints | 20 min | honesty |
+| 17.1 | Teach it once | 45 min | teaching |
+| 18.1 | Sit the exam on yourself | 30 min | teaching |
+| 20.1 | Time your own week | 1 week | practice |
+| 21.1 | Make your own bet | 15 min | honesty |
+
+## 25. One worked example, start to finish
+
+A reader — call her a final-year student with a small printing business — works through the argument set in an afternoon.
+
+**1.1, her curriculum.** Her course ran: entrepreneurship, business management, business plan, intellectual property, marketing, operations, financial plan, legal and ethics, networking, plus a technology module. Marked, it is nine B/R modules and one C. She writes at the bottom: *"All of this assumes the hard part is making and reaching. Making is now a week."*
+
+**3.1, her moat.** Capability: she can use design tools and a model, which is not a moat; she writes "nothing". Distribution: she has four hundred followers and a campus, which she writes as "an audience for one thing". Coordination: she can run orders, a printer and a courier, which she writes as "a real one, for now". The uncomfortable finding is that two of three are blank, and the one that is not is operational rather than technical.
+
+**7.1, her evidence swap.** Her one-pager claimed quality, speed and price. Deleted, all three could have been generated in ninety seconds by anyone. What survived: a photograph of the actual press, a delivery log with dates, and a phone number she answers. She decides to add one thing this month: every order photo, dated, in one public page. That is an evidence trail, and it is worth more than the copy it replaced.
+
+She has now done, in two hours, what the rest of this book formalises: she has found that her position is not capability, that her evidence needed to become operational, and that the thing she owns is the name on the delivery. That is operatorship, before she has read the chapter that names it.
+
+---
+
+# Appendices
+
+## Appendix A — The definition, on one page
 
 **Technopreneurship** was entrepreneurship with scarce capability, cheap distribution and one-person coordination. It arbitraged a world in which building was hard.
 
@@ -370,16 +514,136 @@ An operator owns five things a machine cannot: consequence, taste, the naming of
 
 Four failures to watch, in yourself: novelty drift, unbounded surface, ghost authority, automation debt. And the fifth, which is not about the estate at all: deciding alone, for too long, without telling anyone.
 
-## The five sentences
+**The five sentences.** The machine builds; I decide what is worth building. · The machine acts; I answer for what it did. · The estate is the asset; the ventures are hypotheses. · If it cannot be paused, it owns me. · Build the thing, then be the person who stands behind it.
 
-The machine builds; I decide what is worth building.
+## Appendix B — Readings, in the order they are useful
 
-The machine acts; I answer for what it did.
+**If you read one thing before this book**
 
-The estate is the asset; the ventures are hypotheses.
+* Sarasvathy, S. (2001). "Causation and Effectuation: Toward a Theoretical Shift from Economic Inevitability to Entrepreneurial Contingency." *Academy of Management Review* 26(2). The formal account of what a resource-constrained founder actually does — and the reason the technopreneurship syllabus was always a bit of a fiction.
 
-If it cannot be paused, it owns me.
+**On the technology economics**
 
-Build the thing, then be the person who stands behind it.
+* Agrawal, A., Gans, J. & Goldfarb, A. *Prediction Machines* and *Power and Prediction* — the clearest account of what happens when prediction becomes cheap, which is the mechanism under chapter 5.
+* Rifkin, J. *The Zero Marginal Cost Society* — over-argued, but the marginal-cost intuition is the same one that repriced distribution.
+* Christensen, C. *The Innovator's Dilemma* — for the older, slower version of "the moat moved and nobody noticed".
+* Christensen, C., Raynor, M. & McDonald, R. "What Is Disruptive Innovation?" *HBR*, 2015 — worth reading as a corrective to how the word is used in pitch decks, which is itself an example of chapter 7.
 
-*Courage Garikai · Jacaranda Labs · Harare · November 2026*
+**On accountability and consequence**
+
+* Perrow, C. *Normal Accidents* — why systems fail in ways nobody planned, and why the person in the control room is a structural role rather than a personality.
+* Reason, J. *Human Error* — the taxonomy that makes "who is accountable" a design question.
+* Vaughan, D. *The Challenger Launch Decision* — the definitive study of how an organisation loses the ability to see its own evidence. The closest thing to a book-length treatment of ghost authority.
+
+**On the word itself**
+
+* The technopreneurship course literature — the standard module sequence described in chapter 2 is drawn from widely circulated course notes used in the Philippines, Malaysia, India and Nigeria, which trace the term to 1987. It is cited here as a specimen of a curriculum, not as a scholarly source.
+* Gibbons, R. & Henderson, R. "Relational Contracts and the Theory of the Firm" — useful on why accountability cannot be fully contracted away, which is chapter 11 in economic language.
+
+**On Harare, and the constraint-native view**
+
+* Garikai, C. *The Ledger and the Shopkeeper* — commerce for the markets the platforms forgot.
+* Garikai, C. *The Mechanism Audit* (working paper 2026-04) and *The Mechanism Auditor* — the evidence-first review method this book's chapter 14 borrows the vocabulary of.
+* Garikai, C. *The Point of Failure* — the companion volume, on the operator rather than the form of business.
+
+## Appendix C — A syllabus pack, for teachers
+
+A nine-week version of Part Four, with an artefact due each week. It assumes three hours of contact time and six hours of work outside, and it assumes every student has a laptop and a way to take money or get users.
+
+| Week | Session | Artefact due |
+|---|---|---|
+| 1 | What was scarce in 1999, and what is scarce now | a marked-up syllabus (Activity 2.1) |
+| 2 | Reading a system's claim about itself | three log or dashboard readings, one lie found |
+| 3 | The economics of a test | a test designed to cost under a day and under $20 |
+| 4 | The accountability contract | the contract, signed, with a named second party |
+| 5 | Being believed | the evidence swap (Activity 7.1) applied to their own venture |
+| 6 | Supervising machine work | one automated act, designed with caps, stop condition and trail |
+| 7 | The evidence trail | an audit a stranger could run |
+| 8 | The pause switch | a timed demonstration |
+| 9 | The defence | the exam in chapter 18, sat in front of the room |
+
+**Assessment.** 30% artefact portfolio, 25% the defence, 20% one written failure analysis with mechanism, 15% the accountability contract being honoured (checked by the named second party), 10% participation. There is no exam paper, because the subject of the exam is whether something runs.
+
+## Appendix D — Glossary
+
+**Accountability** — the willingness to be answerable for an act, including one a machine performed. The scarce input of the successor form.
+
+**Agent** — a system that acts rather than answers. Named here only to be warned about: a word for a tool dates faster than a word for a role.
+
+**Arbitrage** — the gap between what something costs to do and what the market pays for it. Technopreneurship was an arbitrage in capability, distribution and coordination.
+
+**Automation debt** — the accumulated cost of automations nobody can fully explain. The estate's version of technical debt.
+
+**Capability** — the ability to build the thing. Was a moat; is now a subscription.
+
+**Coordination** — running a business without staff. Was a moat; is now a baseline.
+
+**Distribution** — reaching past foot traffic. Was a moat; is now infinite and therefore worthless as a position.
+
+**Estate** — shared machinery plus a portfolio of killable ventures. The unit of operatorship.
+
+**Evidence trail** — a record of an automated act that a stranger could audit. The opposite of a green tick.
+
+**Ghost authority** — confidence in machine work nobody has verified. The characteristic failure of the decade.
+
+**Judgement** — one consequential choice, well made, with evidence and a person to carry it. The priced unit of the successor form.
+
+**Kill list** — the ventures closed this month, on purpose. A month with an empty one is a month in which nothing was tested.
+
+**Mechanism** — the decision or absence that produced an outcome. The only description of a failure that can be acted on.
+
+**Operatorship** — the practice of owning the consequences of machine work you did not perform.
+
+**Proof of operation** — a thing running in the world, with a record. The replacement for the business plan.
+
+**Provenance** — where a thing came from, and who is behind it. The currency of a market that no longer believes plausibility.
+
+**Superintelligence** — used here narrowly: capability at expert breadth, rented as a metered utility.
+
+**Taste** — the ability to choose among plausible options. Not a luxury; the highest-leverage act in a business where making things is free.
+
+**Technopreneurship** — entrepreneurship in technology, coined 1987, taught in classrooms, accurate for about thirty-five years, now a word that names the abundant input.
+
+## Appendix E — Methodology and limitations
+
+This is a conceptual and historical argument supported by a single specimen, not an empirical study. Three things follow, and a reader is entitled to weigh them.
+
+**The sample is one.** The estate reported in chapter 20 is the author's, and it is not independent of the argument. Where a number is given, it is a real count taken from the system on the date of writing; where a claim is a judgement, it is marked as one in the text. No claim in this book rests on a statistic drawn from a population.
+
+**The history is narrative, not econometric.** The three waves in chapter 6 are a periodisation, not a regression. Reasonable people could date the waves differently, and a scholar would want to measure input costs rather than assert their direction. The direction is not seriously in dispute; the dating is.
+
+**The predictions are dated and falsifiable, which is the only protection on offer.** Chapter 21 states five claims and the observation that would finish each. Appendix C of the companion volume is the same discipline applied to the operator. A reader who wants to check the argument should check it there, in their own business, over a quarter.
+
+**What would change the argument most.** If capability stops being a utility — because progress plateaus or the frontier concentrates behind prices most people cannot pay — then the technopreneur returns, smaller, and operatorship becomes a niche rather than a successor. That is stated in chapter 22 and it is not a rhetorical concession; it is the main risk.
+
+## Appendix F — Acknowledgements
+
+**To the classroom that gave me the word.** The entrepreneurship faculty that taught *technopreneurship* taught it honestly, and everything in this book's first chapter is a description of what they were up against, not a criticism of them. They were teaching the scarcities of their moment, and they were right about them for a long time. The argument here is that the moment moved.
+
+**To the estate, which is the specimen.** Seven ventures, five rails, a monitor, a sequence, and a daily screen that has told me unpleasant things in four lines for months. The failures in chapter 14 are the estate's, and several of them were mine twice before they became rules.
+
+**To the trades that named it first.** Operators in control rooms, on rigs, at ports and on exchange floors have used this word with exactly this meaning for a century. Reclaiming it is not invention, and the debt should be acknowledged: the word was right before the software arrived.
+
+**To the readers of the working papers.** The Mechanism Audit and The Mechanism Auditor were read by people who asked *what would prove this wrong* rather than *is this interesting*, which is why chapters 21 and 22 exist in the form they do.
+
+**To Harare.** A market that does not believe a website by default is an excellent place to learn what accountability is worth, and a hard place to learn it comfortably. Both facts are in chapter 15.
+
+## Appendix G — About the author
+
+Courage Garikai runs Jacaranda Labs, a one-person software estate in Harare, Zimbabwe: seven ventures, a press (which published this book), five publishing rails, and roughly three hours twenty minutes a week of human attention. He holds a first degree in entrepreneurship, in which he was taught the subject this book retires. He writes about what happens when the machinery that makes a small business possible also makes the person who runs it the only thing in it that cannot be replaced.
+
+His other books in this series are *The Point of Failure* (the operator's manual) and *The Mechanism Auditor* (how to review a product that runs without you). The working paper *The Mechanism Audit* sets out the formal method those books use.
+
+## Appendix H — Colophon and rights
+
+**Type.** Iowan Old Style, Palatino and Georgia for text; the system sans-serif for labels, tables and glossary; a monospace for code. No web fonts, no external assets: the edition is designed to render identically on a phone, a laptop and in print.
+
+**Figures.** Six figures, hand-drawn as SVG by `tools/make_figures.py` — coordinates, rules and type, no charting library — in the same cream-and-black idiom as the covers, so that the diagrams survive A5 print and a small screen.
+
+**Edition.** First edition, November 2026. HTML and Markdown published; the Markdown is the source.
+
+**Licence.** Text and figures: CC BY 4.0, attribution to Courage Garikai, Jacaranda Labs, Harare. The syllabus pack in Appendix C and the definition in Appendix A may be reproduced, modified and taught without attribution — a syllabus that cannot be copied is not a syllabus.
+
+**Canonical location.** `https://jacaranda-labs.pages.dev/read/operatorship.html`
+
+**A note on the timing.** The specific tools named in this book will be out of date before the second edition. That is not an apology; it is the thesis. The words that last are the ones that name what does not change — and if this one is wrong, the appendix that says how to prove it wrong is the part worth keeping.

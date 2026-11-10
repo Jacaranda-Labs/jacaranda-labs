@@ -7,7 +7,39 @@ date: First edition, November 2026
 slug: the-point-of-failure
 ---
 
+# Front matter
+
+## About this book
+
+This is a manual for one person: the operator of a business small enough that they are the only human in it, and automated enough that the business keeps working while they are not there. It is written for the person who owns the consequences of machine work they did not perform, and who has discovered that the machine has a failover everywhere except the one place that matters.
+
+It is not a book about productivity. Productivity books assume the work is a fixed quantity and the person a variable to be optimised. This book assumes the opposite: the work is unbounded, the person is finite, and the only way to hold both is to design the business so that the finite thing is never asked to be infinite.
+
+## How to read it
+
+**If you have an hour**, read Part One and Part Three. That is the diagnosis and the bad day.
+
+**If you have a day**, read it straight through, then fill in the instruments in Appendix B. The instruments are the book; the prose is the argument for them.
+
+**If the week is already bad**, start at the bad-day protocol in chapter 16, do the three steps, and come back when a day has room in it. There is no penalty for arriving at the book sideways.
+
+**If you are reading this for someone else**, chapter 23 is addressed to you, and it is four paragraphs.
+
+Each part opens with a statement of what it is for and closes with the thing you should be able to do afterwards. The activities in Part Six are not homework; they are the parts of the method that a reader has to perform once in order to own.
+
+## A note on evidence and on what this is not
+
+This book is not therapy and it is not a substitute for care from a professional. It has nothing to say about clinical depression, anxiety disorders, trauma or grief, and no amount of system design will make it say anything. Chapter 22 says where the book stops and a person has to start, and that chapter is not decoration; it is the one that matters if the earlier ones have stopped helping.
+
+What the book does claim is narrower and testable: that a particular way of working — one person, a machine that acts at all hours, an unbounded surface, one decider — produces a predictable kind of wearing-down, and that predictable things can be designed against. The nine rules are the design. They are operational, they are checkable, and none of them requires motivation.
+
+The evidence is one estate: seven ventures, twenty-two works at the time of writing (twenty-four including the two new books in this series), five publishing rails, an hourly monitor, a three-touch outreach sequence, and roughly three hours twenty minutes a week of human attention, of which about seventeen minutes is genuinely manual. One estate is a case, not a study. The rules are stated in a form you can falsify in your own operation within a month, and Appendix C is the form on which to do it.
+
+---
+
 # Part One — The failure that is not the server
+
+*What this part is for: to establish that the operator is a component, with the same obligations as any other component, and that the obligations have been neglected. By the end you should be able to say which single part of your business has no failover, and why.*
 
 ## 1. Everything here is redundant except the person
 
@@ -17,9 +49,17 @@ Inside that system, almost everything has a failover. The press rail retries. Th
 
 There is exactly one component with no redundancy at all. It is not the server. It is the operator.
 
+> Figure 1 sets the two columns side by side: six components that fail and recover, and one that fails and does not.
+
+![Figure 1](/read/fig/a-01-single-point.svg)
+
+*Figure 1 — Every component has a failover except one. The list on the left is the estate's own design assumption; the box on the right is the assumption nobody wrote down.*
+
 That asymmetry is the reason this book exists. Every other risk in a one-person business is a technical problem with a technical answer — a retry, a monitor, a second copy, a smaller blast radius. The operator is a single point of failure with no replica, no warm standby, and no way to fail over to a second instance of oneself. Everything the estate does rests on one nervous system, one sleep pattern, one capacity to make a decision at four in the afternoon.
 
 So the operator gets the same treatment every other component gets: written down, checked, given limits, monitored. Not as self-care. As engineering.
+
+**Activity 1.1 — Name the component.** Take a sheet of paper and write the six things in your business that could stop for a day without the business stopping. Then write the one thing that cannot. Be specific: not "me" but "me deciding what to build next", or "me answering a customer's complaint", or "me noticing that a number is wrong". The specific version is the one you can act on later. *(5 minutes. Appendix B, sheet 1.)*
 
 ## 2. Three things are true at once, and holding all three is the skill
 
@@ -32,6 +72,8 @@ Most advice for people who work alone fails because it resolves one of these at 
 **The machine is built to run without you.** Not as a metaphor. The rails post. The bank refills. The deploy verifies. Nothing charges a card while you sleep, and nothing needs you at the moment it happens. Resting is therefore not neglect; it is using the system as designed. A person who cannot rest inside a system built for their absence has not finished building it.
 
 Hold all three and the shape becomes clear. You are not trying to do less work because work is bad. You are refusing to let an unbounded surface consume a bounded person, while accepting the one part that genuinely is yours — the deciding — and scheduling it like the finite resource it is.
+
+**Activity 1.2 — The three-column test.** Write three headings: *unbounded*, *mine to decide*, *already handled*. For ten minutes, put everything currently on your mind into one column. Anything in the first column gets a boundary, not a plan. Anything in the second gets a slot in the week. Anything in the third gets struck through, and you are allowed to feel the relief. Most people find that the first column is much longer than the second, and that the second is where the business actually is. *(10 minutes.)*
 
 ## 3. Why "when it calms down" is not a plan
 
@@ -55,9 +97,15 @@ That is the whole claim. Nine rules, a bad day, a pause switch, a way of holding
 
 # Part Two — The nine non-negotiables
 
+*What this part is for: to give you nine rules that survive a bad week, each with the mechanism it protects and a check that takes seconds. By the end you should be running at least the first, and know which of the other eight you are currently failing.*
+
 Nine rules. They are operational, they are checkable, and none of them requires motivation. That last clause is the important one: motivation is a resource that is already spent on the work. A rule that needs to be felt in order to be kept is not a rule; it is a mood with a checklist.
 
 Each chapter below gives the rule, the mechanism it protects, what it looks like when it fails, and how to check it. The checks take seconds. Do them badly rather than skipping them.
+
+![Figure 2](/read/fig/a-02-nine.svg)
+
+*Figure 2 — The nine rules and their checks. Appendix B, sheet 2 is the same table as a seven-box week you can keep on a wall.*
 
 ## 5. Rule one — the shutdown happens every day
 
@@ -73,6 +121,8 @@ The written list is the mechanism that actually works, and it works because of w
 
 **The check.** Did I say it out loud? The out-loud part is not theatre. Speaking closes a loop in a way that thinking about closing it does not.
 
+**Activity 5.1 — The five-minute shutdown, once, properly.** Tonight: set a timer for five minutes. Write every open loop on one page, including the trivial ones. Write tomorrow's one outcome as a single sentence with a verb in it. Say out loud, to the room: "It is recorded. The estate can run until eight." Close the laptop. Stand up and leave the room. Do not evaluate how it felt; the first one always feels like nothing. Do it seven nights and then evaluate. *(5 minutes × 7. Template in Appendix B, sheet 3.)*
+
 ## 6. Rule two — one day off a week, fully off
 
 **The rule.** One day. Not "light". No estate screen, no money check, no drafts, no "just looking at the queue".
@@ -82,6 +132,8 @@ The written list is the mechanism that actually works, and it works because of w
 **When it fails.** The half-day off. The day where you "only" answer one message and read one dashboard, which costs the whole day's recovery and delivers about ten minutes of work. This is the most common failure in the book, because it feels like diligence.
 
 **The check.** Did anything from the business enter your head as a task? Then it was not a day off. Not a moral failing — a data point. Move it to the next one.
+
+**Activity 6.1 — The dependency audit.** Take your day off. In the evening, write down every business event you would have wanted to know about during it. Then look at the list: each item is either (a) something the estate should have told you afterwards and did not, (b) something you did not need to know at all, or (c) something that genuinely needed you, which is a design fault with a date on it. Category (c) items become the month's automation work. *(The day, then 10 minutes.)*
 
 ## 7. Rule three — sleep before midnight, and treat a short night as an incident
 
@@ -93,6 +145,8 @@ The written list is the mechanism that actually works, and it works because of w
 
 **The check.** Three nights. Count them. If you are at three, the next night is the work — not the queue, not the launch.
 
+**Activity 7.1 — The incident log.** For two weeks, record only two numbers: hours slept, and the single most consequential decision of the day. Do not analyse as you go. At the end, lay the two columns beside each other and mark which decisions you would make again. Most people find the correlation in the first fortnight, and after that the rule stops needing to be believed. *(1 minute a day, 14 days. Appendix B, sheet 4.)*
+
 ## 8. Rule four — the first ninety minutes belong to the day's one outcome
 
 **The rule.** The first ninety minutes of the working day go to the one thing that matters, never to the inbox, never to other people's urgency.
@@ -103,6 +157,8 @@ The written list is the mechanism that actually works, and it works because of w
 
 **The check.** By 10:30, has the one outcome moved? If it has not, the morning was spent on other people, and tomorrow's version of the same choice is the whole fix.
 
+**Activity 8.1 — The one-outcome sentence.** An outcome is not a task. "Work on pricing" is a task. "The price on three ventures is changed, published, and the page no longer apologises" is an outcome. Write tomorrow's outcome tonight, in that form: a state of the world that will be true by lunchtime or will not. Then tomorrow, before the inbox, work only on it for ninety minutes. *(5 minutes to write, 90 to do.)*
+
 ## 9. Rule five — no money numbers between Sunday night and Monday's round
 
 **The rule.** Between Sunday evening and the Monday review, do not check revenue, cash, or pipeline.
@@ -112,6 +168,8 @@ The written list is the mechanism that actually works, and it works because of w
 **When it fails.** The Sunday-night dread that has no decision attached to it. It is one of the most reliable ways a one-person business ruins a weekend, and it disguises itself as being responsible.
 
 **The check.** Did I open anything financial between Sunday sunset and Monday? The honest answer is usually yes. The second honest answer is that it changed nothing.
+
+**Activity 9.1 — The Monday round.** Replace the checking with a scheduled reading. Mondays, at the same hour, fifteen minutes: cash, revenue, pipeline, and one sentence on what the numbers imply. Written down. Outside that window the numbers do not exist. The point is not to look less; it is to look in the only hour in which looking produces a decision. *(15 minutes, weekly. Appendix B, sheet 5.)*
 
 ## 10. Rule six — move the body daily, outside if possible
 
@@ -135,15 +193,25 @@ The "no podcast about business" clause is not contempt for podcasts. It is that 
 
 **The check.** Who did you talk to today about something that has no bearing on the work? If the answer is nobody, tomorrow's version of that is the task, and it is not optional because it feels inefficient.
 
+**Activity 11.1 — The certainty audit.** Once a month, write down the three things you are most sure about in the business. Then, for each, write the name of a person outside the business who has heard the claim and disagreed, or the name of a person you could ask. Certainty with no second reader is not conviction; it is an unexamined position, and it is the one most likely to be wrong. *(20 minutes, monthly.)*
+
 ## 12. Rule eight — the worry window
 
 **The rule.** When anxiety arrives, give it twenty minutes with a pen: write the fear, the worst case, the next physical action. Then it is closed until the next window.
 
 **The mechanism.** Anxiety written down becomes a list; anxiety held becomes a day. The writing does three distinct things. It converts a diffuse state into a named object, which is smaller than it felt. It forces the worst case onto paper, where it is usually survivable and occasionally specific. And it produces one physical action, which is the only part of the loop that can change anything.
 
+> The difference between the two columns in Figure 5 is not optimism. It is that one of them has an end.
+
+![Figure 5](/read/fig/a-05-worry.svg)
+
+*Figure 5 — The loop and the list. Both take about twenty minutes; only one of them finishes.*
+
 **When it fails.** Anxiety is allowed to run as a background process all day, which is the mode it prefers: no conclusion to reach, no action to take, and a constant low tax on every other thought.
 
 **The check.** Is there something written from the last twenty-four hours? If not, the worry is still circulating, and the window is twenty minutes you have not spent.
+
+**Activity 12.1 — The first window.** The next time you notice the feeling, set a timer for twenty minutes and write, in this order: the fear in one sentence; the worst realistic case and whether you would survive it; the next physical action, small enough that you could do it today. Then close the notebook. If it comes back outside a window, write one line — "this is the worry, the window is at four" — and continue. *(20 minutes.)*
 
 ## 13. Rule nine — no new venture while two are unresolved
 
@@ -157,7 +225,7 @@ The filing rule protects you from your own best ideas. Some of the ideas will be
 
 **The check.** How many unresolved ventures do I have? If it is two or more, the answer is not a new one.
 
----
+**Activity 13.1 — The unresolved register.** List every venture you are currently running or half-running. Beside each, write one of four words: *growing*, *steady*, *stalled*, *unknown*. Count the last two. If the count is two or more, the next new idea goes in a file called *after*, with the date it arrived, and nothing else happens to it this month. *(10 minutes. Appendix B, sheet 6.)*
 
 ## 14. Keeping nine rules without a personality transplant
 
@@ -173,29 +241,39 @@ Nine rules is a lot for a person who is already busy, and the predictable failur
 
 **One rule at a time.** If the system is not running at all, do not start with nine. Start with the shutdown, because it is the one that makes the others possible: a day that ends properly produces a night that recovers, and a recovered night produces a morning with ninety minutes in it. Three weeks of the shutdown, then add the day off.
 
-## 15. The signals that arrive before the bad day
+**Activity 14.1 — The four-week installation.** Write the nine rules as a column. Beside each, write the date you will start it. Start with the shutdown. Add one rule a week; do not add a second until the first has seven consecutive days. Four weeks from today you have a system that has actually been run, rather than a system that was designed. *(10 minutes to plan, 4 weeks to do.)*
 
-The bad-day protocol is a response. It is better to have a warning, and the warning is almost never a feeling. Feelings lag. These are the leading indicators, in the order they tend to appear.
+## 15. The clock
 
-**The first signal is the shrinking of the non-work life.** The walk gets shorter. The conversation gets postponed. The thing you did on Saturdays stops happening, one Saturday at a time, each time for a good reason. Nothing about this feels like decline; it feels like focus. It is the earliest and most reliable sign that the system is being paid for out of the operator rather than out of the estate.
+The method has three units of time and no others. The day has two instances. The week has one review. The month has one long review. Nothing else is scheduled, and in particular there is no hourly loop for the operator — the rails have those, and that is the point.
 
-**The second is that the queue stops moving.** Not that the work is piling up — that the *decisions* are. The same item appears in the estate screen for nine days. That is not laziness; it is a capacity problem, and it usually means the operator's attention is being spent on something that does not appear in the queue at all.
+![Figure 3](/read/fig/a-03-clock.svg)
 
-**The third is that the numbers stop being read.** Not looked at — read. A person in a bad stretch will open the dashboard and not see anything, because seeing requires the capacity to interpret, and interpretation has been spent elsewhere. Skipping the Monday review has a specific character: it is relief rather than avoidance, and relief is the tell.
+*Figure 3 — The only three units. Everything in this book fits into them, and if something does not fit, it is not in the method.*
 
-**The fourth is a tone change in the writing.** The messages get shorter and flatter, or more defensive. Outgoing copy becomes either curt or over-explained; there is rarely a middle. If you read back three days of your own sent messages and they sound like a person you would not want to work for, that is data, not self-criticism.
+| When | How long | What | Where |
+|---|---|---|---|
+| Morning | 10 min | the estate screen · the one thing · today's outcome | wherever the screen runs |
+| Evening | 5 min | the shutdown: written, out loud, closed | the doorway, not the desk |
+| Weekly | 45 min | the review: nine boxes, one page, next week's outcome | same hour every week |
+| Monthly | 2 h, first Monday | kill one thing · amend one rule · read the money | away from the desk |
+| Quarterly | half a day | the honest arithmetic: is this still a business that supports a life? | out of the building |
 
-**The fifth is sleep, and it is last because it is the least subtle.** By the time sleep has gone, the earlier four have usually been running for a fortnight.
-
-None of these requires a mood tracker. Four of them are visible in artefacts you already produce: a calendar, a screen, a dashboard, a sent folder. Look at them once a week, for a minute, as evidence rather than as a judgment. If three of the five are showing, treat the week as if it contained a bad day, and take the protocol early — because a bad day met in advance costs an afternoon, and a bad day met late costs the week.
+The shutdown is daily because the mind needs a daily boundary. The review is weekly because a week is the shortest period in which a business can be seen to have a direction. The month is monthly because that is the shortest period in which a bad decision has finished revealing itself. The quarter is quarterly because that is how long it takes to know whether the whole thing is working, and asking the question more often produces anxiety rather than information.
 
 ---
 
 # Part Three — The bad day
 
+*What this part is for: to give you a procedure for the day when the machine is fine and you are not, and a switch that stops the machine when you cannot. By the end you should be able to end a bad day in fifteen minutes without owing anything to the next one.*
+
 ## 16. The bad-day protocol
 
 Some days the machine is fine and the operator is not. This is not an emergency and it does not require the day to be rescued. Three steps, in order.
+
+![Figure 4](/read/fig/a-04-badday.svg)
+
+*Figure 4 — The three steps. Note what is missing from the diagram: nothing about catching up.*
 
 **Step one — 2 minutes. Make it safe.** Run the estate screen once. If the one thing is under three minutes, do it. If not: nothing today. The estate is designed for this — a day without the owner is a day the rails still post.
 
@@ -204,6 +282,8 @@ Some days the machine is fine and the operator is not. This is not an emergency 
 **Step three — the day. Leave it alone.** No catching up later in the same day — a bad day repaid at 11pm becomes a bad week. The evening shutdown still happens, even if the day contained nothing.
 
 The point of the protocol is not to salvage the day. It is to end it cleanly, so that tomorrow starts from a floor rather than from a debt. A day that is closed properly costs one day. A day that is repaid costs four.
+
+**Activity 16.1 — Pre-decide it.** Today, while you are well, decide what your bad day looks like: which outcome you will drop, who you will tell, what the smallest version of the day is. Write it on the back of the card in Appendix A. A protocol invented on the day is not a protocol; it is an improvisation by a person with less capacity than usual. *(10 minutes, once.)*
 
 ## 17. The pause switch
 
@@ -220,6 +300,8 @@ The estate must be pausable by one person in under a minute, without losing anyt
 
 The test of whether the estate was built properly is exactly this day: can it run while you cannot? If the answer is no, the fix is not more discipline. It is one more automation, and it is the highest-value work available to you.
 
+**Activity 17.1 — Time the pause.** Put a timer on. Stop every automated thing you run, one at a time, and record how long each took and what you had to remember in order to do it. Anything that took more than sixty seconds, or that required a fact you had to look up, is a defect. Write the defect down with a date. *(15 minutes, quarterly.)*
+
 ## 18. The week after
 
 The day after a bad day is not the day to catch up. It is the day to find out what happened.
@@ -232,6 +314,8 @@ This is the discipline that turns a bad day into an engineering finding rather t
 
 # Part Four — The estate is not you
 
+*What this part is for: to separate the record from the person, so that a failure produces a rule rather than a verdict. By the end you should have a way of closing a bad month in four steps that you can actually perform while having one.*
+
 ## 19. Ledger and self
 
 The most useful sentence in this book, and the hardest to believe on a bad week:
@@ -241,6 +325,8 @@ The most useful sentence in this book, and the hardest to believe on a bad week:
 The estate is built on published failure — the ledger has a column for what did not work, and the catalogue carries the works that stalled. That posture has to apply to the operator as well, or it is a marketing position rather than a method.
 
 Write failures in the ledger: with the mechanism, the cost, and the point at which it was obvious. Do not write them on yourself. The first produces a better estate; the second produces a worse operator. A failure recorded with its mechanism becomes a rule for next time. The same failure recorded as a fact about your character becomes a thing to carry, and carrying it costs the thing you need most, which is the willingness to try another one.
+
+**Activity 19.1 — The mechanism sentence.** Take a failure from the last six months that you still think about. Write it twice. First as a verdict: "I am the kind of person who…" Then as a mechanism: "the decision was X, the information missing was Y, and it was obvious by Z." Destroy the first. Keep the second. The point is not positive thinking; it is that only one of the two sentences can be acted on. *(15 minutes.)*
 
 ## 20. Record and worth
 
@@ -271,11 +357,35 @@ That is a good job. It is also a job, and it needs hours, rest, and a life outsi
 
 > The business exists so that a person can live. The moment it is the other way round, the automation has failed no matter how green the pipeline is.
 
+**Activity 22.1 — The quarter-hour audit.** Once a quarter, answer four questions in numbers, not adjectives: How many hours did I work last week? How many nights under six hours? How many non-business conversations did I have? What did I do that had no return except that I wanted to? If any of the first three has moved in the wrong direction for two quarters running, the problem is not the market. *(30 minutes, quarterly. Appendix B, sheet 7.)*
+
+## 23. The signals that arrive before the bad day
+
+The bad-day protocol is a response. It is better to have a warning, and the warning is almost never a feeling. Feelings lag. These are the leading indicators, in the order they tend to appear.
+
+![Figure 6](/read/fig/a-06-signals.svg)
+
+*Figure 6 — Five signals. Four of them are visible in artefacts you already produce; none of them requires a mood tracker.*
+
+**The first signal is the shrinking of the non-work life.** The walk gets shorter. The conversation gets postponed. The thing you did on Saturdays stops happening, one Saturday at a time, each time for a good reason. Nothing about this feels like decline; it feels like focus. It is the earliest and most reliable sign that the system is being paid for out of the operator rather than out of the estate.
+
+**The second is that the queue stops moving.** Not that the work is piling up — that the *decisions* are. The same item appears in the estate screen for nine days. That is not laziness; it is a capacity problem, and it usually means the operator's attention is being spent on something that does not appear in the queue at all.
+
+**The third is that the numbers stop being read.** Not looked at — read. A person in a bad stretch will open the dashboard and not see anything, because seeing requires the capacity to interpret, and interpretation has been spent elsewhere. Skipping the Monday review has a specific character: it is relief rather than avoidance, and relief is the tell.
+
+**The fourth is a tone change in the writing.** The messages get shorter and flatter, or more defensive. Outgoing copy becomes either curt or over-explained; there is rarely a middle. If you read back three days of your own sent messages and they sound like a person you would not want to work for, that is data, not self-criticism.
+
+**The fifth is sleep, and it is last because it is the least subtle.** By the time sleep has gone, the earlier four have usually been running for a fortnight.
+
+None of these requires a mood tracker. Four of them are visible in artefacts you already produce: a calendar, a screen, a dashboard, a sent folder. Look at them once a week, for a minute, as evidence rather than as a judgment. If three of the five are showing, treat the week as if it contained a bad day, and take the protocol early — because a bad day met in advance costs an afternoon, and a bad day met late costs the week. *(Activity: Appendix B, sheet 8 — the weekly five-signal check, 1 minute.)*
+
 ---
 
 # Part Five — Asking for help
 
-## 23. Where this book stops
+*What this part is for: to say plainly where this book stops, and what to do at that line.*
+
+## 24. Where this book stops
 
 If low mood, dread or sleeplessness persists for more than a couple of weeks, or if work starts to feel pointless in a way that does not lift, that is not a scheduling problem and this book cannot fix it. Nothing in the previous chapters is a treatment. Nine rules and a pause switch are a floor, not a cure, and a person who needs care and instead optimises their calendar has made the situation worse in an organised way.
 
@@ -283,7 +393,7 @@ Speak to a doctor or a counsellor. In Zimbabwe, **Friendship Bench** is a free, 
 
 The distinction that matters: this book is for the person whose work is eating their life and who needs the work restructured. It is not for the person who is ill. The tricky part is that the first can become the second, quietly, and the person best placed to notice is not usually the one experiencing it.
 
-## 24. Tell one person
+## 25. Tell one person
 
 Telling one person — a friend, a sibling, a peer who runs something — is worth more than any amount of system design. Not because they will fix it, and not because they will have advice. Because being witnessed is a different mechanism from being organised, and the estate cannot supply it.
 
@@ -291,7 +401,9 @@ The estate was built to survive your absence. It cannot be a substitute for your
 
 Pick the person now, while it is easy. A specific name, not a category. Tell them one true sentence about how the work is going. That is the entire instruction, and it is harder than every rule in Part Two.
 
-## 25. For the person reading this on someone else's behalf
+**Activity 25.1 — The name.** Write one name. Not a role, not "my friend" — a name. Then write the sentence you would say to them, in the words you would actually use, which will not be the words in this book. Then send it this week. There is no template for this because a template would defeat the purpose. *(10 minutes, then one message.)*
+
+## 26. For the person reading this on someone else's behalf
 
 If you are reading this because someone you know runs something alone, here is what is useful and what is not.
 
@@ -303,38 +415,248 @@ The most useful sentence you can say is the one this book keeps returning to: *t
 
 ---
 
-# End matter
+# Part Six — The activities
 
-## The card
+*What this part is for: to hold every exercise in one place, in the order the book uses them, so that a reader can work through the method without re-reading the prose. Everything here is also in Appendix B as a printable sheet.*
 
-Nine rules. Print it. Put it where you work.
+## 27. How to use the activities
 
-| # | Rule | Check |
-|---|---|---|
-| 1 | The shutdown happens every day — five minutes, written, out loud | Did I say it out loud? |
-| 2 | One day off a week, fully off | Did the business enter my head as a task? |
-| 3 | Sleep before midnight; three short nights is an incident | Count them: am I at three? |
-| 4 | The first ninety minutes belong to the day's one outcome | By 10:30, has it moved? |
-| 5 | No money numbers between Sunday night and Monday | Did I open anything financial? |
-| 6 | Move the body daily, outside, no phone | Did I leave the building? |
-| 7 | One non-business conversation a day | Who did I talk to about something else? |
-| 8 | The worry window: twenty minutes, pen, then closed | Is there something written from the last day? |
-| 9 | No new venture while two are unresolved | How many are unresolved? |
+There are eighteen activities. They are not all for everyone, and they are not all for now. Three groups:
 
-**The bad day:** make it safe · shrink the day · leave it alone.
+**The installation set (do these first, in this order).** Activity 5.1 (the shutdown), 7.1 (the incident log), 14.1 (the four-week installation), 16.1 (pre-decide the bad day), 25.1 (the name). Together these take about an hour of planning and four weeks of practice, and they produce a working floor.
 
-**The pause switch:** disable the press workflow · stop pushing · leave the checkouts alone · or do nothing for a week and let the outbox fill.
+**The diagnostic set (do these when something feels wrong).** 1.1 (name the component), 1.2 (the three-column test), 6.1 (the dependency audit), 11.1 (the certainty audit), 13.1 (the unresolved register). These are the instruments you reach for when the week has gone sideways and you cannot say why.
 
-**The three sentences:** The machine runs; I steer, and steering has hours. A failure is a hypothesis that was tested. The business exists so that a person can live.
+**The quarterly set (do these four times a year).** 9.1 (the Monday round), 17.1 (time the pause), 19.1 (the mechanism sentence), 22.1 (the quarter-hour audit). These produce the numbers that tell you whether the method is working, as opposed to whether it is being practised.
 
-## A closing statement
+## 28. The activity index
 
-Almost every business I have seen is arranged the wrong way round. The person is the fuel. Their evenings are the runway, their health is the working capital, and the thing they built becomes the thing they answer to.
+| # | Activity | Time | When | Sheet |
+|---|---|---|---|---|
+| 1.1 | Name the component | 5 min | once | B1 |
+| 1.2 | The three-column test | 10 min | when overwhelmed | B1 |
+| 5.1 | The five-minute shutdown | 5 min × 7 | nightly, forever | B3 |
+| 6.1 | The dependency audit | the day + 10 min | monthly | — |
+| 7.1 | The incident log | 1 min × 14 | quarterly | B4 |
+| 8.1 | The one-outcome sentence | 5 min + 90 | daily | B3 |
+| 9.1 | The Monday round | 15 min | weekly | B5 |
+| 11.1 | The certainty audit | 20 min | monthly | — |
+| 12.1 | The first window | 20 min | as needed | B9 |
+| 13.1 | The unresolved register | 10 min | monthly | B6 |
+| 14.1 | The four-week installation | 10 min + 4 wk | once | B2 |
+| 16.1 | Pre-decide the bad day | 10 min | once, then quarterly | A |
+| 17.1 | Time the pause | 15 min | quarterly | — |
+| 19.1 | The mechanism sentence | 15 min | after a failure | — |
+| 22.1 | The quarter-hour audit | 30 min | quarterly | B7 |
+| 25.1 | The name | 10 min | now | — |
+| — | The seven-box week | 1 min | weekly | B2 |
+| — | The five-signal check | 1 min | weekly | B8 |
 
-It arrives politely. A quiet week becomes a busy one. The work that pays gets done on Sunday because Sunday was free. Three nights under six hours is not a decision anyone makes; it is a subtraction nobody watched. Then a year has gone and the business is real, and the life it was supposed to fund is the thing on the invoice.
+## 29. Three worked examples
 
-The alternative is not balance as an aesthetic. It is four ordinary things, in this order: sleep is not negotiable; the hours are fixed and the work fits inside them; nothing important depends on you being reachable; the money is a floor, not a score.
+**Worked example — the shutdown, done badly and then well.** A first attempt: "Finish pricing. Reply to T. Check the deploy." That is a task list, not a shutdown; it holds the same loops it was meant to release, and it produces the 3am waking because nothing in it says *this is finished for today*. A second attempt, the same evening: "Pricing: three ventures, decided, not published — decision is X, publishing is tomorrow at 10. T: owes me a number, not the other way round, so nothing is owed tonight. Deploy: verified at 18:20, nothing to do. Tomorrow's one outcome: the pricing page no longer apologises." Then, out loud: "It is recorded. The estate can run until eight." The difference is not length. It is that every item has been given a status, and one of them has been given a time.
 
-A machine can send at three in the morning. It should not. That is not a limit on the machine. It is a limit on the person who would otherwise be awake to supervise it.
+**Worked example — a bad month closed in four lines.** "March: zero new customers, and the one that churned had been quiet for six weeks. Mechanism: I stopped writing the Monday round in February, so the quiet was not visible until it was a churn. Next action: the Monday round at 9am, in the calendar, recurring — 12 March." Then the file is closed and read once, at the monthly review, and not at night. The value is not in the lines; it is in the closing.
 
-*Courage Garikai · Jacaranda Labs · Harare · November 2026*
+**Worked example — a bad day, with the protocol.** Woke at 4am, no reason, could not get back. At 8:40 the screen said the one thing was forty minutes of copy work. Step one: ran the screen, saw the thing, decided it was not under three minutes — so nothing today. Step two: moved two calls, told one person "I am off today, back tomorrow", and set the day's outcome to "eat, walk, sleep at a reasonable hour". Step three: did not open the laptop again, including at 9pm when the thought arrived. Shutdown at 21:30, three lines, out loud, door closed. Cost: one day. The version where the forty minutes gets done at 11pm costs the week, and this is the arithmetic the protocol exists to make obvious.
+
+## 30. What to do if you only do one thing
+
+If everything in this book is too much — if the week is bad enough that even the installation set is impossible — then do this one thing, and nothing else, until it holds:
+
+> End the day on purpose. Five minutes, written, out loud, laptop closed, room left.
+
+Everything else in the method is downstream of a day that finishes. The shutdown is not the smallest rule because it is the easiest; it is the smallest because it is the one that makes the other eight possible.
+
+---
+
+# Appendices
+
+## Appendix A — The card
+
+Print this page. Cut along the rule. Put it where you work — not in a drawer, not in a notes app. The card is the book, compressed.
+
+<div class="card-sheet">
+
+**JACARANDA LABS · THE OPERATOR'S CARD** · *The Point of Failure*, first edition
+
+**THE NINE** — 1 shutdown, every day, out loud · 2 one day off, fully off · 3 sleep before midnight; three short nights is an incident · 4 the first ninety minutes are the one outcome · 5 no money numbers Sunday night to Monday · 6 move, outside, no phone · 7 one non-business conversation · 8 the worry window, twenty minutes, pen · 9 no new venture while two are unresolved
+
+**THE BAD DAY** — make it safe (2 min) · shrink the day (10 min) · leave it alone (the rest of it, no catching up)
+
+**THE PAUSE** — disable the press workflow · stop pushing · leave the checkouts alone — or do nothing for a week and let the outbox fill
+
+**THE THREE SENTENCES** — The machine runs; I steer, and steering has hours. · A failure is a hypothesis that was tested. · The business exists so that a person can live.
+
+**IF IT IS MORE THAN TWO WEEKS** — this is not a scheduling problem. A doctor, a counsellor, or Friendship Bench. Tell one person by name.
+
+</div>
+
+## Appendix B — The instruments
+
+Eight sheets, each a form to be filled in by hand. Print them, or copy the headings into a notebook — the format matters less than the repetition. Nothing here needs software, and that is deliberate: an instrument that requires a working laptop is an instrument that fails on the day you need it.
+
+**Sheet B1 — Name the component.** Two columns. *Stops for a day without the business stopping* (six rows) and *cannot stop* (one row, written specifically). Below: "the thing only I can do, in the smallest true form" and a date.
+
+**Sheet B2 — The seven-box week and the installation plan.** Nine rows, one per rule, seven columns for the days. A tick per day. At the bottom, the count. On the reverse, the installation plan: nine rules, nine start dates, starting with the shutdown. Six of nine is information; four of nine for three weeks is a finding.
+
+**Sheet B3 — The shutdown page and the one outcome.** Two fields per night, ruled. *Open loops* (as many lines as needed) · *tomorrow's one outcome* (one line, a state of the world, a verb in it) · *the sentence said out loud* (a checkbox, not a line — the saying is the record).
+
+**Sheet B4 — The incident log.** Fourteen rows: date · hours slept · the day's most consequential decision · would I make it again (yes/no). No commentary column, on purpose. The pattern is the output.
+
+**Sheet B5 — The Monday round.** Five rows, weekly: cash · revenue · pipeline · what the numbers imply (one sentence) · the decision they produce (one, dated). A rule at the top: *no number is read outside this hour.*
+
+**Sheet B6 — The unresolved register.** One row per venture: name · status (growing / steady / stalled / unknown) · what would resolve it · date. A footer line for the count of the last two categories, and a box for the next idea — *after* — with the date it arrived.
+
+**Sheet B7 — The quarter-hour audit.** Four questions, four numeric answers, four quarters: hours worked last week · nights under six hours · non-business conversations · what I did that had no return but that I wanted. Two consecutive quarters moving the wrong way is the finding.
+
+**Sheet B8 — The five-signal check.** Five rows, one minute, weekly: non-work life (shrunk?) · the queue (moving?) · the numbers (read?) · the tone (mine?) · sleep (three nights?). Three ticks in the *wrong* column and the week gets the protocol early.
+
+**Sheet B9 — The worry page.** Four fields: the fear, one sentence · the worst realistic case, and would I survive it · the next physical action, small enough for today · the window closed at (time). The last field is the one that makes it a method rather than a journal.
+
+## Appendix C — The one-page estate audit
+
+Once a year, or before any large decision, answer these twenty questions. Each is scored 0 (no), 1 (partly), 2 (yes). The total is not a grade; it is a list of where to look.
+
+**The business as a machine (0–10)**
+
+1. Can the business run for a week with no input from me?
+2. Does every automated act leave a record a stranger could audit?
+3. Does anything tell me when a rail has gone quiet, rather than only when it errors?
+4. Can I pause everything in under a minute without losing anything?
+5. Is there anything I do daily that is not a decision?
+
+**The decisions (0–10)**
+
+6. Do I know which single decision this week matters most?
+7. Is that decision scheduled rather than remembered?
+8. Have I refused a good idea this month, on purpose?
+9. Are fewer than two ventures unresolved?
+10. Did I write down what would tell me a decision was wrong, before making it?
+
+**The operator (0–10)**
+
+11. Did I sleep seven hours or more on most nights this month?
+12. Did I take a full day off in each of the last four weeks?
+13. Did I move my body outside on most days?
+14. Did I have a conversation about something other than the business on most days?
+15. Have I told one person, by name, how the work is actually going?
+
+**The life (0–10)**
+
+16. Is there something in my week that has no return except that I want it?
+17. Do the hours I work fit inside the shape of the day I chose?
+18. Is the money a floor I can see, rather than a score I am chasing?
+19. If a venture failed tomorrow, would I still be able to rest on Sunday?
+20. Is the business arranged so that I can live, rather than the other way round?
+
+**Reading it.** Under 20: the business has a failover problem and the operator has a load problem, and the nine rules are urgent rather than advisable. 20–30: the method is running but one of the three groups is being neglected, and the lowest group tells you which. Over 30: the estate is doing what it was built for, and the work now is to keep it that way through a busy quarter — which is when it is most likely to break.
+
+## Appendix D — Glossary
+
+**Activity** — an exercise in this book that a reader performs once in order to own a part of the method. Not homework.
+
+**Bad day** — a day on which the machine is fine and the operator is not. Handled by a three-step protocol, not by rescue.
+
+**Boundary** — a limit chosen in advance, which holds when intentions fail. Distinguished from a wish, which does not.
+
+**Check** — the question that takes seconds and tells you whether a rule is running. Every rule in Part Two has one.
+
+**Component** — anything in the business that can be absent for a while. The operator is a component with no replica.
+
+**Degenerate form** — the smallest version of a rule that still counts. Scaled-down is not failed.
+
+**Estate** — the shared machinery plus the portfolio of ventures, as distinct from any one venture. The unit of the business, not the org chart.
+
+**Failover** — what happens when a component is absent. Everything in the estate has one except the operator.
+
+**Ghost authority** — confidence in an automated act that no human has verified. Named in the companion volume, *Operatorship*, and the most common way an operator's knowledge falls while their confidence rises.
+
+**Incident** — a short night logged as an event rather than absorbed as a habit. Three consecutive nights under six hours is the threshold.
+
+**Loop** — an unfinished thing the mind holds open. Written down, it becomes a task; held, it remains a threat.
+
+**Mechanism** — the decision or absence of a decision that produced an outcome. The alternative to a verdict about the self.
+
+**Non-negotiables** — the nine rules. Called that because they survive a bad week, which is the only test that matters.
+
+**One outcome** — a state of the world that will be true by lunchtime or will not. Not a task.
+
+**Operator** — the person who owns the consequences of machine work they did not perform. One person, no replica.
+
+**Pause switch** — the written procedure for stopping everything in under a minute. A design feature, and a test of the design.
+
+**Shutdown** — five minutes, written, out loud, laptop closed, room left. The highest-leverage habit in the book.
+
+**Signals** — the five leading indicators of a bad stretch, visible in artefacts rather than feelings.
+
+**Worry window** — twenty minutes with a pen, then closed. Converts a state into a list with an end.
+
+## Appendix E — References and further reading
+
+**On running systems that act without you**
+
+* The companion volume of this book: *Operatorship: What Ate Technopreneurship, and What Replaced It* — the same estate, argued as a form of business rather than a form of self-management.
+* *The Mechanism Auditor* — how to review a product that runs without you; the claim ledger, the mechanism map, the evidence trail, and the six failure signatures.
+* *The Mechanism Audit* (working paper 2026-04) — the formal version, with the gap classes and the incident tables.
+* Garikai, C. (2026). *ContentOps* — a zero-capital field report on grounded generation, silent failure, and fail-loud operations. Jacaranda Labs, Harare.
+
+**On sleep, attention and judgement**
+
+* Walker, M. *Why We Sleep* — the popular account of sleep's role in judgement and emotional regulation; read it as an argument for the rule, not as a clinical reference.
+* Kahneman, D. *Thinking, Fast and Slow* — for the mechanism behind "confidently wrong at 4pm".
+* Newport, C. *Deep Work* — for the front-loading of attention that Rule 4 depends on; the surrounding productivity culture is not required.
+
+**On one-person businesses and unbounded work**
+
+* Sarasvathy, S. (2001). "Causation and Effectuation." *Academy of Management Review* — what a resource-constrained operator actually does, formalised.
+* Baker, T. & Nelson, R. (2005). "Creating Something from Nothing: Resource Construction through Entrepreneurial Bricolage." *ASQ* — the academic account of making a business out of what is to hand.
+* Rachleff, A. on the "unbounded surface" of early companies — the phrase is useful even where the context is venture capital.
+
+**On failure, records and mechanism**
+
+* Petroski, H. *To Engineer Is Human* — failure as the engine of design, which is the posture this book asks of the operator.
+* Perrow, C. *Normal Accidents* — why complex systems fail in ways their designers did not anticipate; the intellectual ancestor of the operator-as-component argument.
+* Reason, J. *Human Error* — the error taxonomy that makes "name the mechanism" specific rather than therapeutic.
+
+**On the boundary between a book and a person**
+
+* Friendship Bench (Zimbabwe) — free, evidence-based lay counselling through primary care clinics and community spaces.
+* World Health Organization, *mhGAP* — the primary-care protocols that a general practitioner is likely working from.
+* National mental-health lines — the right first call outside Zimbabwe; the number is local, and worth looking up before you need it.
+
+**Notes on the references.** This book is not a clinical text, and none of the clinical material above is a substitute for a clinician. The references to sleep and attention are there to explain why an operational rule works, not to establish a treatment. Where a claim in this book is testable in your own operation within a month, Appendix C is the instrument; where it is not, the claim is an argument, and the argument is the book.
+
+## Appendix F — Acknowledgements
+
+A book about not being alone in a business is written by someone who was, for most of it, alone — and it is only honest to name the people and systems that made the aloneness survivable rather than total.
+
+**The estate built the argument.** Seven ventures, a press rail that has posted through every bad week, a bank that refills itself, a monitor that says plainly when a front door has stopped answering, and an outreach sequence that now stops after three touches instead of three hundred. The machines did not write this book, but they are the specimen, and several of the failures in it are theirs. The first readers of Part Three were the rails.
+
+**The operator's own failure is the evidence.** Every incident described in these pages happened to the author, in this estate, in ordinary operation. That is the only warrant the book claims, and it is the reason the examples are specific enough to be checked — including the ones that make the author look worse than a well-edited case study would.
+
+**The people who noticed.** To the friends and family who asked about sleep rather than about revenue, and who kept asking when the answer was evasive. To the peers who run things of their own and who said, when it was useful, "are you sure" — which is the most valuable sentence available to a person who decides alone. To the readers of the earlier work whose questions about *how* rather than *why* produced the instruments in Appendix B.
+
+**The clinical community in Zimbabwe.** Friendship Bench, for existing, and for building a model that a person with no money and no time can actually reach through a clinic and a community space. A general practitioner who takes a sentence like "I have not slept properly in three weeks" as the beginning of a conversation rather than the end of one. This book is not their work, and it would be irresponsible without them.
+
+**The estate's successor readers.** To anyone who picks this up because a bad day has already happened: the book is designed to be entered from the middle. Part Three first, if that is where you are.
+
+**Errata and correction.** This is a private-operator document published openly, and it will be wrong about something. Corrections, disagreements and better instruments are welcome through the public repository the estate is published in. A rule in this book that turns out to be unkeepable is the most useful correction of all, because it means the rule was a wish wearing a rule's clothes.
+
+## Appendix G — About the author
+
+Courage Garikai runs Jacaranda Labs, a one-person software estate in Harare, Zimbabwe: seven ventures, a press that publishes books like this one, and roughly three hours twenty minutes a week of human attention. He holds a first degree in entrepreneurship, in which he was taught *technopreneurship* — the subject of the companion volume in this series. He writes about what happens when the machinery that makes a small business possible also makes the person running it the only thing in the building that cannot be replaced.
+
+## Appendix H — Colophon and rights
+
+**Type.** Set in Iowan Old Style, Palatino and Georgia for text; the system sans-serif for labels and tables; a monospace for code and figures. No external fonts are loaded and no web font is used: the edition is designed to render identically on a phone, a laptop, an e-reader and a print run.
+
+**Figures.** All twelve figures in this series are hand-drawn SVG — coordinates, rules and type, no charting library and no images — so that they survive A5 print and a small screen without becoming unreadable. They are generated by `tools/make_figures.py` in the public repository, in the same idiom as the covers: cream stock, black rules, one red accent.
+
+**Edition.** First edition, November 2026. HTML and Markdown are published; the Markdown is the source of the HTML and can be copied, diffed or forked.
+
+**Licence.** Text and figures: CC BY 4.0. Attribution to Courage Garikai, Jacaranda Labs, Harare. The instruments in Appendix B may be reproduced and modified without attribution for any use, commercial or not — a form that cannot be copied is not an instrument.
+
+**Canonical location.** `https://jacaranda-labs.pages.dev/read/the-point-of-failure.html`
+
+**A note on the price.** This book costs nothing to read and nothing to copy. It was written by an operator for operators, and the whole argument of it is that the person running the business is more expensive than the business. Charging for the manual would be a poor way to make that point.
