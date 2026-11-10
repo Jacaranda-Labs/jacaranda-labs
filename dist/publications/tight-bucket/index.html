@@ -196,6 +196,8 @@ section{position:relative;z-index:2}
 .wgrid.trip{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:900px){.wgrid.trip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.wgrid.trip{grid-template-columns:1fr}}
+.wcard[hidden]{display:none}          /* the filter sets the hidden attribute; a grid display would win otherwise */
+
 .wcard{position:relative;display:grid;grid-template-columns:74px minmax(0,1fr);gap:16px;padding:16px;
   border-radius:var(--r-md);border:1px solid var(--line);background:rgba(255,255,255,.028);
   transition:transform .35s var(--ease),background .3s,border-color .3s;color:inherit;align-items:start}
