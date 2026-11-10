@@ -73,6 +73,28 @@
    "url": "https://deskos.zlnew.workers.dev/",
    "kind": "service",
    "note": "The 404 at this root is why the venture URL was moved to deskos.deskos.workers.dev. Kept here so the old host is not silently forgotten."
+  },
+  {
+   "name": "Operatorship",
+   "url": "https://jacaranda-labs.pages.dev/read/operatorship.html",
+   "kind": "asset",
+   "note": "First edition, 2026-11-10. A readable edition that stops answering is a dead link on the catalogue."
+  },
+  {
+   "name": "The Point of Failure",
+   "url": "https://jacaranda-labs.pages.dev/read/the-point-of-failure.html",
+   "kind": "asset"
+  },
+  {
+   "name": "Ops site (sealed)",
+   "url": "https://jacaranda-ops.pages.dev/",
+   "kind": "asset",
+   "note": "Ciphertext, but it must answer 200 \u2014 a phone that cannot load it is the whole point lost."
+  },
+  {
+   "name": "The statement page",
+   "url": "https://jacaranda-ops.pages.dev/live.html",
+   "kind": "asset"
   }
  ]
 }
