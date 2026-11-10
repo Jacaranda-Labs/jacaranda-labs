@@ -20,7 +20,7 @@ WHAT CHANGED FROM THE FIRST BUILD
     inlined, and the art is local. The catalogues, the data and the two owner rules are unchanged.
 
 CONTENT
-    data/works.json     22 works: blurbs, facts, contents, formats, availability, covers, read links
+    data/works.json     24 works: blurbs, facts, contents, formats, availability, covers, read links
     data/ventures.json  the seven ventures and the works that study each one
     data/author.json    the author record
     assets/             art (generated), covers, readable editions, figures, share card
@@ -81,7 +81,8 @@ GROUPS = [
      ["constraint-native-business-models", "simulated-completeness", "unwitnessed-autonomy",
       "sovereign-micro-enterprise"]),
     ("published", "Published editions", "Read them here, free.",
-     ["ledger", "intelligence", "custody", "cadence", "the-mechanism-auditor", "mechanism-audit"]),
+     ["ledger", "intelligence", "custody", "cadence", "the-mechanism-auditor", "mechanism-audit",
+      "operatorship", "the-point-of-failure"]),
     ("trade", "Trade books and essays",
      ["musk-mirror", "traffic", "pinterest", "rocket-man", "unchained"]),
     ("earlier", "Earlier works", "Listed for the record.", ["governable", "autonomy"]),

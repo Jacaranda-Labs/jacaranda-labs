@@ -1,0 +1,66 @@
+name: outreach
+
+# The three-touch sequence, hourly. T+0, T+48h, T+72h, then it stops for good.
+#
+# Reversed by the owner on 2026-11-10: the estate now sends. What has not changed is the rule that
+# protects the domain — plain text, no tracking, a real reply phrase, one STOP line, caps, business
+# hours, and a do-not-contact list checked before every send.
+#
+# Rails that cannot send (bluesky has no DM endpoint, whatsapp has no API) still get a draft, so no
+# channel is silently dropped. SMTP is optional: without it email drafts and the sequence still runs.
+#
+# Repository secrets that arm a rail:
+#   SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS               (email)
+#   OUTREACH_MASTODON_TOKEN OUTREACH_MASTODON_INSTANCE    (mastodon)
+
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "1 = show what would go out, send nothing"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: outreach
+  cancel-in-progress: false
+
+jobs:
+  sequence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install pyyaml
+      - name: Selftest
+        run: python3 growth/outreach.py --selftest
+      - name: Run the sequence
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          OUTREACH_MASTODON_INSTANCE: ${{ secrets.OUTREACH_MASTODON_INSTANCE }}
+          OUTREACH_MASTODON_TOKEN: ${{ secrets.OUTREACH_MASTODON_TOKEN }}
+          DRY: ${{ github.event.inputs.dry || '0' }}
+        run: |
+          set -euo pipefail
+          ARGS="--due"
+          [ "$DRY" = "1" ] && ARGS="$ARGS --dry"
+          python3 growth/outreach.py $ARGS
+      - name: Remember what was said
+        run: |
+          if [ -n "$(git status --porcelain growth/outreach assets/freebies)" ]; then
+            git config user.name "Jacaranda Labs"
+            git config user.email "jacarandalabs@atomicmail.io"
+            git add growth/outreach assets/freebies
+            git commit -m "outreach: sequence state after $(date -u +%FT%TZ)"
+            git push
+          fi

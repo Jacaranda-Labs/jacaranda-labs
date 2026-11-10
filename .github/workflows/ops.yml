@@ -1,0 +1,59 @@
+name: ops site
+
+# Deploys the sealed operator manual to the jacaranda-ops Pages project.
+# The plaintext manual is never in this repository: ops/index.html is AES-256-GCM ciphertext.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ops/**"
+      - ".github/workflows/ops.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ops-site
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sanity — refuse to publish a plaintext manual
+        run: |
+          set -euo pipefail
+          test -f ops/index.html
+          if grep -qi "operator's card" ops/index.html; then
+            echo "::error::ops/index.html contains plaintext manual text — refusing to deploy"
+            exit 1
+          fi
+          grep -q '"ct"' ops/index.html
+          echo "ciphertext confirmed · $(wc -c < ops/index.html) bytes"
+
+      - name: Ensure the project exists
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 pages project create jacaranda-ops --production-branch main
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 pages deploy ops --project-name jacaranda-ops --branch main --commit-dirty=true
+
+      - name: Verify it answers, and that what it answers is ciphertext
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 20); do
+            code=$(curl -s -o /tmp/ops.html -w '%{http_code}' https://jacaranda-ops.pages.dev/ || true)
+            [ "$code" = "200" ] && break
+            sleep 9
+          done
+          echo "status $code · $(wc -c < /tmp/ops.html) bytes"
+          test "$code" = "200"
+          grep -q '"ct"' /tmp/ops.html
+          ! grep -qi "operator's card" /tmp/ops.html

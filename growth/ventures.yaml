@@ -7,7 +7,9 @@
 # Rules this file is written under:
 #   * every venture sells something a stranger can buy today, at a published price
 #   * the first line names the venture and what it does — no coy "quick question"
-#   * one email, no follow-up sequence unless a human marks the lead engaged
+#   * the system sends: three touches, 48h then 72h, then it stops for good (growth/outreach.py)
+#   * the first touch carries no link; the reply phrase is what earns the freebie
+#   * a reply stops every channel for that lead, immediately
 #   * a lead only enters the list if the contact detail is published by the organisation itself
 
 defaults:
@@ -23,6 +25,7 @@ defaults:
 ventures:
   deskos:
     name: DeskOS
+    reply_phrase: "TENDERS"
     url: https://desk.tapstall.com
     sells: "a tender desk: open public tenders from 13 sources read every morning, soonest deadline first"
     price: "free tier; Pro for the weekly pack"
@@ -56,6 +59,7 @@ ventures:
 
   tightbucket:
     name: TightBucket
+    reply_phrase: "AUDIT"
     url: https://tightbucket.whop.site
     sells: "a leak audit for online shops: what the storefront gives away, priced in lost orders"
     price: "audit from US$450"
@@ -87,6 +91,7 @@ ventures:
 
   tapstall:
     name: Tapstall
+    reply_phrase: "SHOP"
     url: https://tapstall.zlnew.workers.dev
     sells: "a WhatsApp shop: one link, orders in a dashboard you own, exact-amount payment matching"
     price: "from US$15/month"
@@ -118,6 +123,7 @@ ventures:
 
   attestos:
     name: AttestOS
+    reply_phrase: "BOTS"
     url: https://attestos.whop.site
     sells: "proof that a request comes from a real user and not a script — passkeys, private access tokens, proof of work"
     price: "free scanner; paid plans"
@@ -147,6 +153,7 @@ ventures:
 
   open-practice:
     name: Open Practice
+    reply_phrase: "LEARN"
     url: https://open-practice.open-practice.workers.dev
     sells: "free practical AI training — 50 activities, 39 tools, offline HTML workspaces"
     price: "free; facilitators kit paid"
@@ -177,6 +184,7 @@ ventures:
 
   mechanism-audit:
     name: Mechanism Audit
+    reply_phrase: "AUDIT"
     url: https://mechanism-audit.whop.site
     sells: "an audit of whether a product's stated mechanism is the one it actually runs"
     price: "from US$450"
@@ -205,6 +213,7 @@ ventures:
 
   stpi:
     name: STPi
+    reply_phrase: "PLACEMENT"
     url: https://getstpi.pages.dev
     sells: "job search plus the paperwork — applications written to the advert, submitted in the right format"
     price: "free demo, no email needed; paid tiers"

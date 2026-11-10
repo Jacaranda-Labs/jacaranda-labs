@@ -47,6 +47,22 @@ COVERS = [
          author="COURAGE GARIKAI",
          footer="JACARANDA LABS · HARARE",
          stamp=["SIX", "SIGNATURES"]),
+    dict(file="operatorship.jpg",
+         imprint="JACARANDA LABS PRESS",
+         place="HARARE · 2026",
+         title="Operatorship",
+         subtitle="What ate technopreneurship,\nand what replaced it",
+         author="COURAGE GARIKAI",
+         footer="JACARANDA LABS · FIRST EDITION",
+         stamp=["ONE NAME", "ONE SENTENCE"]),
+    dict(file="the-point-of-failure.jpg",
+         imprint="THE OPERATOR'S BOOKS",
+         place="HARARE · 2026",
+         title="The Point\nof Failure",
+         subtitle="An operating manual for the\nperson running the estate",
+         author="COURAGE GARIKAI",
+         footer="JACARANDA LABS · FIRST EDITION",
+         stamp=["NINE RULES", "NO REPLICA"]),
 ]
 
 

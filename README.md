@@ -105,6 +105,42 @@ python3 tools/selfserve.py --json out.json
 A plain 200 proves nothing on Whop: `whop.com/checkout/<invented id>` also returns 200. The audit
 therefore *renders* each buy link in a browser and reads the price a signed-out buyer sees.
 
+## The sequence (`growth/outreach.py`)
+
+Law 6 used to read *"never send from an automated system; a human presses send."* The owner replaced it
+on 2026-11-10. The estate now sends on the rails that can send, under a shape that is deliberately
+narrow:
+
+| when | what goes out | why |
+|---|---|---|
+| **T+0** | plain text, no HTML, **no links**; one observation about their site; the only call to action is *"reply `PHRASE` and it comes back to you"* | a link in the first message is a pitch; a sentence they recognise is a conversation |
+| **T+48 h** | the freebie — a plain-text note written for that one organisation — linked once, **no attachments** | removes the work of asking |
+| **T+72 h** | four lines: last one, here it is, door's open, good quarter | an ending is what separates persistence from nuisance |
+
+Then the sequence ends for that channel, permanently. Per lead, **per channel**: an email and a Mastodon
+handle are two sequences with two clocks. A reply on any channel stops every channel for that lead.
+
+```bash
+python3 growth/outreach.py --status              # rails, leads, what is due
+python3 growth/outreach.py --dry --due           # show what would go out
+python3 growth/outreach.py --draft <domain>      # write all three touches, send nothing
+python3 growth/outreach.py --replied <domain>    # a human said yes — stop everything, queue the freebie
+python3 growth/outreach.py --selftest            # assertions on the copy and the guards
+```
+
+`.github/workflows/outreach.yml` runs `--due` hourly. Which rails actually send is a fact about the
+APIs, not a setting: **email** sends with `SMTP_*` secrets, **Mastodon** sends with
+`OUTREACH_MASTODON_TOKEN`, **Bluesky** has no DM endpoint in the public API, **WhatsApp** has no send
+API here, **Reddit** needs an app registration — those three always draft, and `--status` says so out
+loud rather than failing silently.
+
+Guards: daily caps (email 20, Mastodon 10, Reddit 5, WhatsApp 5), 07:00–18:00 Africa/Harare only,
+1.5–4 s jitter, `growth/dnc.txt` checked before every send, one STOP line in every message, and every
+send, draft, failure and reply appended to `growth/outreach/state.jsonl`.
+
+Freebies are published as plain text at
+`https://jacaranda-labs.pages.dev/assets/freebies/<venture>/<host>.txt` — the file *is* the product.
+
 ## Deploying
 
 **Live:** https://jacaranda-labs.pages.dev (Cloudflare Pages) · https://jacaranda-labs.github.io/jacaranda-labs/

@@ -1,56 +1,72 @@
 {
- "updated": "2026-11-09",
- "_how": "This is the only file you edit by hand. Everything else in the estate reports itself. Keep it to things a machine cannot see: money, and the handful of actions that need a human.",
- "money": {
-  "cash": null,
-  "mrr": null,
-  "monthly_costs": null,
-  "next_bill": null,
-  "_note": "Numbers, no currency symbols. Null prints as 'not recorded' — which is honest, and stops the dashboard inventing confidence."
- },
- "hours_last_week": null,
- "owner_actions": [
-  {
-   "id": "whop-rotate",
-   "what": "Rotate the Whop account key and app key in the Whop dashboard",
-   "why": "They are in a public repo and the API will not let anyone revoke them from outside",
-   "minutes": 3,
-   "blocks": "every Whop checkout (DeskOS, STPi, Mechanism Audit)",
-   "done": false
+  "updated": "2026-11-10",
+  "_how": "This is the only file you edit by hand. Everything else in the estate reports itself. Keep it to things a machine cannot see: money, and the handful of actions that need a human.",
+  "money": {
+    "cash": null,
+    "mrr": null,
+    "monthly_costs": null,
+    "next_bill": null,
+    "_note": "Numbers, no currency symbols. Null prints as 'not recorded' \u2014 which is honest, and stops the dashboard inventing confidence."
   },
-  {
-   "id": "discord-webhook",
-   "what": "Create a Discord webhook and send it over",
-   "why": "Jacaranda has no Discord webhook on the sheet; the other six ventures do",
-   "minutes": 2,
-   "blocks": "one press rail",
-   "done": false
-  },
-  {
-   "id": "reddit-app",
-   "what": "Create a Reddit script app at reddit.com/prefs/apps and send the client id + secret",
-   "why": "The account exists; Reddit needs an app registration before it will accept a post",
-   "minutes": 3,
-   "blocks": "one press rail",
-   "done": false
-  },
-  {
-   "id": "medium-quora",
-   "what": "Sign up for Medium and Quora as jacarandalabs@atomicmail.io and send the handles",
-   "why": "Neither platform has an API for new accounts; the drafts are written and waiting in outbox/",
-   "minutes": 8,
-   "blocks": "two handoff rails",
-   "done": false
-  }
- ],
- "decisions": [
-  {
-   "id": "first-paid-venture",
-   "question": "Which venture gets the next two weeks of selling attention?",
-   "default": "Nothing happens. All seven keep running the rails and none gets pushed.",
-   "by": "2026-11-16"
-  }
- ],
- "kill_list": [],
- "notes": "Seven ventures, one operator. The rails publish on a 30-hour cadence without input. The press bank refills from public works and ventures until 2026-12; after that it needs new seed posts."
+  "hours_last_week": null,
+  "owner_actions": [
+    {
+      "id": "whop-rotate",
+      "what": "Rotate the Whop account key and app key in the Whop dashboard",
+      "why": "They are in a public repo and the API will not let anyone revoke them from outside",
+      "minutes": 3,
+      "blocks": "every Whop checkout (DeskOS, STPi, Mechanism Audit)",
+      "done": false
+    },
+    {
+      "id": "discord-webhook",
+      "what": "Create a Discord webhook and send it over",
+      "why": "Jacaranda has no Discord webhook on the sheet; the other six ventures do",
+      "minutes": 2,
+      "blocks": "one press rail",
+      "done": false
+    },
+    {
+      "id": "reddit-app",
+      "what": "Create a Reddit script app at reddit.com/prefs/apps and send the client id + secret",
+      "why": "The account exists; Reddit needs an app registration before it will accept a post",
+      "minutes": 3,
+      "blocks": "one press rail",
+      "done": false
+    },
+    {
+      "id": "medium-quora",
+      "what": "Sign up for Medium and Quora as jacarandalabs@atomicmail.io and send the handles",
+      "why": "Neither platform has an API for new accounts; the drafts are written and waiting in outbox/",
+      "minutes": 8,
+      "blocks": "two handoff rails",
+      "done": false
+    },
+    {
+      "id": "smtp-secrets",
+      "what": "Add SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS as repository secrets",
+      "why": "Without them the three-touch sequence only drafts email; with them it sends, and the whole law-6 loop runs itself",
+      "minutes": 6,
+      "blocks": "the outreach sequence (email sending)",
+      "done": false
+    },
+    {
+      "id": "mastodon-outreach",
+      "what": "Create an outreach Mastodon token (OUTREACH_MASTODON_TOKEN) and set OUTREACH_MASTODON_INSTANCE",
+      "why": "Mastodon is the second rail that can send autonomously; Bluesky and WhatsApp have no send endpoint and will always draft",
+      "minutes": 4,
+      "blocks": "the outreach sequence (mastodon sending)",
+      "done": false
+    }
+  ],
+  "decisions": [
+    {
+      "id": "first-paid-venture",
+      "question": "Which venture gets the next two weeks of selling attention?",
+      "default": "Nothing happens. All seven keep running the rails and none gets pushed.",
+      "by": "2026-11-16"
+    }
+  ],
+  "kill_list": [],
+  "notes": "Seven ventures, one operator. The rails publish on a 30-hour cadence without input. The press bank refills from public works and ventures until 2026-12; after that it needs new seed posts."
 }

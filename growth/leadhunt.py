@@ -22,8 +22,11 @@ What it does per candidate site:
 What it will not do:
   guess an address (no first.last@pattern harvesting — that is how you mail strangers)
   touch a site that disallows it in robots.txt, or a host on the do-not-contact list
-  send anything. Sending needs a domain with SPF/DKIM/DMARC and a name behind it; when that exists,
-  this tool's CSV is the input to it, and a human still presses send.
+  send anything. It stops at the draft, on purpose: hunting and sending are separate tools so that a
+  bad crawl can never become a bad send. growth/outreach.py takes these rows and runs the sequence —
+  three touches at T+0, T+48h and T+72h, per channel, with caps and a do-not-contact check. The rule
+  that a human presses send was reversed by the owner on 2026-11-10; the rule that nothing is sent to
+  a domain we have not verified as a real organisation was not.
 """
 from __future__ import annotations
 

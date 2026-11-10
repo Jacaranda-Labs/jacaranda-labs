@@ -126,6 +126,16 @@ def main() -> int:
         print(f"loops:  {len(actions)} owner action(s) · {len(decisions)} decision(s) waiting")
         print(f"money:  MRR {money.get('mrr') if money.get('mrr') is not None else '—'} · "
               f"cash {money.get('cash') if money.get('cash') is not None else '—'}")
+        try:
+            import importlib.util as _ilu
+            _s = _ilu.spec_from_file_location("outreach", ROOT / "growth" / "outreach.py")
+            _oc = _ilu.module_from_spec(_s); _s.loader.exec_module(_oc)
+            _leads = _oc.load_leads()
+            _rl = _oc.rails()
+            print(f"seq:    {len(_leads)} lead(s) · due {sum(len(_oc.next_due(l)) for l in _leads)} · "
+                  f"sending on {', '.join(k for k, v in _rl.items() if v.get('can')) or 'nothing (drafts only)'}")
+        except Exception:
+            pass
         return 1 if alarm else 0
 
     print(paint("\n " + "─" * 66, DIM, on))
@@ -175,6 +185,36 @@ def main() -> int:
             print(paint(f"   all {len(results)} product pages answer 200 HTML", GREEN, on))
     except Exception as exc:                                       # noqa: BLE001
         print(paint(f"   check unavailable ({type(exc).__name__}) — run tools/uptime.py", DIM, on))
+
+
+    # ---------------------------------------------------------------- sequence
+    head(V, "THE SEQUENCE", on)
+    try:
+        import importlib.util as _ilu
+        spec = _ilu.spec_from_file_location("outreach", ROOT / "growth" / "outreach.py")
+        oc = _ilu.module_from_spec(spec)
+        spec.loader.exec_module(oc)
+        leads = oc.load_leads()
+        rl = oc.rails()
+        armed = [k for k, v in rl.items() if v.get("can")]
+        ev = oc.events()
+        sends = sum(1 for e in ev if e.get("event") == "sent")
+        drafts = sum(1 for e in ev if e.get("event") == "drafted")
+        replies = sum(1 for e in ev if e.get("event") == "replied")
+        due = sum(len(oc.next_due(l)) for l in leads)
+        print(f"   {len(leads)} lead(s) · due now {due} · sent {sends} · drafted {drafts} "
+              f"· replies {replies}")
+        print(paint(f"   sending on: {', '.join(armed) or 'nothing yet'} · "
+                    f"drafting on: {', '.join(k for k in rl if k not in armed) or 'none'}", DIM, on))
+        hot = [e for e in ev if e.get("event") == "replied"]
+        if hot:
+            print(paint(f"   ! {len(hot)} reply waiting — it stops every channel for that lead; "
+                        f"the answer is drafted in growth/outreach/outbox/REPLY-*.txt", AMBER, on))
+        if not armed:
+            print(paint("   every rail is drafting only — three touches are being written, not sent. "
+                        "SMTP or a Mastodon token arms a rail.", DIM, on))
+    except Exception as exc:                                       # noqa: BLE001
+        print(paint(f"   sequence unavailable ({type(exc).__name__}) — run growth/outreach.py --status", DIM, on))
 
     # ---------------------------------------------------------------- the offer
     head(V, "WHAT IS FOR SALE", on)

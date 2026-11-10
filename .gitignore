@@ -6,3 +6,11 @@ __pycache__/
 # Lead research output: other people's contact details do not belong in a public repo.
 growth/leads/*
 !growth/leads/.gitkeep
+
+# Outreach drafts and state: they carry other people's contact details. The workflow commits state
+# back to the runner only when a send actually happens.
+growth/outreach/outbox/
+!growth/outreach/outbox/.gitkeep
+
+# Scratch previews
+assets/hero-preview.png

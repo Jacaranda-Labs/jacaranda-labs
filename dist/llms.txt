@@ -6,7 +6,7 @@
 
 - [Laboratories](https://jacaranda-labs.pages.dev/): the seven ventures
 - [Portfolio](https://jacaranda-labs.pages.dev/courage-garikai/): Courage Garikai, Autonomous Cognitive Infrastructure Engineer, Operator and Writer
-- [Publications](https://jacaranda-labs.pages.dev/publications/): 22 works, 12 readable free
+- [Publications](https://jacaranda-labs.pages.dev/publications/): 24 works, 14 readable free
 - [About](https://jacaranda-labs.pages.dev/about/): ownership and disclosure
 
 ## Ventures
@@ -41,6 +41,8 @@
 - [Grounded Cadence](https://jacaranda-labs.pages.dev/publications/cadence/): Fact-bound content operations as a governance architecture (free to read)
 - [The Mechanism Auditor](https://jacaranda-labs.pages.dev/publications/the-mechanism-auditor/): How to review a product that runs without you (free to read)
 - [The Mechanism Audit](https://jacaranda-labs.pages.dev/publications/mechanism-audit/): Evidence-first review for products that act without an operator (free to read)
+- [Operatorship](https://jacaranda-labs.pages.dev/publications/operatorship/): What ate technopreneurship, and what replaced it (free to read)
+- [The Point of Failure](https://jacaranda-labs.pages.dev/publications/the-point-of-failure/): An operating manual for the person running the estate (free to read)
 
 ### Trade books and essays
 - [The Musk Mirror](https://jacaranda-labs.pages.dev/publications/musk-mirror/): How one billionaire exposed the cracks in China's innovation dream (free to read)
