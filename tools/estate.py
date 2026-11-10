@@ -158,6 +158,24 @@ def main() -> int:
     if not armed:
         print(paint("   (no rail credentials in this shell — in CI they are repository secrets)", DIM, on))
 
+    # ---------------------------------------------------------------- front doors
+    head(V, "FRONT DOORS", on)
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("uptime", ROOT / "tools" / "uptime.py")
+        up = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(up)
+        conf = json.loads((ROOT / "data" / "uptime.json").read_text())
+        results = [up.check(c) for c in conf["checks"] if c.get("kind") == "product"]
+        bad = [r for r in results if not r["ok"]]
+        if bad:
+            for r in bad:
+                print(paint(f"   DOWN {r['name']:<20}{r['why'][:56]}", RED, on))
+        else:
+            print(paint(f"   all {len(results)} product pages answer 200 HTML", GREEN, on))
+    except Exception as exc:                                       # noqa: BLE001
+        print(paint(f"   check unavailable ({type(exc).__name__}) — run tools/uptime.py", DIM, on))
+
     # ---------------------------------------------------------------- the offer
     head(V, "WHAT IS FOR SALE", on)
     for v in ventures:

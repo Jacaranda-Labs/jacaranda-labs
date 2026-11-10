@@ -1,0 +1,39 @@
+name: uptime
+
+# Every front door in the estate, checked from outside, every hour.
+#
+# This exists because on 2026-11-10 the owner opened STPi and got {"ok":false,"error":"not found"}
+# from a worker that was completely healthy — /health said pass 3, tick five minutes old. The service
+# was fine and the front door was missing, and the only detector for that was the owner's bad luck.
+# A check that only runs when someone happens to look is not a check.
+#
+# Checks are declared in data/uptime.json so adding a venture is a one-line change, not a code change.
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  uptime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Every front door
+        run: python3 tools/uptime.py
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Front doors"
+            echo ""
+            echo '```'
+            python3 tools/uptime.py --no-colour 2>&1 | sed 's/\x1b\[[0-9;]*m//g'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

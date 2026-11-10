@@ -1,0 +1,78 @@
+{
+ "_how": "What the uptime check watches, and what 'up' means for each kind. product = a page a customer lands on: must be 200 HTML with a title. service = a worker/API: must answer, and if it exposes a health endpoint the tick must be fresh. redirect = anything 2xx/3xx.",
+ "checks": [
+  {
+   "name": "STPi product",
+   "url": "https://getstpi.pages.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "STPi service root",
+   "url": "https://stpi-mint.stpi-cloud.workers.dev/",
+   "kind": "service",
+   "note": "Root answered a bare JSON 404 until 2026-11-10. Once the entry page is deployed this becomes 200 HTML and the check stops warning."
+  },
+  {
+   "name": "STPi health",
+   "url": "https://stpi-mint.stpi-cloud.workers.dev/health",
+   "kind": "health",
+   "json": {
+    "ok": true,
+    "tick.age_min": 120
+   },
+   "note": "ok must be true and the last tick must be under 120 minutes old."
+  },
+  {
+   "name": "STPi owner console",
+   "url": "https://stpi-mint.stpi-cloud.workers.dev/owner",
+   "kind": "redirect",
+   "note": "401 is correct here: the console is closed until you authenticate."
+  },
+  {
+   "name": "AttestOS",
+   "url": "https://attestos-edge.attestos.workers.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "TightBucket",
+   "url": "https://0x.tightbucket.workers.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "Tapstall",
+   "url": "https://tapstall.zlnew.workers.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "Jacaranda site",
+   "url": "https://jacaranda-labs.pages.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "Jacaranda cards",
+   "url": "https://jacaranda-labs.pages.dev/assets/cards/method.png",
+   "kind": "asset"
+  },
+  {
+   "name": "DeskOS",
+   "url": "https://deskos.deskos.workers.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "Open Practice",
+   "url": "https://open-practice.zlnew.workers.dev/",
+   "kind": "product"
+  },
+  {
+   "name": "Mechanism Audit",
+   "url": "https://mechanism-audit.whop.site/",
+   "kind": "product"
+  },
+  {
+   "name": "DeskOS (old host)",
+   "url": "https://deskos.zlnew.workers.dev/",
+   "kind": "service",
+   "note": "The 404 at this root is why the venture URL was moved to deskos.deskos.workers.dev. Kept here so the old host is not silently forgotten."
+  }
+ ]
+}
