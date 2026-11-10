@@ -1,9 +1,10 @@
 {
  "sent": [
   "method",
-  "work-ledger"
+  "work-ledger",
+  "promo-portfolio"
  ],
- "last_at": "2026-11-09T15:55:36.468014Z",
+ "last_at": "2026-11-10T22:42:56.384668Z",
  "log": [
   {
    "id": "method",
@@ -20,6 +21,11 @@
    "id": "work-ledger",
    "at": "2026-11-09T15:55:36.468014Z",
    "rails": 7
+  },
+  {
+   "id": "promo-portfolio",
+   "at": "2026-11-10T22:42:56.384668Z",
+   "rails": 6
   }
  ]
 }
