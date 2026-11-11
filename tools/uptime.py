@@ -30,14 +30,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+TITLE = re.compile(r"<title[^>]*>\s*(.*?)\s*</title>", re.I | re.S)
 CONF = ROOT / "data" / "uptime.json"
 UA = "Mozilla/5.0 (compatible; Jacaranda uptime; +https://jacaranda-labs.pages.dev)"
+MAX_READ = 256 * 1024   # read enough to find a <title> wherever the platform puts it
 
 RED, AMBER, GREEN, DIM, OFF = "\033[38;5;203m", "\033[38;5;215m", "\033[38;5;114m", "\033[2m", "\033[0m"
 
@@ -51,7 +54,10 @@ def fetch(url: str, timeout: int = 20) -> tuple[int, str, bytes]:
                                                "Cache-Control": "no-cache"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status, r.headers.get("content-type", ""), r.read(4096)
+            # A title can sit far into the document: whop.site strips our <title> and re-injects
+            # the app's own metadata near the end of <head>, ~29 KB in. A 4 KB window reported
+            # "200 HTML with no <title>" for a page that was fine, which failed the nightly run.
+            return r.status, r.headers.get("content-type", ""), r.read(MAX_READ)
     except urllib.error.HTTPError as e:
         try:
             body = e.read(2048)
@@ -100,10 +106,10 @@ def check(c: dict) -> dict:
             ok, why = False, f"HTTP {status}"
         elif "html" not in ctype:
             ok, why = False, f"200 but {ctype or 'no type'} — a browser gets not-a-page"
-        elif "<title" not in text.lower():
+        elif not TITLE.search(text):
             ok, why = False, "200 HTML with no <title>"
         else:
-            title = text.lower().split("<title", 1)[1].split(">", 1)[1].split("<", 1)[0].strip()
+            title = TITLE.search(text).group(1).strip()
             why = f"200 · {title[:52]}"
     elif kind == "service":
         if status == 0:
