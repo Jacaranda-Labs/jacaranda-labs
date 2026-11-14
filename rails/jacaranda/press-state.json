@@ -4,9 +4,10 @@
   "work-ledger",
   "promo-portfolio",
   "ledger",
-  "failure"
+  "failure",
+  "promo-publications"
  ],
- "last_at": "2026-11-13T11:55:53.180273Z",
+ "last_at": "2026-11-14T18:43:25.317038Z",
  "log": [
   {
    "id": "method",
@@ -37,6 +38,11 @@
   {
    "id": "failure",
    "at": "2026-11-13T11:55:53.180273Z",
+   "rails": 6
+  },
+  {
+   "id": "promo-publications",
+   "at": "2026-11-14T18:43:25.317038Z",
    "rails": 6
   }
  ]
