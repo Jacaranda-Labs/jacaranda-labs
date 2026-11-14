@@ -92,7 +92,7 @@ ventures:
   tapstall:
     name: Tapstall
     reply_phrase: "SHOP"
-    url: https://tapstall.zlnew.workers.dev
+    url: https://tapstall.tapstall.workers.dev
     sells: "a WhatsApp shop: one link, orders in a dashboard you own, exact-amount payment matching"
     price: "from US$15/month"
     who: "social sellers and small shops in ZW/ZA/KE taking orders in DMs"
@@ -114,7 +114,7 @@ ventures:
       {why}
 
       US$15 a month, no commission on your sales. See the shop math here:
-      https://tapstall.zlnew.workers.dev
+      https://tapstall.tapstall.workers.dev
 
       Reply "stop" and I will remove you.
 

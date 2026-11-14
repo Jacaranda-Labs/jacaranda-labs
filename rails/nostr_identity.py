@@ -192,10 +192,10 @@ PROFILES = {
                                                         "non-accredited."},
 }
 SITES = {
-    "deskos": "https://deskos.deskos.workers.dev/",
+    "deskos": "https://deskos.whop.site/",
     "tightbucket": "https://0x.tightbucket.workers.dev/",
-    "tapstall": "https://tapstall.zlnew.workers.dev/",
-    "attestos": "https://attestos-edge.attestos.workers.dev/",
+    "tapstall": "https://tapstall.tapstall.workers.dev/",
+    "attestos": "https://attestos.whop.site/",
     "mecha": "https://mechanism-audit.whop.site/",
     "open practice": "https://open-practice.open-practice.workers.dev/",
 }

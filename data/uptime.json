@@ -30,8 +30,9 @@
   },
   {
    "name": "AttestOS",
-   "url": "https://attestos-edge.attestos.workers.dev/",
-   "kind": "product"
+   "url": "https://attestos.whop.site/",
+   "kind": "product",
+   "note": "The app worker (attestos-edge.attestos.workers.dev) is gone with its Cloudflare account; the customer site now lives on Whop as Proofhand. API redeploy outstanding."
   },
   {
    "name": "TightBucket",
@@ -40,8 +41,9 @@
   },
   {
    "name": "Tapstall",
-   "url": "https://tapstall.zlnew.workers.dev/",
-   "kind": "product"
+   "url": "https://tapstall.tapstall.workers.dev/",
+   "kind": "product",
+   "note": "Live app (store pages, press API). Previously pointed at tapstall.zlnew.workers.dev, which no longer resolves."
   },
   {
    "name": "Jacaranda site",
@@ -55,24 +57,20 @@
   },
   {
    "name": "DeskOS",
-   "url": "https://deskos.deskos.workers.dev/",
-   "kind": "product"
+   "url": "https://deskos.whop.site/",
+   "kind": "product",
+   "note": "The app worker (deskos.deskos.workers.dev) is gone with its Cloudflare account; the customer site now lives on Whop. The API is still to be redeployed \u2014 flagged in deliverables/estate-audit-2026-11-14.md."
   },
   {
    "name": "Open Practice",
-   "url": "https://open-practice.zlnew.workers.dev/",
-   "kind": "product"
+   "url": "https://open-practice.open-practice.workers.dev/",
+   "kind": "product",
+   "note": "Moved off open-practice.zlnew.workers.dev (dead since 2026-11-13) to the app's own host."
   },
   {
    "name": "Mechanism Audit",
    "url": "https://mechanism-audit.whop.site/",
    "kind": "product"
-  },
-  {
-   "name": "DeskOS (old host)",
-   "url": "https://deskos.zlnew.workers.dev/",
-   "kind": "service",
-   "note": "The 404 at this root is why the venture URL was moved to deskos.deskos.workers.dev. Kept here so the old host is not silently forgotten."
   },
   {
    "name": "Operatorship",
@@ -95,6 +93,20 @@
    "name": "The statement page",
    "url": "https://jacaranda-ops.pages.dev/live.html",
    "kind": "asset"
+  },
+  {
+   "name": "Tapstall press API",
+   "url": "https://tapstall.tapstall.workers.dev/api/press/cards/wanted",
+   "kind": "service",
+   "note": "401 without a token is a pass: the route exists and refuses anonymous calls."
+  },
+  {
+   "name": "TightBucket API",
+   "url": "https://0x.tightbucket.workers.dev/api/health",
+   "kind": "health",
+   "json": {
+    "ok": true
+   }
   }
  ]
 }

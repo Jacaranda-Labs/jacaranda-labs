@@ -31,12 +31,12 @@ from dataclasses import dataclass, field, asdict
 UA = {"User-Agent": "Mozilla/5.0 (selfserve audit)"}
 
 VENTURES = {
-    "attestos":       "https://attestos-edge.attestos.workers.dev/",
+    "attestos":       "https://attestos.whop.site/",
     "tightbucket":    "https://0x.tightbucket.workers.dev/",
-    "deskos":         "https://deskos.deskos.workers.dev/",
+    "deskos":         "https://deskos.whop.site/",
     "stpi":           "https://getstpi.pages.dev/",
-    "tapstall":       "https://tapstall.zlnew.workers.dev/",
-    "open-practice":  "https://open-practice.zlnew.workers.dev/",
+    "tapstall":       "https://tapstall.tapstall.workers.dev/",
+    "open-practice":  "https://open-practice.open-practice.workers.dev/",
     "mechanism-audit": "https://mechanism-audit.whop.site/",
 }
 

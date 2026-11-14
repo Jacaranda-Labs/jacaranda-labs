@@ -36,8 +36,8 @@
   "kicker": "ATTESTOS · FROM $49",
   "headline": "Bot checks your visitors never see",
   "card_body": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles.",
-  "text": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles. For website owners and developers. From $49.\n\nhttps://attestos-edge.attestos.workers.dev/go/integrity",
-  "link": "https://attestos-edge.attestos.workers.dev/go/integrity",
+  "text": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles. For website owners and developers. From $49.\n\nhttps://attestos.whop.site/go/integrity",
+  "link": "https://attestos.whop.site/go/integrity",
   "tags": [
    "smallbusiness",
    "attestos"

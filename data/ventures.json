@@ -2,7 +2,7 @@
  {
   "id": "attestos",
   "name": "AttestOS",
-  "url": "https://attestos-edge.attestos.workers.dev",
+  "url": "https://attestos.whop.site",
   "line": "Bot checks your visitors never see.",
   "what": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles.",
   "for": "Website owners and developers",
@@ -11,7 +11,7 @@
    "simulated-completeness",
    "flower-and-bees"
   ],
-  "buy": "https://attestos-edge.attestos.workers.dev/go/integrity",
+  "buy": "https://attestos.whop.site/go/integrity",
   "from": "$49",
   "buy_label": "Buy IntegrityRuntime Pro"
  },
@@ -34,7 +34,7 @@
  {
   "id": "deskos",
   "name": "DeskOS",
-  "url": "https://deskos.deskos.workers.dev",
+  "url": "https://deskos.whop.site",
   "line": "Working desks for customs, safari and tender firms.",
   "what": "Web desks with working calculators for customs and freight, safari and DMC, and tender and donor ESG firms, with daily open notices for tender firms from 13 public sources (World Bank, UN agencies, EU TED and national portals), by region.",
   "for": "Trade, travel and consulting firms",
@@ -63,7 +63,7 @@
  {
   "id": "tapstall",
   "name": "Tapstall",
-  "url": "https://tapstall.zlnew.workers.dev",
+  "url": "https://tapstall.tapstall.workers.dev",
   "line": "A shop link for the markets the big platforms skip.",
   "what": "A storefront link for informal and social-commerce shops that understands EcoCash, InnBucks and PayShap and matches exact payment amounts.",
   "for": "Small shops in Zimbabwe and South Africa",
@@ -76,13 +76,13 @@
    "flower-and-bees"
   ],
   "from": "$60",
-  "buy": "https://tapstall.zlnew.workers.dev/onboard",
+  "buy": "https://tapstall.tapstall.workers.dev/onboard",
   "buy_label": "Open a shop — free for 60 days"
  },
  {
   "id": "open-practice",
   "name": "Open Practice",
-  "url": "https://open-practice.zlnew.workers.dev",
+  "url": "https://open-practice.open-practice.workers.dev",
   "line": "Practical AI, learned by doing.",
   "what": "A learning platform where people practise with AI tools on real tasks, using their own free API keys, and keep what they make.",
   "for": "Anyone learning to work with AI",
