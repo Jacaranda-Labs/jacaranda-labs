@@ -13,8 +13,10 @@ Two owner rules, checked against the platforms themselves rather than against ou
     python3 tools/postcheck.py --markdown      # the report as a table, for a PR or a note
     python3 tools/postcheck.py --selftest      # no network
 
-Classification is a heuristic and says so. A post is *promo* when it names the venture or its own URL
-and asks for something (try / start / free / open / sign up / join); everything else is *value*.
+Classification is a heuristic and says so. A post is *promo* when it names the venture and asks the
+reader for something - an invitation ("try it", "start free", "sign up", "no card") or a link to the
+venture's own door (brand_hosts in identity.json). Naming the product is not enough: our products are
+the subject of most of what we write, and a topic word is not a brand. Everything else is *value*.
 `tools/identity.json` carries manual overrides when the heuristic is wrong — `"promo_ids": [...]` and
 `"value_ids": [...]` by platform post id.
 """
@@ -50,12 +52,16 @@ CTA = re.compile(
 #
 # ASK is the actual ask: an invitation addressed to the reader, or the product's own door.
 ASK = re.compile(
-    r"(\bget started\b|\btry it\b|\btry the (free|audit|scanner)\b|\bstart (today|now|free|your)\b"
-    r"|\bsign ?up\b|\bjoin (free|us|today)\b|\bclaim\b|\bbook a\b|\bbuy\b"
-    r"|\bavailable now\b|\bfree for \d+ days\b|\bno card\b|\bdownload the\b|\binstall the\b"
-    r"|\b(run|take|open) a free\b|\bfree (audit|scan|version|plan) (on|for)\b"
-    r"|\bopen your own\b|\bget your (own|free)\b)",
+    r"(\btry it\b|\btry (the|our|a)\b|\bget started\b|\bsign ?up\b|\bjoin (free|us|today)\b"
+    r"|\bclaim\b|\bbook a\b|\bbuy\b|\bavailable now\b|\bfree for \d+ days\b|\bno card\b"
+    r"|\bdownload the\b|\binstall the\b|\b(run|take|open) a free\b|\bfree (audit|scan|version|plan) (on|for)\b"
+    r"|\bopen your own\b|\bget your (own|free)\b|\bstart (today|now|free|your)\b)",
     re.I)
+# "Try <product> ..." is an ask even though the verb is not in the list above, and so is a bare
+# "free" next to the product in the first line: those are how a short promo actually opens.
+ASK_NEAR_BRAND = re.compile(r"\b(try|start|join|open)\b[^.\n]{0,40}$", re.I)
+
+
 LINKED = re.compile(r"https?://(?:www\.)?([a-z0-9.-]+)", re.I)
 
 
@@ -90,7 +96,15 @@ def classify(text: str, markers: list[str] | None = None, brand_hosts: list[str]
     hosts = [h.lower() for h in (brand_hosts or [])]
     linked = [m.group(1).lower() for m in LINKED.finditer(t)]
     own_link = any(any(h and (host == h or host.endswith("." + h)) for h in hosts) for host in linked)
-    return "promo" if (own_link or ASK.search(t)) else "value"
+    if own_link or ASK.search(t):
+        return "promo"
+    # "...Try Open Practice this week": the verb sits immediately before the product's own name.
+    first = t.splitlines()[0] if t else ""
+    for m in markers:
+        idx = first.lower().find(m.lower())
+        if idx > 0 and ASK_NEAR_BRAND.search(first[:idx]):
+            return "promo"
+    return "value"
 
 
 # --------------------------------------------------------------------------- platforms
