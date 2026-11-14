@@ -34,9 +34,9 @@ AI_CRAWLERS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-W
 
 TARGETS = {
     "labs": "https://jacaranda-labs.pages.dev",
-    "attestos": "https://attestos.whop.site",
+    "attestos": "https://attestos-edge.proofhand.workers.dev",
     "tightbucket": "https://0x.tightbucket.workers.dev",
-    "deskos": "https://deskos.whop.site",
+    "deskos": "https://deskos.bidfold.workers.dev",
     "stpi": "https://getstpi.pages.dev",
     "tapstall": "https://tapstall.tapstall.workers.dev",
     "open-practice": "https://open-practice.open-practice.workers.dev",

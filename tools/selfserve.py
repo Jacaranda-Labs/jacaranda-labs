@@ -31,9 +31,9 @@ from dataclasses import dataclass, field, asdict
 UA = {"User-Agent": "Mozilla/5.0 (selfserve audit)"}
 
 VENTURES = {
-    "attestos":       "https://attestos.whop.site/",
+    "attestos":       "https://attestos-edge.proofhand.workers.dev/",
     "tightbucket":    "https://0x.tightbucket.workers.dev/",
-    "deskos":         "https://deskos.whop.site/",
+    "deskos":         "https://deskos.bidfold.workers.dev/",
     "stpi":           "https://getstpi.pages.dev/",
     "tapstall":       "https://tapstall.tapstall.workers.dev/",
     "open-practice":  "https://open-practice.open-practice.workers.dev/",

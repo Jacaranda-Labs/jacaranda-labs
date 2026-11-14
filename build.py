@@ -266,7 +266,7 @@ def venture_data(v, i: int) -> str:
     extra = {
         "attestos": [("What it costs", "Free tier, then paid modules"), ("Where", "Cloudflare Workers")],
         "tightbucket": [("What it costs", "Per-audit pricing"), ("Where", "0x.tightbucket.workers.dev")],
-        "deskos": [("What it costs", "Per-desk subscription"), ("Where", "deskos.whop.site")],
+        "deskos": [("What it costs", "Per-desk subscription"), ("Where", "deskos.bidfold.workers.dev")],
         "stpi": [("What it costs", "Placement fees"), ("Where", "getstpi.pages.dev")],
         "tapstall": [("What it costs", "Merchant rail, no custody"), ("Where", "tapstall.tapstall.workers.dev")],
         "open-practice": [("What it costs", "Free, no signup"), ("Where", "open-practice.workers.dev")],

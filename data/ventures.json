@@ -2,7 +2,7 @@
  {
   "id": "attestos",
   "name": "AttestOS",
-  "url": "https://attestos.whop.site",
+  "url": "https://attestos-edge.proofhand.workers.dev",
   "line": "Bot checks your visitors never see.",
   "what": "An invisible proof-of-work check with a server-side verify call, in place of CAPTCHA puzzles.",
   "for": "Website owners and developers",
@@ -11,7 +11,7 @@
    "simulated-completeness",
    "flower-and-bees"
   ],
-  "buy": "https://attestos.whop.site/go/integrity",
+  "buy": "https://attestos-edge.proofhand.workers.dev/go/integrity",
   "from": "$49",
   "buy_label": "Buy IntegrityRuntime Pro"
  },
@@ -34,7 +34,7 @@
  {
   "id": "deskos",
   "name": "DeskOS",
-  "url": "https://deskos.whop.site",
+  "url": "https://deskos.bidfold.workers.dev",
   "line": "Working desks for customs, safari and tender firms.",
   "what": "Web desks with working calculators for customs and freight, safari and DMC, and tender and donor ESG firms, with daily open notices for tender firms from 13 public sources (World Bank, UN agencies, EU TED and national portals), by region.",
   "for": "Trade, travel and consulting firms",

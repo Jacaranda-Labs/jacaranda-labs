@@ -30,9 +30,9 @@
   },
   {
    "name": "AttestOS",
-   "url": "https://attestos.whop.site/",
+   "url": "https://attestos-edge.proofhand.workers.dev/",
    "kind": "product",
-   "note": "The app worker (attestos-edge.attestos.workers.dev) is gone with its Cloudflare account; the customer site now lives on Whop as Proofhand. API redeploy outstanding."
+   "note": "The AttestOS app worker (attestos-edge.proofhand.workers.dev). Its previous host, attestos-edge.attestos.workers.dev, went away with that Cloudflare account."
   },
   {
    "name": "TightBucket",
@@ -57,9 +57,9 @@
   },
   {
    "name": "DeskOS",
-   "url": "https://deskos.whop.site/",
+   "url": "https://deskos.bidfold.workers.dev/",
    "kind": "product",
-   "note": "The app worker (deskos.deskos.workers.dev) is gone with its Cloudflare account; the customer site now lives on Whop. The API is still to be redeployed \u2014 flagged in deliverables/estate-audit-2026-11-14.md."
+   "note": "The DeskOS app worker (deskos.bidfold.workers.dev). Its previous host, deskos.deskos.workers.dev, went away with that Cloudflare account."
   },
   {
    "name": "Open Practice",
@@ -103,6 +103,23 @@
   {
    "name": "TightBucket API",
    "url": "https://0x.tightbucket.workers.dev/api/health",
+   "kind": "health",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "name": "AttestOS health",
+   "url": "https://attestos-edge.proofhand.workers.dev/api/health",
+   "kind": "health",
+   "json": {
+    "ok": true
+   },
+   "note": "The app, not the marketing mirror: whop.site answers 200 HTML for every path, so it can never prove an API is alive."
+  },
+  {
+   "name": "DeskOS health",
+   "url": "https://deskos.bidfold.workers.dev/health",
    "kind": "health",
    "json": {
     "ok": true

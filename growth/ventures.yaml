@@ -124,7 +124,7 @@ ventures:
   attestos:
     name: AttestOS
     reply_phrase: "BOTS"
-    url: https://attestos.whop.site
+    url: https://attestos-edge.proofhand.workers.dev
     sells: "proof that a request comes from a real user and not a script — passkeys, private access tokens, proof of work"
     price: "free scanner; paid plans"
     who: "SaaS teams with free trials or signup abuse — API keys farmed, credits drained"
@@ -144,7 +144,7 @@ ventures:
 
       {why}
 
-      The scanner is free and takes one page: https://attestos.whop.site
+      The scanner is free and takes one page: https://attestos-edge.proofhand.workers.dev
 
       Reply "stop" and I will remove you.
 
