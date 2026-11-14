@@ -63,6 +63,11 @@ ASK_NEAR_BRAND = re.compile(r"\b(try|start|join|open)\b[^.\n]{0,40}$", re.I)
 
 
 LINKED = re.compile(r"https?://(?:www\.)?([a-z0-9.-]+)", re.I)
+# A link to a picture is not a link to the door. Every note carries its card as an imeta tag and
+# the clients render the image URL in the text, so the brand host appears in a post that asks the
+# reader for nothing at all - three of those were being counted as promos on TightBucket's nostr
+# feed and made an honest 6:0 look like 3:3.
+MEDIA_LINK = re.compile(r"https?://[^\s)\]]+\.(?:png|jpe?g|gif|webp|mp4|m4v)(?:\?\S*)?", re.I)
 
 
 # --------------------------------------------------------------------------- model
@@ -94,7 +99,7 @@ def classify(text: str, markers: list[str] | None = None, brand_hosts: list[str]
     if not names:
         return "value"
     hosts = [h.lower() for h in (brand_hosts or [])]
-    linked = [m.group(1).lower() for m in LINKED.finditer(t)]
+    linked = [m.group(1).lower() for m in LINKED.finditer(MEDIA_LINK.sub(" ", t))]
     own_link = any(any(h and (host == h or host.endswith("." + h)) for h in hosts) for host in linked)
     if own_link or ASK.search(t):
         return "promo"
@@ -182,15 +187,25 @@ def fetch_nostr(ident: dict, n: int) -> list[Post]:
     if len(pk) != 64:
         raise ValueError(f"npub does not decode to a 32-byte public key (got {len(pk) // 2} bytes)")
     out: list[Post] = []
+    # author-wide, not per relay: one relay honouring the retraction is enough to know the author
+    # withdrew the note, and a relay that keeps serving it is ignoring NIP-09, not contradicting us
+    deleted: set[str] = set()
     for relay in ident.get("relays") or ["wss://relay.nostr.net", "wss://relay.primal.net"]:
         try:
             ws = websocket.create_connection(relay, timeout=15)
-            ws.send(json.dumps(["REQ", "pc", {"authors": [pk], "kinds": [1], "limit": n}]))
+            # NIP-09: a note the author retracted is not a post any more, but a relay is free to
+            # keep serving it (relay.nostr.net does). Ask for the author's kind-5 events too and
+            # subtract them here - the deletion request is the author's own statement of intent,
+            # and honouring it client-side is not the same as hiding a post from the audit.
+            ws.send(json.dumps(["REQ", "pc", {"authors": [pk], "kinds": [1, 5], "limit": n * 2}]))
             while True:
                 m = json.loads(ws.recv())
                 if m[0] == "EVENT":
                     ev = m[2]
                     tags = ev.get("tags") or []
+                    if ev.get("kind") == 5:
+                        deleted.update(t[1] for t in tags if t and t[0] == "e" and len(t) > 1)
+                        continue
                     imeta = any(t and t[0] == "imeta" for t in tags)
                     out.append(Post(
                         id=ev["id"], platform="nostr:" + relay.split("//")[1].split("/")[0],
@@ -206,7 +221,7 @@ def fetch_nostr(ident: dict, n: int) -> list[Post]:
                             image_kind="", url="", label="__relay_error__:" + type(exc).__name__))
     seen, uniq = set(), []
     for p in out:
-        if p.id and p.id in seen:
+        if p.id and (p.id in seen or p.id in deleted):
             continue
         seen.add(p.id)
         uniq.append(p)
