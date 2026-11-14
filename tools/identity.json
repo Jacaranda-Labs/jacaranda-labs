@@ -1,5 +1,5 @@
 {
- "_note": "One entry per posting identity. markers = strings that make a post promo; promo_ids/value_ids override the heuristic by platform post id.",
+ "_note": "One entry per posting identity. markers = the product's own names only (a topic word is not a brand: 'tender' made every DeskOS data post look like an advert). brand_hosts = the product's own doors, so a post that links one is a promo whatever its wording. promo_ids/value_ids override the classifier by platform post id.",
  "identities": [
   {
    "key": "op",
@@ -8,12 +8,13 @@
    "handle": "open-practice.bsky.social",
    "markers": [
     "open practice",
-    "open-practice",
-    "86 guided",
-    "39 free tools",
-    "no signup"
+    "open-practice"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "open-practice.open-practice.workers.dev",
+    "openpractice.whop.site"
+   ]
   },
   {
    "key": "op-masto",
@@ -23,12 +24,13 @@
    "instance": "mastodon.social",
    "markers": [
     "open practice",
-    "open-practice",
-    "86 guided",
-    "39 free tools",
-    "no signup"
+    "open-practice"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "open-practice.open-practice.workers.dev",
+    "openpractice.whop.site"
+   ]
   },
   {
    "key": "ma",
@@ -38,9 +40,13 @@
    "markers": [
     "mechanism audit",
     "mechanism-audit",
-    "product audit"
+    "coldread"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "jacaranda-labs.jacaranda-labs.workers.dev",
+    "mechanism-audit.whop.site"
+   ]
   },
   {
    "key": "ma-masto",
@@ -51,9 +57,13 @@
    "markers": [
     "mechanism audit",
     "mechanism-audit",
-    "product audit"
+    "coldread"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "jacaranda-labs.jacaranda-labs.workers.dev",
+    "mechanism-audit.whop.site"
+   ]
   },
   {
    "key": "attestos",
@@ -62,10 +72,15 @@
    "handle": "attestos.bsky.social",
    "markers": [
     "attestos",
-    "free scanner",
-    "verify call"
+    "proofhand",
+    "ghost-pow"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "attestos-edge.proofhand.workers.dev",
+    "attestos.whop.site",
+    "proofhand"
+   ]
   },
   {
    "key": "attestos-masto",
@@ -75,10 +90,15 @@
    "instance": "mastodon.social",
    "markers": [
     "attestos",
-    "free scanner",
-    "verify call"
+    "proofhand",
+    "ghost-pow"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "attestos-edge.proofhand.workers.dev",
+    "attestos.whop.site",
+    "proofhand"
+   ]
   },
   {
    "key": "attestos-nostr",
@@ -92,10 +112,15 @@
    ],
    "markers": [
     "attestos",
-    "free scanner",
-    "verify call"
+    "proofhand",
+    "ghost-pow"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "attestos-edge.proofhand.workers.dev",
+    "attestos.whop.site",
+    "proofhand"
+   ]
   },
   {
    "key": "op-nostr",
@@ -111,7 +136,11 @@
     "open practice",
     "open-practice"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "open-practice.open-practice.workers.dev",
+    "openpractice.whop.site"
+   ]
   },
   {
    "key": "deskos-nostr",
@@ -125,9 +154,13 @@
    ],
    "markers": [
     "deskos",
-    "desk-os"
+    "bidfold"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "deskos.bidfold.workers.dev",
+    "deskos.whop.site"
+   ]
   },
   {
    "key": "tightbucket-nostr",
@@ -142,7 +175,10 @@
    "markers": [
     "tightbucket"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "0x.tightbucket.workers.dev"
+   ]
   },
   {
    "key": "tapstall-nostr",
@@ -157,7 +193,11 @@
    "markers": [
     "tapstall"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "tapstall.tapstall.workers.dev",
+    "tapstall.whop.site"
+   ]
   },
   {
    "key": "ma-nostr",
@@ -170,9 +210,15 @@
     "wss://nos.lol"
    ],
    "markers": [
-    "mechanism audit"
+    "mechanism audit",
+    "mechanism-audit",
+    "coldread"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "jacaranda-labs.jacaranda-labs.workers.dev",
+    "mechanism-audit.whop.site"
+   ]
   },
   {
    "key": "tapstall",
@@ -180,11 +226,13 @@
    "platform": "bluesky",
    "handle": "tapstall.bsky.social",
    "markers": [
-    "tapstall",
-    "shop link",
-    "60 days"
+    "tapstall"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "tapstall.tapstall.workers.dev",
+    "tapstall.whop.site"
+   ]
   },
   {
    "key": "tapstall-masto",
@@ -193,11 +241,13 @@
    "handle": "tapstall@mastodon.social",
    "instance": "mastodon.social",
    "markers": [
-    "tapstall",
-    "shop link",
-    "60 days"
+    "tapstall"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "tapstall.tapstall.workers.dev",
+    "tapstall.whop.site"
+   ]
   },
   {
    "key": "deskos",
@@ -206,10 +256,13 @@
    "handle": "deskos.bsky.social",
    "markers": [
     "deskos",
-    "bid desk",
-    "tender"
+    "bidfold"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "deskos.bidfold.workers.dev",
+    "deskos.whop.site"
+   ]
   },
   {
    "key": "tightbucket",
@@ -217,17 +270,28 @@
    "platform": "bluesky",
    "handle": "tightbucket.bsky.social",
    "markers": [
-    "tightbucket",
-    "leak audit"
+    "tightbucket"
    ],
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "brand_hosts": [
+    "0x.tightbucket.workers.dev"
+   ]
   },
   {
    "key": "ma-bsky",
    "name": "Mechanism Audit",
    "platform": "bluesky",
    "handle": "mechanism-audit.bsky.social",
-   "rail_since": "2026-11-09T11:00:00Z"
+   "rail_since": "2026-11-09T11:00:00Z",
+   "markers": [
+    "mechanism audit",
+    "mechanism-audit",
+    "coldread"
+   ],
+   "brand_hosts": [
+    "jacaranda-labs.jacaranda-labs.workers.dev",
+    "mechanism-audit.whop.site"
+   ]
   }
  ]
 }

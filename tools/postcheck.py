@@ -41,6 +41,23 @@ CTA = re.compile(
     r"\b(try|start|begin|sign ?up|join|open|claim|get|buy|book|free|subscribe|download|"
     r"available now|new|launch(?:ed|ing)?)\b", re.I)
 
+# 2026-11-14: the rule for a promo is "it names the product AND asks the reader for something".
+# The old implementation used one broad regex that contained topic words (open, free, new, get),
+# so a DeskOS weekly roundup ("35 public contracts in Ukraine close... 96 open in all") and a
+# Tapstall market note ("the same $10 payment costs about $0.34") were both scored as promos. The
+# audit then reported 5-6 promos in a row for feeds that were mostly data posts, which is the
+# opposite failure of a silenced audit: a wrongly red build nobody can trust either.
+#
+# ASK is the actual ask: an invitation addressed to the reader, or the product's own door.
+ASK = re.compile(
+    r"(\bget started\b|\btry it\b|\btry the (free|audit|scanner)\b|\bstart (today|now|free|your)\b"
+    r"|\bsign ?up\b|\bjoin (free|us|today)\b|\bclaim\b|\bbook a\b|\bbuy\b"
+    r"|\bavailable now\b|\bfree for \d+ days\b|\bno card\b|\bdownload the\b|\binstall the\b"
+    r"|\b(run|take|open) a free\b|\bfree (audit|scan|version|plan) (on|for)\b"
+    r"|\bopen your own\b|\bget your (own|free)\b)",
+    re.I)
+LINKED = re.compile(r"https?://(?:www\.)?([a-z0-9.-]+)", re.I)
+
 
 # --------------------------------------------------------------------------- model
 @dataclass
@@ -59,12 +76,21 @@ class Post:
         return self.label or classify(self.text)
 
 
-def classify(text: str, markers: list[str] | None = None) -> str:
-    markers = markers or []
-    """promo = it names the product and asks for something. Everything else is value."""
+def classify(text: str, markers: list[str] | None = None, brand_hosts: list[str] | None = None) -> str:
+    """promo = it names the product AND asks the reader for something.
+
+    Naming the product is not enough: our products are the subject of most of what we write. The
+    ask is what makes a post a promo - an invitation, or a link to the product's own door.
+    """
     t = text or ""
+    markers = [m for m in (markers or []) if m]
     names = any(m.lower() in t.lower() for m in markers)
-    return "promo" if (names and CTA.search(t)) else "value"
+    if not names:
+        return "value"
+    hosts = [h.lower() for h in (brand_hosts or [])]
+    linked = [m.group(1).lower() for m in LINKED.finditer(t)]
+    own_link = any(any(h and (host == h or host.endswith("." + h)) for h in hosts) for host in linked)
+    return "promo" if (own_link or ASK.search(t)) else "value"
 
 
 # --------------------------------------------------------------------------- platforms
@@ -259,7 +285,7 @@ def judge(ident: dict, posts: list[Post], window: int = WINDOW) -> Verdict:
         elif p.id and p.id in (ident.get("value_ids") or []):
             p.label = "value"
         elif ident.get("markers"):
-            p.label = classify(p.text, ident["markers"])
+            p.label = classify(p.text, ident["markers"], ident.get("brand_hosts"))
     v.posts = posts
 
     # rule 1 — every post carries an image
