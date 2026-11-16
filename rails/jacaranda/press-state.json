@@ -5,9 +5,10 @@
   "promo-portfolio",
   "ledger",
   "failure",
-  "promo-publications"
+  "promo-publications",
+  "harare"
  ],
- "last_at": "2026-11-14T18:43:25.317038Z",
+ "last_at": "2026-11-16T01:22:10.896039Z",
  "log": [
   {
    "id": "method",
@@ -43,6 +44,11 @@
   {
    "id": "promo-publications",
    "at": "2026-11-14T18:43:25.317038Z",
+   "rails": 6
+  },
+  {
+   "id": "harare",
+   "at": "2026-11-16T01:22:10.896039Z",
    "rails": 6
   }
  ]
