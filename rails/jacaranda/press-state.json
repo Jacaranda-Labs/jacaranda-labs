@@ -6,9 +6,10 @@
   "ledger",
   "failure",
   "promo-publications",
-  "harare"
+  "harare",
+  "disclosure"
  ],
- "last_at": "2026-11-16T01:22:10.896039Z",
+ "last_at": "2026-11-17T09:00:25.407915Z",
  "log": [
   {
    "id": "method",
@@ -50,6 +51,11 @@
    "id": "harare",
    "at": "2026-11-16T01:22:10.896039Z",
    "rails": 6
+  },
+  {
+   "id": "disclosure",
+   "at": "2026-11-17T09:00:25.407915Z",
+   "rails": 4
   }
  ]
 }
