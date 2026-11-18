@@ -7,9 +7,10 @@
   "failure",
   "promo-publications",
   "harare",
-  "disclosure"
+  "disclosure",
+  "promo-ventures"
  ],
- "last_at": "2026-11-17T09:00:25.407915Z",
+ "last_at": "2026-11-18T15:59:57.691015Z",
  "log": [
   {
    "id": "method",
@@ -56,6 +57,11 @@
    "id": "disclosure",
    "at": "2026-11-17T09:00:25.407915Z",
    "rails": 4
+  },
+  {
+   "id": "promo-ventures",
+   "at": "2026-11-18T15:59:57.691015Z",
+   "rails": 6
   }
  ]
 }
