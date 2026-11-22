@@ -1,4 +1,20 @@
-name: build and deploy
+# Build and check.
+#
+# The Cloudflare Pages deploy and the GitHub Pages mirror were removed on
+# 2026-11-22. Until then this workflow built dist with build.py and published it
+# to the Pages project `jacaranda-labs` and to jacaranda-labs.github.io, which
+# meant every push to main republished the pre-rename "Jacaranda Labs" site over
+# production - including over any redirect placed on that host.
+#
+# build.py is not the generator that produced the live v2 estate: the v2 pages
+# come from a different toolchain, and the studio's own site is served by the
+# `estate` worker and the `coldcode-estate` Pages project. So this workflow now
+# builds and validates only. Nothing is published from here.
+#
+# If you want CI to publish again, point it at the v2 generator first, then add
+# a deploy step targeting `coldcode-estate` - not `jacaranda-labs`.
+
+name: build and check
 
 on:
   push:
@@ -7,15 +23,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages-${{ github.ref }}
+  group: check-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,37 +41,8 @@ jobs:
       - name: Build and check
         run: python3 build.py --check
 
-      - name: Upload artifact
+      - name: Keep the build as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: site
           path: dist
-
-      - name: Deploy to Cloudflare Pages
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx --yes wrangler@4 pages deploy dist --project-name jacaranda-labs --branch main --commit-dirty=true
-
-      - name: Prove the public address serves this build
-        # The estate's own S6 signature: a deployment reports success while the address a reader
-        # uses serves an older build. Pages propagation is normal; silence is not, so this fails
-        # loudly if the origin is still serving something else after a few minutes.
-        run: python3 tools/deploy_verify.py --wait 240 --interval 30
-
-      - name: Deploy static mirror to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        if: github.event_name == 'push'
-        with:
-          path: dist
-
-  mirror:
-    needs: deploy
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@v4
