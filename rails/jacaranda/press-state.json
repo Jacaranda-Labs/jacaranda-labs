@@ -10,9 +10,10 @@
   "disclosure",
   "promo-ventures",
   "numbers",
-  "reading"
+  "reading",
+  "promo-read"
  ],
- "last_at": "2026-11-21T04:56:58.629320Z",
+ "last_at": "2026-11-22T11:44:18.766271Z",
  "log": [
   {
    "id": "method",
@@ -73,6 +74,11 @@
   {
    "id": "reading",
    "at": "2026-11-21T04:56:58.629320Z",
+   "rails": 6
+  },
+  {
+   "id": "promo-read",
+   "at": "2026-11-22T11:44:18.766271Z",
    "rails": 6
   }
  ]
