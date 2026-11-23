@@ -11,9 +11,10 @@
   "promo-ventures",
   "numbers",
   "reading",
-  "promo-read"
+  "promo-read",
+  "open"
  ],
- "last_at": "2026-11-22T11:44:18.766271Z",
+ "last_at": "2026-11-23T17:59:41.560244Z",
  "log": [
   {
    "id": "method",
@@ -79,6 +80,11 @@
   {
    "id": "promo-read",
    "at": "2026-11-22T11:44:18.766271Z",
+   "rails": 6
+  },
+  {
+   "id": "open",
+   "at": "2026-11-23T17:59:41.560244Z",
    "rails": 6
   }
  ]
