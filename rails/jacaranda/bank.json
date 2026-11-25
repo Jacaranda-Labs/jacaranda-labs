@@ -103,5 +103,20 @@
    "buildinpublic"
   ],
   "card": "https://jacaranda-labs.pages.dev/assets/cards/work-cadence.png"
+ },
+ {
+  "kind": "value",
+  "work": "musk-mirror",
+  "id": "work-musk-mirror",
+  "kicker": "FREE TO READ · BOOK",
+  "headline": "The Musk Mirror",
+  "card_body": "How one billionaire exposed the cracks in China's innovation dream",
+  "text": "The Musk Mirror: How one billionaire exposed the cracks in China's innovation dream. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/the-musk-mirror.html",
+  "link": "https://jacaranda-labs.pages.dev/read/the-musk-mirror.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-musk-mirror.png"
  }
 ]
