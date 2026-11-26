@@ -118,5 +118,20 @@
    "buildinpublic"
   ],
   "card": "https://jacaranda-labs.pages.dev/assets/cards/work-musk-mirror.png"
+ },
+ {
+  "kind": "value",
+  "work": "traffic",
+  "id": "work-traffic",
+  "kicker": "FREE TO READ · BOOK",
+  "headline": "Traffic Is the New Oil",
+  "card_body": "The African digital wealth formula",
+  "text": "Traffic Is the New Oil: The African digital wealth formula. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/traffic-is-the-new-oil.html",
+  "link": "https://jacaranda-labs.pages.dev/read/traffic-is-the-new-oil.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-traffic.png"
  }
 ]
