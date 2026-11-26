@@ -13,9 +13,10 @@
   "reading",
   "promo-read",
   "open",
-  "work-sovereign-micro-enterprise"
+  "work-sovereign-micro-enterprise",
+  "venture-attestos"
  ],
- "last_at": "2026-11-25T01:13:27.261946Z",
+ "last_at": "2026-11-26T07:20:18.959970Z",
  "log": [
   {
    "id": "method",
@@ -91,6 +92,11 @@
   {
    "id": "work-sovereign-micro-enterprise",
    "at": "2026-11-25T01:13:27.261946Z",
+   "rails": 6
+  },
+  {
+   "id": "venture-attestos",
+   "at": "2026-11-26T07:20:18.959970Z",
    "rails": 6
   }
  ]
