@@ -133,5 +133,20 @@
    "buildinpublic"
   ],
   "card": "https://jacaranda-labs.pages.dev/assets/cards/work-traffic.png"
+ },
+ {
+  "kind": "value",
+  "work": "pinterest",
+  "id": "work-pinterest",
+  "kicker": "FREE TO READ · BOOK",
+  "headline": "Pinterest Goldmine",
+  "card_body": "The traffic source nobody told you about",
+  "text": "Pinterest Goldmine: The traffic source nobody told you about. Free to read, no signup.\n\nhttps://jacaranda-labs.pages.dev/read/pinterest-goldmine.html",
+  "link": "https://jacaranda-labs.pages.dev/read/pinterest-goldmine.html",
+  "tags": [
+   "writing",
+   "buildinpublic"
+  ],
+  "card": "https://jacaranda-labs.pages.dev/assets/cards/work-pinterest.png"
  }
 ]
