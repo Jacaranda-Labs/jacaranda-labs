@@ -14,9 +14,10 @@
   "promo-read",
   "open",
   "work-sovereign-micro-enterprise",
-  "venture-attestos"
+  "venture-attestos",
+  "work-intelligence"
  ],
- "last_at": "2026-11-26T07:20:18.959970Z",
+ "last_at": "2026-11-27T14:57:11.813462Z",
  "log": [
   {
    "id": "method",
@@ -97,6 +98,11 @@
   {
    "id": "venture-attestos",
    "at": "2026-11-26T07:20:18.959970Z",
+   "rails": 6
+  },
+  {
+   "id": "work-intelligence",
+   "at": "2026-11-27T14:57:11.813462Z",
    "rails": 6
   }
  ]
